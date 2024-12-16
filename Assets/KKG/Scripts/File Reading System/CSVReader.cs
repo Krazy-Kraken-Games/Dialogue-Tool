@@ -12,7 +12,7 @@ namespace KKG.FileHandling
         [ContextMenu("Read File")]
         public void ReadFile()
         {
-            string csvText = LoadCSV(filePath);
+            string csvText = LoadByFilePath();
 
             if (!string.IsNullOrEmpty(csvText))
             {
@@ -23,6 +23,12 @@ namespace KKG.FileHandling
                     Debug.Log(string.Join(" |", row));
                 }
             }
+        }
+
+        public void LoadFileViaPath(string _filePath)
+        {
+            filePath = _filePath;
+            ReadFile();
         }
 
         /// <summary>
@@ -41,6 +47,28 @@ namespace KKG.FileHandling
             else
             {
                 Debug.LogError($"CSV file not found at: {fileName}");
+                return null;
+            }
+        }
+
+        private string LoadByFilePath()
+        {
+            if (File.Exists(filePath))
+            {
+                try
+                {
+                    string fileContent = File.ReadAllText(filePath);
+                    return fileContent;
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogError($"Failed to load CSV file: {e.Message}");
+                    return null;
+                }
+            }
+            else
+            {
+                Debug.LogError($"File not found at: {filePath}");
                 return null;
             }
         }
