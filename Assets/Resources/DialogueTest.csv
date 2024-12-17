@@ -1,0 +1,6 @@
+ID,SPEAKER,MESSAGE,JUMP,OPTION1,NEXTINDEX1,OPTION2,NEXTINDEX2
+0,Teacher,Greetings fellow warrior. Did you bring your sword?,,"Yes, I did",2,No,1
+1,Warrior,"No, I was hoping I could borrow yours for today?",3,,,,
+2,Warrior,"Yes, its in my bag",4,,,,
+3,Teacher,NOPE! Did you forget to eat today?,99,,,,
+4,Teacher,Good job! Now go and bring it! We train!,99,,,,
