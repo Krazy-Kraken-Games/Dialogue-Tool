@@ -25,10 +25,20 @@ namespace KKG.FileHandling
             }
         }
 
-        public void LoadFileViaPath(string _filePath)
+        public List<string[]> LoadFileViaPath(string _filePath)
         {
             filePath = _filePath;
-            ReadFile();
+
+            List<string[]> result = new List<string[]>();
+
+            string csvText = LoadByFilePath();
+
+            if (!string.IsNullOrEmpty(csvText))
+            {
+                result = ParseCSV(csvText);
+            }
+
+            return result;
         }
 
         /// <summary>

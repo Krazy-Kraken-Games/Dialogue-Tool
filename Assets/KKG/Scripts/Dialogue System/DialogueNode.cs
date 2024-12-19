@@ -1,24 +1,67 @@
 
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace KKG.Dialogue
 {
-    public enum MessageType
+    [System.Serializable]
+    public class DialogueNode
     {
-        DEFAULT = 0,
-        ENDER = 1
-    }
+        [SerializeField]
+        private DialogueNodeData data;
 
-    public struct DialogueNode
-    {
-        public int Id;
-        public MessageType Type;
-        public string SpeakerName;
-        public string Message;
+        public DialogueNodeData Data => data;
 
-        public List<DialogueOption> Options;
+        public DialogueNode(string[] rowData)
+        {
+            int maxCount = rowData.Length;
 
-        //Subject to change
-        public int jumpIndex;
+            //First line is ID
+            int ID = int.Parse(rowData[0]);
+
+            //Second line is the Speaker's Name
+            string speakerName = rowData[1];
+
+            //Third column is Message
+            string message = rowData[2];
+
+            //Jump index
+            //When using jumpIndex, you can check if it has a value using .HasValue or retrieve it using .Value.
+            int? jumpIndex = null;
+            if (maxCount > 3 && !string.IsNullOrEmpty(rowData[3]))
+            {
+                jumpIndex = int.Parse(rowData[3]);
+            }
+
+            List<DialogueOption> options = new List<DialogueOption>();
+            
+            //Dialogue Options start from index 4
+            for(int i = 4; i < maxCount; i+=2)
+            {
+                if(i + 1< maxCount && !string.IsNullOrEmpty(rowData[i]) && !string.IsNullOrEmpty(rowData[i+1]))
+                {
+                    DialogueOption dialogOption = new DialogueOption()
+                    {
+                        OptionMessage = rowData[i],
+                        nextIndex = int.Parse(rowData[i + 1])
+                    };
+                    options.Add(dialogOption);
+                }
+                else
+                {
+                    Debug.LogWarning($"Dialogue Options seem to be corrupted");
+                }
+            }
+
+            data = new DialogueNodeData()
+            {
+                Id = ID,
+                SpeakerName = speakerName,
+                Message = message,
+                jumpIndex = jumpIndex,
+
+                Options = options
+            };
+        }
     }
 }
