@@ -1,10 +1,11 @@
 using KKG.Dialogue;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace KKG.FileHandling
 {
-    public class KrakenFileReader : MonoBehaviour
+    public class KrakenFileReader : EditorWindow
     {
         [SerializeField]
         private FileLocator fileLocator;
@@ -12,7 +13,12 @@ namespace KKG.FileHandling
         [SerializeField]
         private CSVReader fileReader;
 
-        [ContextMenu("File Read and Load")]
+        public static void OpenWindow()
+        {
+
+        }
+
+
         public void ReadFile()
         {
             //Open File Explorer Dialog in Editor to load the file path
@@ -46,12 +52,12 @@ namespace KKG.FileHandling
             }
         }
 
-        private DialogueNode CreateDialogueNode(string[] rowData)
+        public DialogueNode CreateDialogueNode(string[] rowData)
         {
             return new DialogueNode(rowData);    
         }
 
-        private void CreateDialogueSO(List<DialogueNode> nodes)
+        public void CreateDialogueSO(List<DialogueNode> nodes)
         {
             //Create Instance
             DialogueDataSO dialogueDataSO = ScriptableObject.CreateInstance<DialogueDataSO>();
@@ -65,9 +71,6 @@ namespace KKG.FileHandling
             UnityEditor.AssetDatabase.SaveAssets(); 
 
             Debug.Log("Dialogue SO created");
-
-
-
         }
     }
 }
