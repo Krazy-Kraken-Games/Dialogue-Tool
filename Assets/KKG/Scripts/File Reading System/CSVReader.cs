@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KKG.FileHandling
 {
-    public class CSVReader : MonoBehaviour
+    public class CSVReader
     {
         public string filePath;
 
