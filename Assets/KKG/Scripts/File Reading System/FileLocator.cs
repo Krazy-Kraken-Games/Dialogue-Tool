@@ -6,9 +6,8 @@ using UnityEngine;
 
 namespace KKG.FileHandling
 {
-    public class FileLocator : MonoBehaviour
+    public class FileLocator
     {
-        [ContextMenu("Search File")]
         public string SearchForFilePath()
         {
             string filePath = OpenFileLocator();
