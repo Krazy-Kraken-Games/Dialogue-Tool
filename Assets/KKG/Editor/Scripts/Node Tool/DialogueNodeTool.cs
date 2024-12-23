@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEditor;
+using System.Collections.Generic;
 
 namespace KKG.Tool.Dialogue
 {
     public class DialogueNodeTool : EditorWindow
     {
+        private List<Node> nodes;
 
         [MenuItem("Tools/Krazy Kraken Games/Dialogue Graph")]
         public static void OpenWindow()
@@ -13,10 +15,25 @@ namespace KKG.Tool.Dialogue
             window.titleContent = new GUIContent("Dialogue Graph");
         }
 
+        private void OnEnable()
+        {
+            nodes = new List<Node>();
+        }
+
         private void OnGUI()
         {
+            //Draw the grid
             DrawGrid(20, 0.2f, Color.gray);
             DrawGrid(100, 0.4f, Color.green);
+
+            //Draw any nodes that exist
+            DrawNodes();
+
+            //Events Handling
+            ProcessEvents(Event.current);
+
+            //Repaint
+            if (GUI.changed) Repaint();
         }
 
         private void DrawGrid(float gridSpacing,float gridOpacity,Color gridColor)
@@ -41,5 +58,51 @@ namespace KKG.Tool.Dialogue
 
             Handles.EndGUI();
         }
+
+        /// <summary>
+        /// Method to draw all the nodes that exist in the list
+        /// </summary>
+        private void DrawNodes()
+        {
+            if (nodes != null && nodes.Count > 0)
+            {
+                foreach(Node node in nodes)
+                {
+                    node.Draw();
+                }
+            }
+        }
+
+
+        private void ProcessEvents(Event e)
+        {
+            switch (e.type)
+            {
+                case EventType.MouseDown:
+
+                    if(e.button == 1)
+                    {
+                        ShowContextMenu(e.mousePosition);
+                    }
+                    break;
+            }
+        }
+
+
+        #region In Tool Functions
+
+        private void ShowContextMenu(Vector2 position)
+        {
+            GenericMenu menu = new GenericMenu();
+            menu.AddItem(new GUIContent("Add Node"), false, () => OnClickAddNode(position));
+            menu.ShowAsContext();
+        }
+
+        private void OnClickAddNode(Vector2 clickPosition)
+        {
+            nodes.Add(new Node(clickPosition));
+        }
+
+        #endregion
     }
 }
