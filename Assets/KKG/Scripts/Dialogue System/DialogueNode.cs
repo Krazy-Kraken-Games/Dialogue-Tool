@@ -12,6 +12,11 @@ namespace KKG.Dialogue
 
         public DialogueNodeData Data => data;
 
+        public DialogueNode(DialogueNodeData _data)
+        {
+           data = _data;
+        }
+
         public DialogueNode(string[] rowData)
         {
             int maxCount = rowData.Length;

@@ -12,7 +12,7 @@ namespace KKG.Dialogue
     [System.Serializable]
     public struct DialogueNodeData
     {
-        public int Id;
+        public string Id;
         public MessageType Type;
         public string SpeakerName;
         public string Message;
