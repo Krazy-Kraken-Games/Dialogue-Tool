@@ -73,7 +73,7 @@ namespace KKG.Tool.Dialogue
 
             // Message
             GUILayout.Label("Message:");
-            data.Message = EditorGUILayout.TextField(data.Message);
+            data.Message = EditorGUILayout.TextArea(data.Message);
 
 
             GUILayout.EndArea();
