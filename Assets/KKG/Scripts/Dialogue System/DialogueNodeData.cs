@@ -1,5 +1,6 @@
 
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace KKG.Dialogue
 {
@@ -12,6 +13,7 @@ namespace KKG.Dialogue
     [System.Serializable]
     public struct DialogueNodeData
     {
+        [ReadOnly]
         public string Id;
         public MessageType Type;
         public string SpeakerName;
@@ -19,7 +21,8 @@ namespace KKG.Dialogue
 
         public List<DialogueOption> Options;
 
-        //Subject to change
-        public int? jumpIndex;
+        [ReadOnly]
+        //ID is generated at runtime automatically, so next jump would be a string
+        public string? jumpIndex;
     }
 }

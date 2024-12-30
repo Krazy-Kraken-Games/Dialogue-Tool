@@ -61,7 +61,7 @@ namespace KKG.Tool.Dialogue
 
             GUILayout.BeginArea(new Rect(rect.x + 20,rect. y + 20,rect.width - 40, rect.height - 40));
 
-            GUILayout.Label("Data", EditorStyles.boldLabel);
+            GUILayout.Label($"ID:{data.Id}", EditorStyles.boldLabel);
 
             // Message Type
             GUILayout.Label("Message Type:");
@@ -75,9 +75,6 @@ namespace KKG.Tool.Dialogue
             GUILayout.Label("Message:");
             data.Message = EditorGUILayout.TextField(data.Message);
 
-            //Jump Index
-            GUILayout.Label("Jump Index");
-            data.jumpIndex = EditorGUILayout.IntField(data.jumpIndex.Value);
 
             GUILayout.EndArea();
 

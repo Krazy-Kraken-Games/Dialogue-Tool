@@ -22,7 +22,7 @@ namespace KKG.Dialogue
             int maxCount = rowData.Length;
 
             //First line is ID
-            int ID = int.Parse(rowData[0]);
+            string ID = rowData[0];
 
             //Second line is the Speaker's Name
             string speakerName = rowData[1];
@@ -32,10 +32,10 @@ namespace KKG.Dialogue
 
             //Jump index
             //When using jumpIndex, you can check if it has a value using .HasValue or retrieve it using .Value.
-            int? jumpIndex = null;
+            string? jumpIndex = null;
             if (maxCount > 3 && !string.IsNullOrEmpty(rowData[3]))
             {
-                jumpIndex = int.Parse(rowData[3]);
+                jumpIndex = rowData[3];
             }
 
             List<DialogueOption> options = new List<DialogueOption>();
@@ -67,6 +67,11 @@ namespace KKG.Dialogue
 
                 Options = options
             };
+        }
+
+        public void SetJumpTo(string jumpTo)
+        {
+            data.jumpIndex = jumpTo;   
         }
     }
 }

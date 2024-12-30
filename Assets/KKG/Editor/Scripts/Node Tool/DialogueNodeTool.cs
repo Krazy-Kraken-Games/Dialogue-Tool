@@ -128,7 +128,7 @@ namespace KKG.Tool.Dialogue
             GUILayout.Space(10);
 
             GUILayout.Label("File Name:");
-            fileName =  GUILayout.TextField("Enter File Name");
+            fileName =  GUILayout.TextField("");
 
             if(selectedNode != null)
             {
@@ -147,22 +147,45 @@ namespace KKG.Tool.Dialogue
                 {
 
                     List<DialogueNode> DialogueNodes = new List<DialogueNode>();
+                    Dictionary<Node,DialogueNode> AllNodes = new Dictionary<Node,DialogueNode>();
 
                     //Get all nodes & form Dialogue Nodes from them
                     foreach (var node in nodes)
                     {
-                        //Check all connections for this node acting as input
-
                         DialogueNode dialogueNode = new DialogueNode(node.data);
-                        DialogueNodes.Add(dialogueNode);
+
+                        if (!DialogueNodes.Contains(dialogueNode))
+                        {
+                            DialogueNodes.Add(dialogueNode);
+                            AllNodes.Add(node, dialogueNode);
+                        }
+                    }
+
+                    //Check all connections for this node acting as input
+                    foreach (var connection in connections)
+                    {
+                        //Find Dialogue Node from list 
+                        var inputNode = AllNodes.Single(n => n.Key == connection.Key.InputNode).Value;
+
+                        var outputNode = AllNodes.Single(n => n.Key == connection.Key.OutputNode).Value;
+
+                        inputNode.SetJumpTo(outputNode.Data.Id); 
                     }
 
                     //Create the asset file
                     if (DialogueNodes.Count > 0)
                     {
-                        CreateDialogueSO(fileName, DialogueNodes);
+                        if (!string.IsNullOrEmpty(fileName))
+                        {
 
-                        EditorUtility.DisplayDialog("SUCCESS", "Dialogue Asset created successfully in Assets folder", "OK");
+                            CreateDialogueSO(fileName, DialogueNodes);
+
+                            EditorUtility.DisplayDialog("SUCCESS", "Dialogue Asset created successfully in Assets folder", "OK");
+                        }
+                        else
+                        {
+                            EditorUtility.DisplayDialog("ERROR", "File Name cannot be empty", "OK");
+                        }
                     }
 
                 }
