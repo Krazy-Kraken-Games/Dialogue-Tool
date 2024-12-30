@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec68b2d7c9842a41ae5f6ad03e79582, type: 3}
+  m_Name: Enter File Name
+  m_EditorClassIdentifier: 
+  Nodes:
+  - data:
+      Id: 0dcd0ec6-8752-4227-941f-99df07ced47a
+      Type: 0
+      SpeakerName: Pratik
+      Message: Hello Shivani! How are you doing this morning?
+      Options: []
+      jumpIndex: f4577e73-4de5-4752-924a-fa29b2229a72
+  - data:
+      Id: f4577e73-4de5-4752-924a-fa29b2229a72
+      Type: 0
+      SpeakerName: Shivani
+      Message: Good morning Pratik! I am doing good!
+      Options: []
+      jumpIndex: 033d36e5-f3b0-4ffa-914a-353cb6f81a89
+  - data:
+      Id: 033d36e5-f3b0-4ffa-914a-353cb6f81a89
+      Type: 1
+      SpeakerName: Pratik
+      Message: I am hungry! FEED MEEEEEEEE!
+      Options: []
+      jumpIndex: 
