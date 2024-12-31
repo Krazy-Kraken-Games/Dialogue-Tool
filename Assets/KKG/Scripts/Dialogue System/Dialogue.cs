@@ -5,7 +5,7 @@ namespace KKG.Dialogue
 {
     public class Dialogue
     {
-        public Dictionary<int,DialogueNodeData> Messages = new Dictionary<int,DialogueNodeData>();
+        public Dictionary<string,DialogueNode> Messages = new Dictionary<string, DialogueNode>();
 
 
     }

@@ -12,11 +12,21 @@ namespace KKG.Dialogue
 
         public DialogueNodeData Data => data;
 
+
+        #region CONSTRUCTORS
+        /// <summary>
+        /// Dialogue Node constructor for Dialogue Tool
+        /// </summary>
+        /// <param name="_data"></param>
         public DialogueNode(DialogueNodeData _data)
         {
            data = _data;
         }
 
+        /// <summary>
+        /// Dialogue Node constructor for Excel Sheet (.csv) file
+        /// </summary>
+        /// <param name="rowData"></param>
         public DialogueNode(string[] rowData)
         {
             int maxCount = rowData.Length;
@@ -68,6 +78,9 @@ namespace KKG.Dialogue
                 Options = options
             };
         }
+
+        #endregion
+
 
         public void SetJumpTo(string jumpTo)
         {
