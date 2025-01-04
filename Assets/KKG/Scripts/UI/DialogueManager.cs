@@ -9,7 +9,21 @@ namespace KKG.Dialogue
         [SerializeField]
         private bool isDialoguePlaying = false;
 
+        [Space(10)]
+        [Header("Dialogue Data")]
+        [SerializeField]
+        private DialogueDataSO activeDialogueSO;
+
         //Local reference to active dialogue
+        [Space(10)]
+        [Header("Local Dialogue Reference")]
+        [SerializeField]
+        private Dialogue activeDialogue;
+
+        [Space(10)]
+        [Header("UI Dialogue Reference")]
+        [SerializeField]
+        private UIDialogue DialogueUI;
 
         private void Awake()
         {
@@ -26,9 +40,9 @@ namespace KKG.Dialogue
         /// <summary>
         /// Set Reference to Active Dialogue
         /// </summary>
-        public void SetActiveDialogue()
+        public void SetActiveDialogue(Dialogue _dialogue)
         {
-
+            activeDialogue = _dialogue;
         }
 
         /// <summary>
@@ -36,7 +50,7 @@ namespace KKG.Dialogue
         /// </summary>
         public void ResetActiveDialogue()
         {
-
+            activeDialogue = null;
         }
 
         /// <summary>
@@ -58,5 +72,22 @@ namespace KKG.Dialogue
             isDialoguePlaying = false;
             ResetActiveDialogue();
         }
+
+
+        #region DATA HANDLING SECTION
+
+        public void SetDialogueData(DialogueDataSO data)
+        {
+            activeDialogueSO = data;
+
+            //Fire the set active dialogue from here
+            Dialogue dialogue = new Dialogue(activeDialogueSO.Nodes);
+
+            SetActiveDialogue(dialogue);
+
+            //Populate the UI with the same
+        }
+
+        #endregion
     }
 }
