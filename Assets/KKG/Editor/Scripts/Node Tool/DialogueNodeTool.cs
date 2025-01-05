@@ -74,7 +74,7 @@ namespace KKG.Tool.Dialogue
 
             //Draw the grid
             DrawGrid(20, 0.2f, Color.gray);
-            DrawGrid(100, 0.4f, Color.green);
+            DrawGrid(100, 0.4f, Color.red);
 
 
             // Draw resize handle for user to resize the canvas
@@ -128,9 +128,9 @@ namespace KKG.Tool.Dialogue
             GUILayout.Space(10);
 
             GUILayout.Label("File Name:");
-            fileName =  GUILayout.TextField("");
+            fileName = EditorGUILayout.TextField("");
 
-            if(selectedNode != null)
+            if (selectedNode != null)
             {
                 GUILayout.Label("Node selected");
             }

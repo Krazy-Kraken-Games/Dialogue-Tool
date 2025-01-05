@@ -35,7 +35,7 @@ namespace KKG.Dialogue
 
             foreach (var node in nodes)
             {
-
+                Messages.Add(node.Data.Id, node);
             }
         }
 

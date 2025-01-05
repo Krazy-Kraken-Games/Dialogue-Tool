@@ -37,6 +37,17 @@ namespace KKG.Dialogue
             }
         }
 
+        private void Start()
+        {
+            if(DialogueUI == null)
+            {
+                Debug.LogError("Dialogue UI reference is missing. Init process discontinued");
+                return;
+            }
+
+            Initialization();
+        }
+
         /// <summary>
         /// Set Reference to Active Dialogue
         /// </summary>
@@ -86,6 +97,20 @@ namespace KKG.Dialogue
             SetActiveDialogue(dialogue);
 
             //Populate the UI with the same
+        }
+
+        #endregion
+
+
+        #region INITIALIZATION
+
+        private void Initialization()
+        {
+            //Showcase dialogue data on start if SO exists
+            if(activeDialogueSO != null)
+            {
+
+            }
         }
 
         #endregion
