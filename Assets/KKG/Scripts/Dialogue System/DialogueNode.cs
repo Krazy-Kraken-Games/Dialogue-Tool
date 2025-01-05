@@ -10,7 +10,7 @@ namespace KKG.Dialogue
         [SerializeField]
         private DialogueNodeData data;
 
-        public DialogueNodeData Data => data;
+        public DialogueNodeData Message => data;
 
 
         #region CONSTRUCTORS

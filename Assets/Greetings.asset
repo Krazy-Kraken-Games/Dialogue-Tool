@@ -12,25 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec68b2d7c9842a41ae5f6ad03e79582, type: 3}
   m_Name: Greetings
   m_EditorClassIdentifier: 
-  Nodes:
+  nodes:
   - data:
-      Id: 0dcd0ec6-8752-4227-941f-99df07ced47a
+      Id: bd5310fe-4dc1-429c-a807-977f717d8198
       Type: 0
-      SpeakerName: Pratik
-      Message: Hello Shivani! How are you doing this morning?
+      SpeakerName: Player 1
+      Message: Hello! How are you?
       Options: []
-      jumpIndex: f4577e73-4de5-4752-924a-fa29b2229a72
+      jumpIndex: f3f02e3e-eb85-48d5-b079-95f9c5c1a0fb
   - data:
-      Id: f4577e73-4de5-4752-924a-fa29b2229a72
+      Id: f3f02e3e-eb85-48d5-b079-95f9c5c1a0fb
       Type: 0
-      SpeakerName: Shivani
-      Message: Good morning Pratik! I am doing good!
-      Options: []
-      jumpIndex: 033d36e5-f3b0-4ffa-914a-353cb6f81a89
-  - data:
-      Id: 033d36e5-f3b0-4ffa-914a-353cb6f81a89
-      Type: 1
-      SpeakerName: Pratik
-      Message: I am hungry! FEED MEEEEEEEE!
+      SpeakerName: Player 2
+      Message: I am good, thank you for asking!
       Options: []
       jumpIndex: 

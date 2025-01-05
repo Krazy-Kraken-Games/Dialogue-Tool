@@ -23,7 +23,7 @@ namespace KKG.Tool.Dialogue
     {
 
         [SerializeField]
-        private string fileName;
+        private string fileName = string.Empty;
 
         private List<Node> nodes;
         private Dictionary<ConnectionTuple, Connection> connections;
@@ -128,7 +128,7 @@ namespace KKG.Tool.Dialogue
             GUILayout.Space(10);
 
             GUILayout.Label("File Name:");
-            fileName = EditorGUILayout.TextField("");
+            fileName = EditorGUILayout.TextField(fileName);
 
             if (selectedNode != null)
             {
@@ -169,7 +169,7 @@ namespace KKG.Tool.Dialogue
 
                         var outputNode = AllNodes.Single(n => n.Key == connection.Key.OutputNode).Value;
 
-                        inputNode.SetJumpTo(outputNode.Data.Id); 
+                        inputNode.SetJumpTo(outputNode.Message.Id); 
                     }
 
                     //Create the asset file

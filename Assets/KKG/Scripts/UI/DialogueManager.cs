@@ -21,9 +21,9 @@ namespace KKG.Dialogue
         private Dialogue activeDialogue;
 
         [Space(10)]
-        [Header("UI Dialogue Reference")]
+        [Header("Dialogue Screen Reference")]
         [SerializeField]
-        private UIDialogue DialogueUI;
+        private DialogueScreen dialogueScreen;
 
         private void Awake()
         {
@@ -39,7 +39,7 @@ namespace KKG.Dialogue
 
         private void Start()
         {
-            if(DialogueUI == null)
+            if(dialogueScreen == null)
             {
                 Debug.LogError("Dialogue UI reference is missing. Init process discontinued");
                 return;
@@ -71,6 +71,15 @@ namespace KKG.Dialogue
         {
             //Check if the active dialogue is not null
             isDialoguePlaying = true;
+
+            activeDialogue.StartDialogue();
+
+            //Populate the UI with the same
+            ShowCurrentMessage();
+
+            //Show UI
+            dialogueScreen.PopulateMessage(activeDialogue.GetCurrentMessage().Message);
+
         }
 
         /// <summary>
@@ -94,9 +103,8 @@ namespace KKG.Dialogue
             //Fire the set active dialogue from here
             Dialogue dialogue = new Dialogue(activeDialogueSO.Nodes);
 
+            //Set as active dialogue
             SetActiveDialogue(dialogue);
-
-            //Populate the UI with the same
         }
 
         #endregion
@@ -109,7 +117,36 @@ namespace KKG.Dialogue
             //Showcase dialogue data on start if SO exists
             if(activeDialogueSO != null)
             {
+                //Make dialogue from it
+                SetDialogueData(activeDialogueSO);
+            }
+        }
 
+        #endregion
+
+        #region UI SECTION
+
+        public void ShowCurrentMessage()
+        {
+            if(dialogueScreen != null)
+            {
+                dialogueScreen.PopulateMessage(activeDialogue.GetCurrentMessage().Message); 
+            }
+        }
+
+        #endregion
+
+        #region INPUT HANDLER
+
+        /// <summary>
+        /// The interaction point between the player input & the dialogue system
+        /// </summary>
+        public void OnInteractionFromPlayer()
+        {
+            if (!isDialoguePlaying)
+            {
+                //Start Dialogue
+                StartDialogue();
             }
         }
 
