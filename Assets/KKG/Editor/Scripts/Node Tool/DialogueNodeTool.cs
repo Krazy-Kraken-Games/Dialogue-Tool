@@ -66,7 +66,7 @@ namespace KKG.Tool.Dialogue
 
             if (selectedNode == null)
             {
-                HandlePanning(e); // Drag canvas
+               HandlePanning(e); // Drag canvas
             }
 
             ApplyZoomAndPan(); // Apply transformations
@@ -92,7 +92,7 @@ namespace KKG.Tool.Dialogue
             DrawResizeHandle();
 
             // Handle resizing interaction
-            HandleResize(e);
+            //HandleResize(e);
 
 
             //Draw any nodes that exist
@@ -228,30 +228,27 @@ namespace KKG.Tool.Dialogue
 
         private void DrawGrid(float gridSpacing,float gridOpacity,Color gridColor)
         {
-            // Calculate the visible width and height based on zoom level
-            float visibleWidth = position.width / zoomScale;
-            float visibleHeight = position.height / zoomScale;
+            // Get the dimensions of the current editor window
+            Rect canvasRect = new Rect(0, 0, canvasSize.x, canvasSize.y);
 
-            // Calculate the starting point for the grid (aligned with pan offset)
-            Vector2 gridStart = new Vector2(panOffset.x % gridSpacing, panOffset.y % gridSpacing);
-
-            // Set the grid color
+            // Draw grid lines within the window dimensions
+            Handles.BeginGUI();
             Handles.color = new Color(gridColor.r, gridColor.g, gridColor.b, gridOpacity);
 
-            // Draw vertical grid lines
-            for (float x = gridStart.x; x < visibleWidth; x += gridSpacing)
+            // Vertical lines
+            for (float x = canvasRect.xMin; x < canvasRect.xMax; x += gridSpacing)
             {
-                Handles.DrawLine(new Vector3(x, 0, 0), new Vector3(x, visibleHeight, 0));
+                Handles.DrawLine(new Vector3(x, canvasRect.yMin, 0), new Vector3(x, canvasRect.yMax, 0));
             }
 
-            // Draw horizontal grid lines
-            for (float y = gridStart.y; y < visibleHeight; y += gridSpacing)
+            // Horizontal lines
+            for (float y = canvasRect.yMin; y < canvasRect.yMax; y += gridSpacing)
             {
-                Handles.DrawLine(new Vector3(0, y, 0), new Vector3(visibleWidth, y, 0));
+                Handles.DrawLine(new Vector3(canvasRect.xMin, y, 0), new Vector3(canvasRect.xMax, y, 0));
             }
 
-            // Reset the grid color after drawing
             Handles.color = Color.white;
+            Handles.EndGUI();
         }
 
 
@@ -331,7 +328,7 @@ namespace KKG.Tool.Dialogue
             if (e.type == EventType.MouseDrag && e.button == 1)
             {
                 Vector2 delta = e.mousePosition - dragStart;
-                panOffset += delta;
+                scrollPosition -= delta;
                 dragStart = e.mousePosition;
                 e.Use(); // Mark event as handled
             }
@@ -551,11 +548,20 @@ namespace KKG.Tool.Dialogue
 
         private void ShowContextMenu(Vector2 position)
         {
+            Matrix4x4 m4 = GUI.matrix;
+            // scale it by your zoom
+            GUI.matrix = GUI.matrix * Matrix4x4.Scale(new Vector3(1 / zoomScale, 1 / zoomScale, 1 / zoomScale));
+
             GenericMenu menu = new GenericMenu();
 
             menu.AddItem(new GUIContent("Add Node"), false, () => OnClickAddNode(position));
             menu.AddItem(new GUIContent("Reset Zoom"),false, ()=>OnClickResetZoom(position));
+
+
             menu.ShowAsContext();
+
+            // restore matrix
+            GUI.matrix = m4;
         }
 
         private void ShowNodeContextMenu(Vector2 position)
