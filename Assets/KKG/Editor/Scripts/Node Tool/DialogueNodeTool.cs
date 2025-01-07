@@ -91,9 +91,6 @@ namespace KKG.Tool.Dialogue
             // Draw resize handle for user to resize the canvas
             DrawResizeHandle();
 
-            // Handle resizing interaction
-            //HandleResize(e);
-
 
             //Draw any nodes that exist
             DrawNodes();
@@ -352,37 +349,6 @@ namespace KKG.Tool.Dialogue
             Handles.DrawSolidRectangleWithOutline(resizeHandleRect, new Color(1f, 1f, 0f, 0.3f), Color.yellow);
         }
 
-        private void HandleResize(Event e)
-        {
-            // Check if the mouse is over the resize handle and drag to resize
-            if (e.type == EventType.MouseDown && e.button == 0 && resizeHandleRect.Contains(e.mousePosition))
-            {
-                isResizing = true;
-                dragStart = e.mousePosition;
-            }
-
-            if (e.type == EventType.MouseDrag && isResizing)
-            {
-                // Calculate how much the user is dragging the resize handle
-                Vector2 dragDelta = e.mousePosition - dragStart;
-
-                // Increase the canvas width and height
-                canvasSize.x = Mathf.Max(5000f, canvasSize.x + dragDelta.x);  // Ensure width doesn't go below 5000
-                canvasSize.y = Mathf.Max(5000f, canvasSize.y + dragDelta.y); // Ensure height doesn't go below 5000
-
-                // Update the resize handle position
-                resizeHandleRect.x = canvasSize.x - handleSize;
-                resizeHandleRect.y = canvasSize.y - handleSize;
-
-                dragStart = e.mousePosition; // Update the start position for next drag
-                e.Use();
-            }
-
-            if (e.type == EventType.MouseUp && isResizing)
-            {
-                isResizing = false;
-            }
-        }
         #endregion
 
         #region PROCESSING
