@@ -131,6 +131,8 @@ namespace KKG.Tool.Dialogue
             GUILayout.Label("Press Middle Mouse Button to create nodes");
             GUILayout.Label("Press Left mouse button on nodes to drag and create connections");
             GUILayout.Label("Press Right mouse button on nodes to drag and move the nodes");
+
+            GUILayout.EndArea();
         }
 
         private void DrawInspectorPanel(Rect rect)
