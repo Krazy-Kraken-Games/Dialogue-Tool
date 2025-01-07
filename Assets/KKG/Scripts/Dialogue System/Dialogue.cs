@@ -79,7 +79,7 @@ namespace KKG.Dialogue
 
         
 
-        public void ShowNextMessage()
+        public DialogueNode ShowNextMessage()
         {
             //Sets the next active message
             activeMessage = GetNextMessage();
@@ -94,6 +94,8 @@ namespace KKG.Dialogue
             {
                 OnMessageUpdatedEvent?.Invoke(activeMessage);
             }
+
+            return activeMessage ?? null;
         }
     }
 }

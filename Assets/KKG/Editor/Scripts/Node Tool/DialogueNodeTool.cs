@@ -108,6 +108,9 @@ namespace KKG.Tool.Dialogue
             Rect inspectorRect = new Rect(position.width - 200, 0, 200, position.height);
             DrawInspectorPanel(inspectorRect);
 
+            Rect instructionRect = new Rect(position.width - 200, position.height - 200, 200, 200);
+            DrawInstructionsPanel(instructionRect);
+
         }
 
         private void UpdateCanvasSize()
@@ -119,15 +122,27 @@ namespace KKG.Tool.Dialogue
 
         #region DRAWING METHODS
 
+        private void DrawInstructionsPanel(Rect rect)
+        {
+            GUI.Box(rect,"Instructions",GUI.skin.window);
+
+            GUILayout.BeginArea(new Rect(rect.x + 30, rect.y + 30, rect.width - 60, rect.height - 60));
+
+            GUILayout.Label("Press Middle Mouse Button to create nodes");
+            GUILayout.Label("Press Left mouse button on nodes to drag and create connections");
+            GUILayout.Label("Press Right mouse button on nodes to drag and move the nodes");
+        }
+
         private void DrawInspectorPanel(Rect rect)
         {
             GUI.Box(rect, "Inspector", GUI.skin.window);
 
-            GUILayout.BeginArea(new Rect(rect.x + 30,rect.y + 30, rect.width - 60, rect.height - 60));
+            GUILayout.BeginArea(new Rect(rect.x + 5,rect.y + 5, rect.width - 10, rect.height - 10));
 
             GUILayout.Space(10);
 
             GUILayout.Label("File Name:");
+
             fileName = EditorGUILayout.TextField(fileName);
 
             if (selectedNode != null)
@@ -181,6 +196,8 @@ namespace KKG.Tool.Dialogue
                             CreateDialogueSO(fileName, DialogueNodes);
 
                             EditorUtility.DisplayDialog("SUCCESS", "Dialogue Asset created successfully in Assets folder", "OK");
+
+                            fileName = string.Empty;
                         }
                         else
                         {

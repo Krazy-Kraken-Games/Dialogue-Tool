@@ -76,10 +76,6 @@ namespace KKG.Dialogue
 
             //Populate the UI with the same
             ShowCurrentMessage();
-
-            //Show UI
-            dialogueScreen.PopulateMessage(activeDialogue.GetCurrentMessage().Message);
-
         }
 
         /// <summary>
@@ -147,6 +143,22 @@ namespace KKG.Dialogue
             {
                 //Start Dialogue
                 StartDialogue();
+            }
+            else
+            {
+                //Already playing, play next message or hide
+                var nextMessage = activeDialogue.ShowNextMessage();
+
+                if(nextMessage == null)
+                {
+                    Debug.Log("End dialogue reached");
+                    isDialoguePlaying = false;
+                    dialogueScreen.Toggle();
+                }
+                else
+                {
+                    ShowCurrentMessage();
+                }
             }
         }
 
