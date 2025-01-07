@@ -78,6 +78,10 @@ namespace KKG.Tool.Dialogue
                 new Rect(0, 0, canvasSize.x * zoom, canvasSize.y * zoom)
             );
 
+            // Apply zoom and pan transformations
+            GUI.BeginGroup(new Rect(panOffset.x, panOffset.y, canvasSize.x * zoom, canvasSize.y * zoom));
+
+
 
             //Draw the grid
             DrawGrid(20, 0.2f, Color.gray);
@@ -109,6 +113,8 @@ namespace KKG.Tool.Dialogue
             if (GUI.changed) Repaint();
 
             GUI.matrix = Matrix4x4.identity; // Reset matrix
+
+            GUI.EndGroup(); // End scaling and panning
 
             GUI.EndScrollView(); // End the scroll view
 
