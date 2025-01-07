@@ -36,13 +36,13 @@ namespace KKG.Tool.Dialogue
         private bool isDraggingConnection;
         private bool isResizing;
 
-        private float canvasWidth = 5000f;  // Initial canvas width
-        private float canvasHeight = 5000f; // Initial canvas height
-
         private float zoom = 1.0f; // Default zoom level
         private float zoomScale = 1.0f;
         private Vector2 panOffset = Vector2.zero; // Offset for panning
         private Vector2 dragStart = Vector2.zero; // Track drag start position
+
+        private Vector2 canvasSize = new Vector2(5000, 5000); // Large virtual canvas
+        private Vector2 scrollPosition = Vector2.zero;       // Scroll view position
 
         [MenuItem("Tools/Krazy Kraken Games/Dialogue Graph")]
         public static void OpenWindow()
@@ -70,6 +70,13 @@ namespace KKG.Tool.Dialogue
             }
 
             ApplyZoomAndPan(); // Apply transformations
+
+            // Begin scrollable view for the virtual canvas
+            scrollPosition = GUI.BeginScrollView(
+                new Rect(0, 0, position.width, position.height),
+                scrollPosition,
+                new Rect(0, 0, canvasSize.x * zoom, canvasSize.y * zoom)
+            );
 
 
             //Draw the grid
@@ -103,7 +110,7 @@ namespace KKG.Tool.Dialogue
 
             GUI.matrix = Matrix4x4.identity; // Reset matrix
 
-           
+            GUI.EndScrollView(); // End the scroll view
 
             Rect inspectorRect = new Rect(position.width - 200, 0, 200, position.height);
             DrawInspectorPanel(inspectorRect);
@@ -116,8 +123,8 @@ namespace KKG.Tool.Dialogue
         private void UpdateCanvasSize()
         {
             // Increase or decrease the canvas size based on zoom or user interaction
-            canvasWidth = Mathf.Max(5000f, canvasWidth * zoomScale); // Minimum size 5000, adjust with zoom
-            canvasHeight = Mathf.Max(5000f, canvasHeight * zoomScale); // Minimum size 5000, adjust with zoom
+            canvasSize.x = Mathf.Max(5000f, canvasSize.x * zoomScale); // Minimum size 5000, adjust with zoom
+            canvasSize.y = Mathf.Max(5000f, canvasSize.y * zoomScale); // Minimum size 5000, adjust with zoom
         }
 
         #region DRAWING METHODS
@@ -335,7 +342,7 @@ namespace KKG.Tool.Dialogue
 
         private void DrawResizeHandle()
         {
-            resizeHandleRect = new Rect(canvasWidth - handleSize, canvasHeight - handleSize, handleSize, handleSize);
+            resizeHandleRect = new Rect(canvasSize.x - handleSize, canvasSize.y - handleSize, handleSize, handleSize);
 
             // Draw the resize handle as a small rectangle
             Handles.color = Color.yellow;
@@ -357,12 +364,12 @@ namespace KKG.Tool.Dialogue
                 Vector2 dragDelta = e.mousePosition - dragStart;
 
                 // Increase the canvas width and height
-                canvasWidth = Mathf.Max(5000f, canvasWidth + dragDelta.x);  // Ensure width doesn't go below 5000
-                canvasHeight = Mathf.Max(5000f, canvasHeight + dragDelta.y); // Ensure height doesn't go below 5000
+                canvasSize.x = Mathf.Max(5000f, canvasSize.x + dragDelta.x);  // Ensure width doesn't go below 5000
+                canvasSize.y = Mathf.Max(5000f, canvasSize.y + dragDelta.y); // Ensure height doesn't go below 5000
 
                 // Update the resize handle position
-                resizeHandleRect.x = canvasWidth - handleSize;
-                resizeHandleRect.y = canvasHeight - handleSize;
+                resizeHandleRect.x = canvasSize.x - handleSize;
+                resizeHandleRect.y = canvasSize.y - handleSize;
 
                 dragStart = e.mousePosition; // Update the start position for next drag
                 e.Use();
