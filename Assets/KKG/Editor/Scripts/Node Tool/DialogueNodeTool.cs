@@ -23,7 +23,7 @@ namespace KKG.Tool.Dialogue
     {
 
         [SerializeField]
-        private string fileName;
+        private string fileName = string.Empty;
 
         private List<Node> nodes;
         private Dictionary<ConnectionTuple, Connection> connections;
@@ -36,13 +36,13 @@ namespace KKG.Tool.Dialogue
         private bool isDraggingConnection;
         private bool isResizing;
 
-        private float canvasWidth = 5000f;  // Initial canvas width
-        private float canvasHeight = 5000f; // Initial canvas height
-
         private float zoom = 1.0f; // Default zoom level
         private float zoomScale = 1.0f;
         private Vector2 panOffset = Vector2.zero; // Offset for panning
         private Vector2 dragStart = Vector2.zero; // Track drag start position
+
+        private Vector2 canvasSize = new Vector2(5000, 5000); // Large virtual canvas
+        private Vector2 scrollPosition = Vector2.zero;       // Scroll view position
 
         [MenuItem("Tools/Krazy Kraken Games/Dialogue Graph")]
         public static void OpenWindow()
@@ -66,22 +66,30 @@ namespace KKG.Tool.Dialogue
 
             if (selectedNode == null)
             {
-                HandlePanning(e); // Drag canvas
+               HandlePanning(e); // Drag canvas
             }
 
             ApplyZoomAndPan(); // Apply transformations
 
+            // Begin scrollable view for the virtual canvas
+            scrollPosition = GUI.BeginScrollView(
+                new Rect(0, 0, position.width, position.height),
+                scrollPosition,
+                new Rect(0, 0, canvasSize.x * zoom, canvasSize.y * zoom)
+            );
+
+            // Apply zoom and pan transformations
+            GUI.BeginGroup(new Rect(panOffset.x, panOffset.y, canvasSize.x * zoom, canvasSize.y * zoom));
+
+
 
             //Draw the grid
             DrawGrid(20, 0.2f, Color.gray);
-            DrawGrid(100, 0.4f, Color.green);
+            DrawGrid(100, 0.4f, Color.red);
 
 
             // Draw resize handle for user to resize the canvas
             DrawResizeHandle();
-
-            // Handle resizing interaction
-            HandleResize(e);
 
 
             //Draw any nodes that exist
@@ -103,34 +111,53 @@ namespace KKG.Tool.Dialogue
 
             GUI.matrix = Matrix4x4.identity; // Reset matrix
 
-           
+            GUI.EndGroup(); // End scaling and panning
+
+            GUI.EndScrollView(); // End the scroll view
 
             Rect inspectorRect = new Rect(position.width - 200, 0, 200, position.height);
             DrawInspectorPanel(inspectorRect);
+
+            Rect instructionRect = new Rect(position.width - 200, position.height - 200, 200, 200);
+            DrawInstructionsPanel(instructionRect);
 
         }
 
         private void UpdateCanvasSize()
         {
             // Increase or decrease the canvas size based on zoom or user interaction
-            canvasWidth = Mathf.Max(5000f, canvasWidth * zoomScale); // Minimum size 5000, adjust with zoom
-            canvasHeight = Mathf.Max(5000f, canvasHeight * zoomScale); // Minimum size 5000, adjust with zoom
+            canvasSize.x = Mathf.Max(5000f, canvasSize.x * zoomScale); // Minimum size 5000, adjust with zoom
+            canvasSize.y = Mathf.Max(5000f, canvasSize.y * zoomScale); // Minimum size 5000, adjust with zoom
         }
 
         #region DRAWING METHODS
+
+        private void DrawInstructionsPanel(Rect rect)
+        {
+            GUI.Box(rect,"Instructions",GUI.skin.window);
+
+            GUILayout.BeginArea(new Rect(rect.x + 30, rect.y + 30, rect.width - 60, rect.height - 60));
+
+            GUILayout.Label("Press Middle Mouse Button to create nodes");
+            GUILayout.Label("Press Left mouse button on nodes to drag and create connections");
+            GUILayout.Label("Press Right mouse button on nodes to drag and move the nodes");
+
+            GUILayout.EndArea();
+        }
 
         private void DrawInspectorPanel(Rect rect)
         {
             GUI.Box(rect, "Inspector", GUI.skin.window);
 
-            GUILayout.BeginArea(new Rect(rect.x + 30,rect.y + 30, rect.width - 60, rect.height - 60));
+            GUILayout.BeginArea(new Rect(rect.x + 5,rect.y + 5, rect.width - 10, rect.height - 10));
 
             GUILayout.Space(10);
 
             GUILayout.Label("File Name:");
-            fileName =  GUILayout.TextField("");
 
-            if(selectedNode != null)
+            fileName = EditorGUILayout.TextField(fileName);
+
+            if (selectedNode != null)
             {
                 GUILayout.Label("Node selected");
             }
@@ -169,7 +196,7 @@ namespace KKG.Tool.Dialogue
 
                         var outputNode = AllNodes.Single(n => n.Key == connection.Key.OutputNode).Value;
 
-                        inputNode.SetJumpTo(outputNode.Data.Id); 
+                        inputNode.SetJumpTo(outputNode.Message.Id); 
                     }
 
                     //Create the asset file
@@ -181,6 +208,8 @@ namespace KKG.Tool.Dialogue
                             CreateDialogueSO(fileName, DialogueNodes);
 
                             EditorUtility.DisplayDialog("SUCCESS", "Dialogue Asset created successfully in Assets folder", "OK");
+
+                            fileName = string.Empty;
                         }
                         else
                         {
@@ -196,30 +225,27 @@ namespace KKG.Tool.Dialogue
 
         private void DrawGrid(float gridSpacing,float gridOpacity,Color gridColor)
         {
-            // Calculate the visible width and height based on zoom level
-            float visibleWidth = position.width / zoomScale;
-            float visibleHeight = position.height / zoomScale;
+            // Get the dimensions of the current editor window
+            Rect canvasRect = new Rect(0, 0, canvasSize.x, canvasSize.y);
 
-            // Calculate the starting point for the grid (aligned with pan offset)
-            Vector2 gridStart = new Vector2(panOffset.x % gridSpacing, panOffset.y % gridSpacing);
-
-            // Set the grid color
+            // Draw grid lines within the window dimensions
+            Handles.BeginGUI();
             Handles.color = new Color(gridColor.r, gridColor.g, gridColor.b, gridOpacity);
 
-            // Draw vertical grid lines
-            for (float x = gridStart.x; x < visibleWidth; x += gridSpacing)
+            // Vertical lines
+            for (float x = canvasRect.xMin; x < canvasRect.xMax; x += gridSpacing)
             {
-                Handles.DrawLine(new Vector3(x, 0, 0), new Vector3(x, visibleHeight, 0));
+                Handles.DrawLine(new Vector3(x, canvasRect.yMin, 0), new Vector3(x, canvasRect.yMax, 0));
             }
 
-            // Draw horizontal grid lines
-            for (float y = gridStart.y; y < visibleHeight; y += gridSpacing)
+            // Horizontal lines
+            for (float y = canvasRect.yMin; y < canvasRect.yMax; y += gridSpacing)
             {
-                Handles.DrawLine(new Vector3(0, y, 0), new Vector3(visibleWidth, y, 0));
+                Handles.DrawLine(new Vector3(canvasRect.xMin, y, 0), new Vector3(canvasRect.xMax, y, 0));
             }
 
-            // Reset the grid color after drawing
             Handles.color = Color.white;
+            Handles.EndGUI();
         }
 
 
@@ -299,7 +325,7 @@ namespace KKG.Tool.Dialogue
             if (e.type == EventType.MouseDrag && e.button == 1)
             {
                 Vector2 delta = e.mousePosition - dragStart;
-                panOffset += delta;
+                scrollPosition -= delta;
                 dragStart = e.mousePosition;
                 e.Use(); // Mark event as handled
             }
@@ -316,44 +342,13 @@ namespace KKG.Tool.Dialogue
 
         private void DrawResizeHandle()
         {
-            resizeHandleRect = new Rect(canvasWidth - handleSize, canvasHeight - handleSize, handleSize, handleSize);
+            resizeHandleRect = new Rect(canvasSize.x - handleSize, canvasSize.y - handleSize, handleSize, handleSize);
 
             // Draw the resize handle as a small rectangle
             Handles.color = Color.yellow;
             Handles.DrawSolidRectangleWithOutline(resizeHandleRect, new Color(1f, 1f, 0f, 0.3f), Color.yellow);
         }
 
-        private void HandleResize(Event e)
-        {
-            // Check if the mouse is over the resize handle and drag to resize
-            if (e.type == EventType.MouseDown && e.button == 0 && resizeHandleRect.Contains(e.mousePosition))
-            {
-                isResizing = true;
-                dragStart = e.mousePosition;
-            }
-
-            if (e.type == EventType.MouseDrag && isResizing)
-            {
-                // Calculate how much the user is dragging the resize handle
-                Vector2 dragDelta = e.mousePosition - dragStart;
-
-                // Increase the canvas width and height
-                canvasWidth = Mathf.Max(5000f, canvasWidth + dragDelta.x);  // Ensure width doesn't go below 5000
-                canvasHeight = Mathf.Max(5000f, canvasHeight + dragDelta.y); // Ensure height doesn't go below 5000
-
-                // Update the resize handle position
-                resizeHandleRect.x = canvasWidth - handleSize;
-                resizeHandleRect.y = canvasHeight - handleSize;
-
-                dragStart = e.mousePosition; // Update the start position for next drag
-                e.Use();
-            }
-
-            if (e.type == EventType.MouseUp && isResizing)
-            {
-                isResizing = false;
-            }
-        }
         #endregion
 
         #region PROCESSING
@@ -519,11 +514,20 @@ namespace KKG.Tool.Dialogue
 
         private void ShowContextMenu(Vector2 position)
         {
+            Matrix4x4 m4 = GUI.matrix;
+            // scale it by your zoom
+            GUI.matrix = GUI.matrix * Matrix4x4.Scale(new Vector3(1 / zoomScale, 1 / zoomScale, 1 / zoomScale));
+
             GenericMenu menu = new GenericMenu();
 
             menu.AddItem(new GUIContent("Add Node"), false, () => OnClickAddNode(position));
             menu.AddItem(new GUIContent("Reset Zoom"),false, ()=>OnClickResetZoom(position));
+
+
             menu.ShowAsContext();
+
+            // restore matrix
+            GUI.matrix = m4;
         }
 
         private void ShowNodeContextMenu(Vector2 position)

@@ -76,7 +76,7 @@ namespace KKG.FileHandling
             {
                 DialogueNode node = CreateDialogueNode(fileContent[i]);
 
-                Debug.Log($"{node.Data.SpeakerName} : {node.Data.Message} and Has Options:{node.Data.Options.Count > 0}");
+                Debug.Log($"{node.Message.SpeakerName} : {node.Message.Message} and Has Options:{node.Message.Options.Count > 0}");
 
                 DialogueNodes.Add(node);
             }

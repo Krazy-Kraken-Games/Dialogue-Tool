@@ -6,18 +6,20 @@ namespace KKG.Dialogue
     public class DialogueDataSO : ScriptableObject
     {
         [SerializeField]
-        private List<DialogueNode> Nodes = new List<DialogueNode>();
+        private List<DialogueNode> nodes = new List<DialogueNode>();
+
+        public List<DialogueNode> Nodes { get { return nodes; } }
 
         public void AddNode(DialogueNode node)
         {
-            if (Nodes.Contains(node)) return;
+            if (nodes.Contains(node)) return;
 
-            Nodes.Add(node);
+            nodes.Add(node);
         }
 
         public void SetNodes(List<DialogueNode> nodes)
         {
-            Nodes = nodes;  
+            this.nodes = nodes;  
         }
 
     }
