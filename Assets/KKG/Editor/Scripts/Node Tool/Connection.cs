@@ -11,12 +11,19 @@ namespace KKG.Tool.Dialogue
         private bool multiOutputConnection = false;
         public Rect inputPosition;
 
-        public Connection(Node input, Node output)
+        public Connection(Node input, Node output, bool isOption = false)
         {
             this.input = input;
             this.output = output;
 
-            input.SetNextIndex(output.data.Id);
+            if (!isOption)
+            {
+                input.SetNextIndex(output.data.Id);
+            }
+            else
+            {
+                input.SetNextIndex(null);
+            }
         }
 
         public void SetFromOutputNode(Rect _startPosition)

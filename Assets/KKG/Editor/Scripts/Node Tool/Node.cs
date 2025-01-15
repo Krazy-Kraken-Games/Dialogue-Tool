@@ -102,6 +102,7 @@ namespace KKG.Tool.Dialogue
                 showOptions = !showOptions;
             }
 
+
             if (showOptions)
             {
                 // Display all existing options
@@ -131,13 +132,28 @@ namespace KKG.Tool.Dialogue
                     // Option Message
                     GUILayout.BeginHorizontal();
                     GUILayout.Label("Option Message:");
-                    option.OptionMessage = EditorGUILayout.TextField(option.OptionMessage);
+                    string updatedMessage = EditorGUILayout.TextField(option.OptionMessage);
+
+                    if(!string.Equals(updatedMessage,option.OptionMessage))
+                    {
+                        option.OptionMessage = updatedMessage;
+                        data.Options[optionId] = option;    
+                    }
+
                     GUILayout.EndHorizontal();
 
                     // Speaker Name
                     GUILayout.BeginHorizontal();
                     GUILayout.Label("Speaker Name:");
-                    option.SpeakerName = EditorGUILayout.TextField(option.SpeakerName);
+                    string updatedSpeakerName = EditorGUILayout.TextField(option.SpeakerName);
+
+                    //Detect change
+                    if (!string.Equals(updatedSpeakerName,option.SpeakerName))
+                    {
+                        option.SpeakerName = updatedSpeakerName;
+                        data.Options[optionId] = option;    
+                    }
+
                     GUILayout.EndHorizontal();
 
                     // Next Index
@@ -179,6 +195,8 @@ namespace KKG.Tool.Dialogue
                     GUILayout.EndVertical(); // End of option box
                 }
 
+
+                
                 // Remove options marked for deletion
                 foreach (string key in keysToRemove)
                 {
@@ -233,14 +251,13 @@ namespace KKG.Tool.Dialogue
         {
             var option = data.Options[_optionId];
 
-            DialogueOption newOption = new DialogueOption
-            {
-                OptionId = _optionId,
-                OptionMessage = option.OptionMessage,
-                SpeakerName = option.SpeakerName,
-                NextIndex = nextIndex
-            };
-            data.Options[_optionId] =  newOption;
+            option.NextIndex = nextIndex;
+            data.Options[_optionId] = option;
+
+            //if (data.Options.TryGetValue(_optionId, out var option))
+            //{
+            //    option.NextIndex = nextIndex; // Update the existing object
+            //}
         }
 
         private void DrawInputNode()

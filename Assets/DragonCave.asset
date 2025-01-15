@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec68b2d7c9842a41ae5f6ad03e79582, type: 3}
+  m_Name: DragonCave
+  m_EditorClassIdentifier: 
+  nodes:
+  - data:
+      Id: ccf4f039-8c67-4f9a-82b2-f78d53276f17
+      Type: 0
+      SpeakerName: Me
+      Message: Sorry! My name is Gyanfen! I am a solo traveller and adventurer
+      nextIndex: 
+  - data:
+      Id: a42c84a5-66ec-40e2-b987-414d17030e49
+      Type: 0
+      SpeakerName: Dragon
+      Message: Lets fight!
+      nextIndex: 
+  - data:
+      Id: d3c1fc28-d062-424b-b46c-0e2bedc18070
+      Type: 0
+      SpeakerName: Dragon
+      Message: Oh! Take the third right to reach the end of cave
+      nextIndex: 
+  - data:
+      Id: a5784976-8014-4874-ab99-9a2d0804c9b0
+      Type: 0
+      SpeakerName: Dragon
+      Message: Huh! Who dares to walk in my domain!?
+      nextIndex: ccf4f039-8c67-4f9a-82b2-f78d53276f17

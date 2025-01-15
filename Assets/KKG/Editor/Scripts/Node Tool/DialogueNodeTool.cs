@@ -40,8 +40,8 @@ namespace KKG.Tool.Dialogue
         private List<Node> nodes;
         private Dictionary<ConnectionTuple, Connection> connections;
         private Dictionary<ConnectionOptionTuple, Connection> connectionOptions;
-        
 
+        private Node startingNode;
         private Node selectedNode;
 
         private Vector2 dragStartPosition;
@@ -187,6 +187,15 @@ namespace KKG.Tool.Dialogue
             else
             {
                 GUILayout.Label("No selected Node");
+            }
+
+            if (startingNode != null)
+            {
+                GUILayout.Label($"Starting Node: {startingNode.data.Id}");
+            }
+            else
+            {
+                GUILayout.Label("No Starting Node");
             }
 
 
@@ -543,7 +552,7 @@ namespace KKG.Tool.Dialogue
 
                         if (targetNode != null && draggingOutputNode != null && draggingOutputNode != targetNode)
                         {
-                            Connection newConnection = new Connection(draggingOutputNode, targetNode);
+                            Connection newConnection = new Connection(draggingOutputNode, targetNode,true);
 
                             ConnectionTuple ct = new ConnectionTuple(draggingOutputNode, targetNode);
 
@@ -668,7 +677,7 @@ namespace KKG.Tool.Dialogue
             GenericMenu menu = new GenericMenu();
 
             menu.AddItem(new GUIContent("Delete Node"), false, () => OnClickDeleteNode(position));
-            
+            menu.AddItem(new GUIContent("Make Starting Node"), false, () => OnClickStartNode(position));
 
             menu.ShowAsContext();
         }
@@ -683,6 +692,17 @@ namespace KKG.Tool.Dialogue
         private void OnClickAddNode(Vector2 clickPosition)
         {
             nodes.Add(new Node(clickPosition));
+        }
+
+        private void OnClickStartNode(Vector2 clickPosition)
+        {
+            var node = GetNodeUnderMouse(clickPosition);
+
+            if (node != null)
+            {
+                startingNode = node;
+                Debug.Log($"Starting node set to: {startingNode.data.Id}");
+            }
         }
 
         private void OnClickDeleteNode(Vector2 clickPosition)

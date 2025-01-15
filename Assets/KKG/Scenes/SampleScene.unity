@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDialoguePlaying: 0
-  activeDialogueSO: {fileID: 11400000, guid: bea0b0295ffb27545a11341c60b24d44, type: 2}
+  activeDialogueSO: {fileID: 11400000, guid: 783e516343c3d4247ac731e753829b9a, type: 2}
   activeDialogue:
     isRunning: 0
     activeMessage:
