@@ -1,12 +1,12 @@
 using KKG.Dialogue;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
 namespace KKG.Tool.Dialogue
 {
-
     public struct ConnectionTuple
     {
         public Node InputNode;
@@ -19,6 +19,18 @@ namespace KKG.Tool.Dialogue
         }
     }
 
+    public struct ConnectionOptionTuple
+    {
+        public DialogueOption InputOption;
+        public Node OutputNode;
+
+        public ConnectionOptionTuple(DialogueOption inputOption, Node outputNode)
+        {
+            InputOption = inputOption;
+            OutputNode = outputNode;
+        }
+    }
+
     public class DialogueNodeTool : EditorWindow
     {
 
@@ -27,6 +39,7 @@ namespace KKG.Tool.Dialogue
 
         private List<Node> nodes;
         private Dictionary<ConnectionTuple, Connection> connections;
+        private Dictionary<ConnectionOptionTuple, Connection> connectionOptions;
         
 
         private Node selectedNode;
@@ -44,6 +57,15 @@ namespace KKG.Tool.Dialogue
         private Vector2 canvasSize = new Vector2(5000, 5000); // Large virtual canvas
         private Vector2 scrollPosition = Vector2.zero;       // Scroll view position
 
+        private Node draggingOutputNode;
+        private string draggingOptionId;
+        private Vector2 draggingStartPosition;
+        private Rect draggingRect;
+        private Vector2 draggingCurrentPosition;
+        private bool isDraggingOutputConnection;
+        private DialogueOption currentDialogueOption;
+
+
         [MenuItem("Tools/Krazy Kraken Games/Dialogue Graph")]
         public static void OpenWindow()
         {
@@ -54,7 +76,8 @@ namespace KKG.Tool.Dialogue
         private void OnEnable()
         {
             nodes = new List<Node>();
-            connections = new Dictionary<ConnectionTuple, Connection>();   
+            connections = new Dictionary<ConnectionTuple, Connection>();
+            connectionOptions = new Dictionary<ConnectionOptionTuple, Connection>();
             selectedNode = null;
             isDraggingConnection = false;
         }
@@ -101,7 +124,7 @@ namespace KKG.Tool.Dialogue
             ProcessNodeEvents(Event.current);
             ProcessEvents(Event.current);
 
-            if(isDraggingConnection)
+            if(isDraggingConnection || isDraggingOutputConnection)
             {
                 DrawDraggingConnection();
             }
@@ -251,12 +274,22 @@ namespace KKG.Tool.Dialogue
 
         private void DrawDraggingConnection()
         {
-            if (selectedNode != null && dragEndPosition.HasValue)
+            if (isDraggingOutputConnection)
             {
-                dragEndPosition = Event.current.mousePosition;
-                Handles.color = Color.white;
-                Handles.DrawLine(selectedNode.rect.center,dragEndPosition.Value);
-                Handles.color = Color.white;
+                draggingCurrentPosition = Event.current.mousePosition;
+                Handles.color = Color.red;
+                Handles.DrawLine(draggingStartPosition, draggingCurrentPosition);
+                Repaint();
+            }
+            else
+            {
+                if (selectedNode != null && dragEndPosition.HasValue)
+                {
+                    dragEndPosition = Event.current.mousePosition;
+                    Handles.color = Color.white;
+                    Handles.DrawLine(selectedNode.outputNodeRect.center, dragEndPosition.Value);
+                    Handles.color = Color.white;
+                }
             }
         }
 
@@ -286,6 +319,38 @@ namespace KKG.Tool.Dialogue
                     connectionKvp.Value.Draw();
                 }
             }
+
+            if(connectionOptions != null && connectionOptions.Count > 0)
+            {
+                foreach(var connectionOptionKvp in connectionOptions)
+                {
+                    connectionOptionKvp.Value.Draw();
+                }
+            }
+        }
+
+        public static void StartDraggingConnection(Node node, string optionId, Vector2 startPosition,Rect rect,DialogueOption _option)
+        {
+            DialogueNodeTool instance = GetWindow<DialogueNodeTool>();
+            instance.draggingOutputNode = node;
+            instance.draggingOptionId = optionId;
+            instance.draggingStartPosition = startPosition;
+            instance.isDraggingOutputConnection = true;
+            instance.draggingRect = rect;
+            instance.currentDialogueOption = _option;
+
+            Debug.Log($"Tool found, drag output node: {instance.draggingOutputNode.data.Id}");
+        }
+
+        private void ResetDraggingConnection()
+        {
+            draggingOutputNode = null;
+            draggingOptionId = null;
+            draggingStartPosition = Vector2.zero;
+            draggingCurrentPosition = Vector2.zero;
+            isDraggingOutputConnection = false;
+
+            currentDialogueOption = new DialogueOption();
         }
 
         #endregion
@@ -390,10 +455,16 @@ namespace KKG.Tool.Dialogue
                             if (!isDraggingConnection)
                             {
                                 selectedNode = nodes[i];
-                                isDraggingConnection = true;
-                                dragStartPosition = selectedNode.rect.center;
 
-                                Debug.Log("Dragging started");
+                                if (selectedNode.OptionCount == 0)
+                                {
+                                    isDraggingConnection = true;
+                                    dragStartPosition = selectedNode.rect.center;
+                                }
+                                else
+                                {
+                                    isDraggingConnection = false;
+                                }
                             }
                         }
                     }
@@ -436,6 +507,22 @@ namespace KKG.Tool.Dialogue
 
                             ConnectionTuple ct = new ConnectionTuple(selectedNode, targetNode);
 
+                            //Check if option already connected to something else
+
+                            var existing = connections.Where(opt =>
+                            string.Equals(opt.Key.InputNode.data.Id, selectedNode.data.Id)).ToList();
+
+                            if (existing.Count > 0)
+                            {
+                                //Remove the all the current ones
+                                Debug.Log("Connection input already exists");
+
+                                foreach (var option in existing)
+                                {
+                                    connections.Remove(option.Key);
+                                }
+                            }
+
                             if (!connections.ContainsKey(ct))
                             {
                                 Debug.Log("Can make new connection");
@@ -450,7 +537,53 @@ namespace KKG.Tool.Dialogue
                         }
                     }
 
-                    ResetDrag();
+                    if (isDraggingOutputConnection)
+                    {
+                        Node targetNode = GetNodeUnderMouse(Event.current.mousePosition);
+
+                        if (targetNode != null && draggingOutputNode != null && draggingOutputNode != targetNode)
+                        {
+                            Connection newConnection = new Connection(draggingOutputNode, targetNode);
+
+                            ConnectionTuple ct = new ConnectionTuple(draggingOutputNode, targetNode);
+
+                            ConnectionOptionTuple cot = new ConnectionOptionTuple(currentDialogueOption, targetNode);
+
+                            //Check if option already connected to something else
+
+                            var existing = connectionOptions.Where(opt => 
+                            string.Equals(opt.Key.InputOption.OptionId, currentDialogueOption.OptionId)).ToList();
+
+                            if(existing.Count > 0)
+                            {
+                                //Remove the all the current ones
+                                Debug.Log("Option connection already exists");
+
+                                foreach(var option in existing)
+                                {
+                                    connectionOptions.Remove(option.Key);
+                                }
+                            }
+
+
+                            if (!connectionOptions.ContainsKey(cot))
+                            {
+                                connectionOptions.Add(cot, newConnection);
+                                Debug.Log($"Connected output '{draggingOptionId}' to node '{targetNode}'");
+                                newConnection.SetFromOutputNode(draggingRect);
+
+                                draggingOutputNode.AddNextIndexOnTool(draggingOptionId, targetNode.data.Id);
+                                Debug.Log("Option next index updated");
+                            }
+                            else
+                            {
+                                Debug.LogError("Connection already exists");
+                            }
+                        }
+                    }
+                        ResetDrag();
+
+                    ResetDraggingConnection();
                     break;
             }
         }
@@ -563,9 +696,45 @@ namespace KKG.Tool.Dialogue
                     connections.Remove(key);
                 }
 
+                //Check if there are any options and remove them
+
+                var options = selectedNode.data.Options;
+
+                foreach (var opt in options)
+                {
+                    var optionKeysToRemove = connectionOptions.Keys.Where(ct => ct.InputOption.OptionId == opt.Value.OptionId || ct.OutputNode == selectedNode).ToList();
+
+                    foreach (var key in optionKeysToRemove)
+                    {
+                        connectionOptions.Remove(key);
+                    }
+                }
+
+                //Remove if output node is connected with dialogue options
+                var outputConnectedToOptions = connectionOptions.Keys.Where(ct => ct.OutputNode == selectedNode).ToList();
+
+                foreach (var key in outputConnectedToOptions)
+                {
+                    connectionOptions.Remove(key);
+                }
+
+
+
                 nodes.Remove(selectedNode);
                 selectedNode = null;
                 GUI.changed = true;
+            }
+        }
+
+        public void RemovingOptionConnectionWithID(string optionID)
+        {
+            Debug.Log($"Removing with Option: {optionID}");
+
+            var optionKeysToRemove = connectionOptions.Keys.Where(ct => ct.InputOption.OptionId == optionID).ToList();
+
+            foreach (var key in optionKeysToRemove)
+            {
+                connectionOptions.Remove(key);
             }
         }
         #endregion
@@ -575,18 +744,33 @@ namespace KKG.Tool.Dialogue
         public void CreateDialogueSO(string _fileName,List<DialogueNode> nodes)
         {
             //Create Instance
-            DialogueDataSO dialogueDataSO = ScriptableObject.CreateInstance<DialogueDataSO>();
+            DialogueDataSO dialogueDataSO = CreateInstance<DialogueDataSO>();
 
             //Assign values needed
             dialogueDataSO.SetNodes(nodes);
 
             //Save the asset
             string path = $"Assets/{_fileName}.asset";
-            UnityEditor.AssetDatabase.CreateAsset(dialogueDataSO, path);
-            UnityEditor.AssetDatabase.SaveAssets();
-
-            Debug.Log("Dialogue SO created");
+            AssetDatabase.CreateAsset(dialogueDataSO, path);
+            AssetDatabase.SaveAssets();
         }
+        #endregion
+
+
+        #region MISC FUNCTION SECTION
+
+        public void RemoveFromConnection(string inputID)
+        {
+            var relevantConnections = connections.Where(node => string.Equals(node.Key.InputNode.data.Id,inputID)).ToList();
+            
+            if (relevantConnections.Count == 0) return;
+
+            foreach(var connection in relevantConnections)
+            {
+                connections.Remove(connection.Key);
+            }
+        }
+
         #endregion
     }
 }

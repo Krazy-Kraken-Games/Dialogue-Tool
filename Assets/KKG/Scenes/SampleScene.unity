@@ -314,8 +314,7 @@ MonoBehaviour:
         Type: 0
         SpeakerName: 
         Message: 
-        Options: []
-        jumpIndex: 
+        nextIndex: 
   dialogueScreen: {fileID: 2002699295}
 --- !u!4 &945283854
 Transform:

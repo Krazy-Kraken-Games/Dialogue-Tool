@@ -1,9 +1,9 @@
 using KKG.Dialogue;
+using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using System.Collections.Generic;
 using MessageType = KKG.Dialogue.MessageType;
-using System;
 
 namespace KKG.Tool.Dialogue
 {
@@ -25,6 +25,19 @@ namespace KKG.Tool.Dialogue
 
         public string SpeakerName;
         public string NodeName;
+
+        public Node outputNode;
+
+        public Rect outputNodeRect;
+        public Rect inputNodeRect;
+
+        private bool showOptions = false;
+        private int optionsCount = 0;
+        public int OptionCount => optionsCount;
+        private bool createOption = false;
+
+        //Option Dragging
+        public Dictionary<DialogueOption,Rect> dialogueOutputCollection;
 
         public Node(Vector2 pos, float width = 300, float height = 175)
         {
@@ -50,9 +63,12 @@ namespace KKG.Tool.Dialogue
                 Type = MessageType.DEFAULT,
                 SpeakerName = string.Empty,
                 Message = string.Empty,
-                Options = new List<DialogueOption>(),
-                jumpIndex = null
+                Options = new Dictionary<string,DialogueOption>(),
+                nextIndex = null
             };
+
+            //Output collection
+            dialogueOutputCollection = new Dictionary<DialogueOption, Rect>();
         }
 
         public void Draw()
@@ -64,8 +80,10 @@ namespace KKG.Tool.Dialogue
             GUILayout.Label($"ID:{data.Id}", EditorStyles.boldLabel);
 
             // Message Type
+            GUILayout.BeginHorizontal();
             GUILayout.Label("Message Type:");
             data.Type = (MessageType)EditorGUILayout.EnumPopup(data.Type);
+            GUILayout.EndHorizontal();
 
             // Speaker Name
             GUILayout.Label("Speaker Name:");
@@ -75,10 +93,174 @@ namespace KKG.Tool.Dialogue
             GUILayout.Label("Message:");
             data.Message = EditorGUILayout.TextArea(data.Message);
 
+            //Next Index
+            GUILayout.Label($"Next Index:  {data.nextIndex}");
+
+            //Toggle button to show/Hide Options area
+            if (GUILayout.Button("Toggle Dialogue Options"))
+            {
+                showOptions = !showOptions;
+            }
+
+            if (showOptions)
+            {
+                // Display all existing options
+                List<string> keysToRemove = new List<string>(); // Track keys for removal
+
+                foreach (var keyValuePair in data.Options)
+                {
+                    string optionId = keyValuePair.Key;
+                    DialogueOption option = keyValuePair.Value;
+
+                    GUILayout.BeginVertical("box"); // Group each option in a box for clarity
+
+                    // Option ID (Key)
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Label($"Option ID: {optionId}");
+                    string newOptionId = optionId;
+                    GUILayout.EndHorizontal();
+
+                    if (newOptionId != optionId && !data.Options.ContainsKey(newOptionId))
+                    {
+                        // Rename key if it changed and doesn't already exist
+                        data.Options.Remove(optionId);
+                        data.Options[newOptionId] = option;
+                        break; // Exit loop to avoid modifying the dictionary during iteration
+                    }
+
+                    // Option Message
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Label("Option Message:");
+                    option.OptionMessage = EditorGUILayout.TextField(option.OptionMessage);
+                    GUILayout.EndHorizontal();
+
+                    // Speaker Name
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Label("Speaker Name:");
+                    option.SpeakerName = EditorGUILayout.TextField(option.SpeakerName);
+                    GUILayout.EndHorizontal();
+
+                    // Next Index
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Label($"Next Index:  {option.NextIndex}", GUILayout.Width(150));
+
+                    // Draw output node as a small button
+                    Rect outputNodeRect = GUILayoutUtility.GetRect(15, 15); // Adjust size as needed
+                    EditorGUI.DrawRect(outputNodeRect, Color.green); // Draw the node
+
+                    if (!dialogueOutputCollection.ContainsKey(option))
+                    {
+                        //Add the output rect 
+                        dialogueOutputCollection.Add(option, outputNodeRect);
+                    }
+
+                    // Make it interactive (clickable and draggable)
+                    if (Event.current.type == EventType.MouseDown && outputNodeRect.Contains(Event.current.mousePosition))
+                    {
+                        Debug.Log($"Output node for Option '{optionId}' clicked!");
+                        Vector2 startPosition = rect.position + outputNodeRect.center;
+                        DialogueNodeTool.StartDraggingConnection(this, optionId, startPosition, outputNodeRect, option);
+                        Event.current.Use(); // Consume the event
+                    }
+
+                    GUILayout.EndHorizontal();
+
+                    // Remove option button
+                    if (GUILayout.Button("Remove Option", GUILayout.Width(150)))
+                    {
+                        DialogueNodeTool instance = DialogueNodeTool.GetWindow<DialogueNodeTool>();
+                        instance.RemovingOptionConnectionWithID(optionId);
+                        keysToRemove.Add(optionId);
+                        optionsCount--;
+                        createOption = false; // Reset the flag
+                        break; // Exit loop to avoid modifying the dictionary during iteration
+                    }
+
+                    GUILayout.EndVertical(); // End of option box
+                }
+
+                // Remove options marked for deletion
+                foreach (string key in keysToRemove)
+                {
+                    data.Options.Remove(key);
+                }
+                // Add new option
+                GUILayout.Space(10);
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("");
+                if (GUILayout.Button("+", GUILayout.Width(30)))
+                {
+                    CreateDialogueOption();
+                }
+                GUILayout.EndHorizontal();
+            }
 
             GUILayout.EndArea();
 
+            //Input Node
+            DrawInputNode();
+
+            //Output Node
+            DrawOutputNode();
+
             DrawResizeHandle();
+        }
+
+        private void CreateDialogueOption()
+        {
+            // Create a new dialogue option and add it to the list
+            DialogueOption newOption = new DialogueOption
+            {
+                OptionId = Guid.NewGuid().ToString(),
+                NextIndex = string.Empty, // Default to empty string to indicate no next index yet
+                SpeakerName = $"Speaker {optionsCount + 1}", // Default speaker name
+                OptionMessage = $"Option Message {optionsCount + 1}" // Default message
+            };
+
+            data.Options.Add(newOption.OptionId, newOption); // Add to the options list
+            optionsCount++; // Increment the options count
+            createOption = false; // Reset the flag
+
+            //Notify Tool about it
+            DialogueNodeTool tool = DialogueNodeTool.GetWindow<DialogueNodeTool>();
+            tool.RemoveFromConnection(data.Id);
+
+            //Resetting next Index jump
+            SetNextIndex(null);
+        }
+
+        public void AddNextIndexOnTool(string _optionId, string nextIndex)
+        {
+            var option = data.Options[_optionId];
+
+            DialogueOption newOption = new DialogueOption
+            {
+                OptionId = _optionId,
+                OptionMessage = option.OptionMessage,
+                SpeakerName = option.SpeakerName,
+                NextIndex = nextIndex
+            };
+            data.Options[_optionId] =  newOption;
+        }
+
+        private void DrawInputNode()
+        {
+            const float nodeSize = 10f;
+
+            inputNodeRect = new Rect(rect.x, rect.y + 20f, nodeSize, nodeSize);
+
+            EditorGUI.DrawRect(inputNodeRect, Color.red);
+        }
+
+        private void DrawOutputNode()
+        {
+            if (data.Options.Count > 0) return;
+
+            const float nodeSize = 10f;
+
+            outputNodeRect = new Rect(rect.xMax, rect.y + 20f, nodeSize, nodeSize);
+
+            EditorGUI.DrawRect(outputNodeRect, Color.green);
         }
 
         private void DrawResizeHandle()
@@ -186,5 +368,11 @@ namespace KKG.Tool.Dialogue
 
             return false;
         }
+
+        public void SetNextIndex(string _nextNodeID)
+        {
+            data.nextIndex = _nextNodeID;
+        }
+
     }
 }

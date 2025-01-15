@@ -19,10 +19,10 @@ namespace KKG.Dialogue
         public string SpeakerName;
         public string Message;
 
-        public List<DialogueOption> Options;
+        public Dictionary<string,DialogueOption> Options;
 
         [ReadOnly]
         //ID is generated at runtime automatically, so next jump would be a string
-        public string? jumpIndex;
+        public string? nextIndex;
     }
 }

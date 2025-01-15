@@ -8,21 +8,39 @@ namespace KKG.Tool.Dialogue
         public Node input;
         public Node output;
 
+        private bool multiOutputConnection = false;
+        public Rect inputPosition;
+
         public Connection(Node input, Node output)
         {
             this.input = input;
             this.output = output;
+
+            input.SetNextIndex(output.data.Id);
+        }
+
+        public void SetFromOutputNode(Rect _startPosition)
+        {
+            multiOutputConnection = true;
+            inputPosition = _startPosition;
         }
 
         public void Draw()
         {
             Handles.color = Color.yellow;
-
-            Vector2 startPosition = new Vector2(input.rect.xMax,input.rect.yMax/2);
-            Vector2 endPosition = new Vector2(output.rect.xMin,output.rect.yMax/2);
-
-            Handles.DrawAAPolyLine(3f, new Vector3[] {startPosition,endPosition} );
-
+            Vector2 startPosition = Vector2.zero;
+            Vector2 endPosition = Vector2.zero;
+            if (!multiOutputConnection)
+            {
+                startPosition = new Vector2(input.outputNodeRect.center.x, input.outputNodeRect.center.y);
+              
+            }
+            else
+            {
+                startPosition = input.rect.position + inputPosition.center;
+            }
+            endPosition = new Vector2(output.inputNodeRect.center.x, output.inputNodeRect.center.y);
+            Handles.DrawAAPolyLine(3f, new Vector3[] { startPosition, endPosition });
             DrawArrowhead(startPosition, endPosition, Color.yellow);
 
             Handles.color = Color.white;
