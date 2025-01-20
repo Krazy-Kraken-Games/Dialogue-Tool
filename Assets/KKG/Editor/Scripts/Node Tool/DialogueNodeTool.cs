@@ -1,7 +1,7 @@
 using KKG.Dialogue;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,10 +9,10 @@ namespace KKG.Tool.Dialogue
 {
     public struct ConnectionTuple
     {
-        public Node InputNode;
-        public Node OutputNode;
+        public DialogueTreeNode InputNode;
+        public DialogueTreeNode OutputNode;
 
-        public ConnectionTuple(Node inputNode, Node outputNode)
+        public ConnectionTuple(DialogueTreeNode inputNode, DialogueTreeNode outputNode)
         {
             InputNode = inputNode;
             OutputNode = outputNode;
@@ -22,9 +22,9 @@ namespace KKG.Tool.Dialogue
     public struct ConnectionOptionTuple
     {
         public DialogueOption InputOption;
-        public Node OutputNode;
+        public DialogueTreeNode OutputNode;
 
-        public ConnectionOptionTuple(DialogueOption inputOption, Node outputNode)
+        public ConnectionOptionTuple(DialogueOption inputOption, DialogueTreeNode outputNode)
         {
             InputOption = inputOption;
             OutputNode = outputNode;
@@ -37,12 +37,12 @@ namespace KKG.Tool.Dialogue
         [SerializeField]
         private string fileName = string.Empty;
 
-        private List<Node> nodes;
+        private List<DialogueTreeNode> nodes;
         private Dictionary<ConnectionTuple, Connection> connections;
         private Dictionary<ConnectionOptionTuple, Connection> connectionOptions;
 
-        private Node startingNode;
-        private Node selectedNode;
+        private DialogueTreeNode startingNode;
+        private DialogueTreeNode selectedNode;
 
         private Vector2 dragStartPosition;
         private Vector2? dragEndPosition;
@@ -57,7 +57,7 @@ namespace KKG.Tool.Dialogue
         private Vector2 canvasSize = new Vector2(5000, 5000); // Large virtual canvas
         private Vector2 scrollPosition = Vector2.zero;       // Scroll view position
 
-        private Node draggingOutputNode;
+        private DialogueTreeNode draggingOutputNode;
         private string draggingOptionId;
         private Vector2 draggingStartPosition;
         private Rect draggingRect;
@@ -75,7 +75,7 @@ namespace KKG.Tool.Dialogue
 
         private void OnEnable()
         {
-            nodes = new List<Node>();
+            nodes = new List<DialogueTreeNode>();
             connections = new Dictionary<ConnectionTuple, Connection>();
             connectionOptions = new Dictionary<ConnectionOptionTuple, Connection>();
             selectedNode = null;
@@ -206,7 +206,7 @@ namespace KKG.Tool.Dialogue
                 {
 
                     List<DialogueNode> DialogueNodes = new List<DialogueNode>();
-                    Dictionary<Node,DialogueNode> AllNodes = new Dictionary<Node,DialogueNode>();
+                    Dictionary<DialogueTreeNode,DialogueNode> AllNodes = new Dictionary<DialogueTreeNode,DialogueNode>();
 
                     //Get all nodes & form Dialogue Nodes from them
                     foreach (var node in nodes)
@@ -239,6 +239,8 @@ namespace KKG.Tool.Dialogue
 
                             CreateDialogueSO(fileName, DialogueNodes);
 
+                            CreateDialogueTreeSO(fileName);
+
                             EditorUtility.DisplayDialog("SUCCESS", "Dialogue Asset created successfully in Assets folder", "OK");
 
                             fileName = string.Empty;
@@ -249,6 +251,16 @@ namespace KKG.Tool.Dialogue
                         }
                     }
 
+                }
+            }
+
+            //Load from save file
+            if (!string.IsNullOrEmpty(fileName))
+            {
+                //Get file name + SO
+                if(GUILayout.Button("Load from Record"))
+                {
+                    LoadDialogueTreeSO(fileName);
                 }
             }
 
@@ -309,7 +321,7 @@ namespace KKG.Tool.Dialogue
         {
             if (nodes != null && nodes.Count > 0)
             {
-                foreach(Node node in nodes)
+                foreach(DialogueTreeNode node in nodes)
                 {
                     node.Draw();
                 }
@@ -338,7 +350,7 @@ namespace KKG.Tool.Dialogue
             }
         }
 
-        public static void StartDraggingConnection(Node node, string optionId, Vector2 startPosition,Rect rect,DialogueOption _option)
+        public static void StartDraggingConnection(DialogueTreeNode node, string optionId, Vector2 startPosition,Rect rect,DialogueOption _option)
         {
             DialogueNodeTool instance = GetWindow<DialogueNodeTool>();
             instance.draggingOutputNode = node;
@@ -446,11 +458,6 @@ namespace KKG.Tool.Dialogue
             {
                 for(int i = nodes.Count - 1; i >= 0; i--)
                 {
-                    //if (nodes[i].ProcessEvents(e))
-                    //{
-                    //    GUI.changed = true;
-                    //}
-
                     bool guiChanged = nodes[i].ProcessEvents(e);
 
                     if(guiChanged && e.type == EventType.MouseDown && e.button == 0)
@@ -508,7 +515,7 @@ namespace KKG.Tool.Dialogue
 
                     if (isDraggingConnection)
                     {
-                        Node targetNode = GetNodeUnderMouse(e.mousePosition);
+                        DialogueTreeNode targetNode = GetNodeUnderMouse(e.mousePosition);
 
                         if (targetNode != null && targetNode != selectedNode)
                         {
@@ -548,7 +555,7 @@ namespace KKG.Tool.Dialogue
 
                     if (isDraggingOutputConnection)
                     {
-                        Node targetNode = GetNodeUnderMouse(Event.current.mousePosition);
+                        DialogueTreeNode targetNode = GetNodeUnderMouse(Event.current.mousePosition);
 
                         if (targetNode != null && draggingOutputNode != null && draggingOutputNode != targetNode)
                         {
@@ -616,9 +623,9 @@ namespace KKG.Tool.Dialogue
         #endregion
 
         #region HELPER FUNCTION REGION
-        private Node GetNodeUnderMouse(Vector2 mousePosition)
+        private DialogueTreeNode GetNodeUnderMouse(Vector2 mousePosition)
         {
-            foreach (Node node in nodes)
+            foreach (DialogueTreeNode node in nodes)
             {
                 if (node.rect.Contains(mousePosition))
                 {
@@ -628,7 +635,7 @@ namespace KKG.Tool.Dialogue
             return null;
         }
 
-        private Node CheckForHitsOnNode(Vector2 mousePosition)
+        private DialogueTreeNode CheckForHitsOnNode(Vector2 mousePosition)
         {
             foreach (var node in nodes)
             {
@@ -691,7 +698,14 @@ namespace KKG.Tool.Dialogue
 
         private void OnClickAddNode(Vector2 clickPosition)
         {
-            nodes.Add(new Node(clickPosition));
+            DialogueTreeNode newNode = new DialogueTreeNode(clickPosition);
+
+            if(nodes.Count == 0)
+            {
+                SetStartingNode(newNode);
+            }
+
+            nodes.Add(newNode);
         }
 
         private void OnClickStartNode(Vector2 clickPosition)
@@ -700,8 +714,7 @@ namespace KKG.Tool.Dialogue
 
             if (node != null)
             {
-                startingNode = node;
-                Debug.Log($"Starting node set to: {startingNode.data.Id}");
+                SetStartingNode(node);
             }
         }
 
@@ -709,6 +722,8 @@ namespace KKG.Tool.Dialogue
         {
             if(selectedNode != null)
             {
+               
+
                 var keysToRemove = connections.Keys.Where(ct => ct.InputNode == selectedNode || ct.OutputNode == selectedNode).ToList();
 
                 foreach (var key in keysToRemove)
@@ -738,9 +753,21 @@ namespace KKG.Tool.Dialogue
                     connectionOptions.Remove(key);
                 }
 
-
-
                 nodes.Remove(selectedNode);
+
+                //Check if we are deleting the starting node
+                if (selectedNode == startingNode)
+                {
+                    startingNode.SetNormalNode();
+                    startingNode = null;
+
+                    if (nodes.Count > 0)
+                    {
+                        //The first node we find, will be set as starting node automatically
+                        SetStartingNode(nodes.First());
+                    }
+                }
+
                 selectedNode = null;
                 GUI.changed = true;
             }
@@ -763,17 +790,121 @@ namespace KKG.Tool.Dialogue
         #region SCRIPTABLE OBJECT SECTION
         public void CreateDialogueSO(string _fileName,List<DialogueNode> nodes)
         {
-            //Create Instance
-            DialogueDataSO dialogueDataSO = CreateInstance<DialogueDataSO>();
-
-            //Assign values needed
-            dialogueDataSO.SetNodes(nodes);
-
             //Save the asset
-            string path = $"Assets/{_fileName}.asset";
-            AssetDatabase.CreateAsset(dialogueDataSO, path);
+            string fullFileName = $"{_fileName}SO";
+            string path = $"Assets/{fullFileName}.asset";
+
+            // Check if the asset exists
+            DialogueDataSO existingAsset = AssetDatabase.LoadAssetAtPath<DialogueDataSO>(path);
+
+            if (existingAsset != null)
+            {
+                // Asset exists, update its data
+                existingAsset.SetNodes(nodes);
+                EditorUtility.SetDirty(existingAsset); // Mark the asset as dirty for saving
+                Debug.Log($"Existing DialogueToolTreeSO updated at: {path}");
+            }
+            else
+            {
+                // Asset doesn't exist, create a new one
+                DialogueDataSO dialogueDataSO = CreateInstance<DialogueDataSO>();
+                dialogueDataSO.SetNodes(nodes);
+                AssetDatabase.CreateAsset(dialogueDataSO, path);
+                Debug.Log($"New DialogueToolTreeSO created at: {path}");
+            }
             AssetDatabase.SaveAssets();
         }
+
+        private void CreateDialogueTreeSO(string _fileName)
+        {
+            string fullFileName = $"{_fileName}_TreeSO";
+            string path = $"Assets/{fullFileName}.asset";
+
+            // Check if the asset exists
+            DialogueToolTreeSO existingAsset = AssetDatabase.LoadAssetAtPath<DialogueToolTreeSO>(path);
+
+            if (existingAsset != null)
+            {
+                // Asset exists, update its data
+                existingAsset.SaveToolData(nodes);
+                EditorUtility.SetDirty(existingAsset); // Mark the asset as dirty for saving
+                Debug.Log($"Existing DialogueToolTreeSO updated at: {path}");
+            }
+            else
+            {
+                // Asset doesn't exist, create a new one
+                DialogueToolTreeSO dialogueDataSO = CreateInstance<DialogueToolTreeSO>();
+                dialogueDataSO.SaveToolData(nodes);
+                AssetDatabase.CreateAsset(dialogueDataSO, path);
+                Debug.Log($"New DialogueToolTreeSO created at: {path}");
+            }
+            AssetDatabase.SaveAssets();
+        }
+
+        private void LoadDialogueTreeSO(string _fileName)
+        {
+            string fullFileName = $"{_fileName}_TreeSO";
+
+            // Construct the asset path
+            string path = $"Assets/{fullFileName}.asset";
+
+            // Load the asset
+            DialogueToolTreeSO dialogueToolTreeSO = AssetDatabase.LoadAssetAtPath<DialogueToolTreeSO>(path);
+
+            if (dialogueToolTreeSO == null)
+            {
+                Debug.LogError($"DialogueTreeSO not found at path: {path}");
+                return;
+            }
+
+            // Clear existing nodes (if necessary)
+            nodes.Clear();
+
+            if (dialogueToolTreeSO.Nodes.Count > 0)
+            {
+                // Load data from the asset and recreate nodes
+                foreach (var nodeData in dialogueToolTreeSO.Nodes)
+                {
+                    Vector2 Position = nodeData.Position;
+                    Vector2 Size = nodeData.Size;
+
+                    var data = nodeData.data;
+
+                    DialogueTreeNode newNode = new DialogueTreeNode(Position, Size.x, Size.y,false,false);
+
+                    newNode.data.Id = data.Id;
+
+                    // Add the recreated node to the list
+                    nodes.Add(newNode);
+                }
+
+                foreach(var node in dialogueToolTreeSO.Nodes)
+                {
+                    var data = node.data;
+
+                    var existingNode = nodes.First(x => x.data.Id == data.Id);
+
+                    if(existingNode != null)
+                    {
+                        existingNode.data = data;
+
+                        foreach(var option in existingNode.data.Options)
+                        {
+                            existingNode.CreateOptionWithData(option.Value);
+                        }
+
+                        existingNode.AllowDrawingNode();
+                    }
+                }
+
+                Debug.Log("Dialogue tree loaded successfully!");
+            }
+            else
+            {
+                Debug.LogError("Dialogue tree missing nodes");
+            }
+        }
+
         #endregion
 
 
@@ -792,5 +923,17 @@ namespace KKG.Tool.Dialogue
         }
 
         #endregion
+
+        private void SetStartingNode(DialogueTreeNode _node)
+        {
+            if(startingNode != null)
+            {
+                startingNode.SetNormalNode();
+                startingNode = null;
+            }
+
+            startingNode = _node;
+            startingNode.SetStartingNode();
+        }
     }
 }

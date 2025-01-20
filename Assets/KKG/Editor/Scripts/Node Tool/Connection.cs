@@ -5,13 +5,13 @@ namespace KKG.Tool.Dialogue
 {
     public class Connection
     {
-        public Node input;
-        public Node output;
+        public DialogueTreeNode input;
+        public DialogueTreeNode output;
 
         private bool multiOutputConnection = false;
         public Rect inputPosition;
 
-        public Connection(Node input, Node output, bool isOption = false)
+        public Connection(DialogueTreeNode input, DialogueTreeNode output, bool isOption = false)
         {
             this.input = input;
             this.output = output;
