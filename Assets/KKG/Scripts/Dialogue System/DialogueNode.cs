@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,7 +49,7 @@ namespace KKG.Dialogue
                 jumpIndex = rowData[3];
             }
 
-            List<DialogueOption> options = new List<DialogueOption>();
+            Dictionary<string,DialogueOption> options = new Dictionary<string,DialogueOption>();
             
             //Dialogue Options start from index 4
             for(int i = 4; i < maxCount; i+=2)
@@ -57,10 +58,11 @@ namespace KKG.Dialogue
                 {
                     DialogueOption dialogOption = new DialogueOption()
                     {
+                        OptionId = Guid.NewGuid().ToString(),
                         OptionMessage = rowData[i],
-                        nextIndex = int.Parse(rowData[i + 1])
+                        NextIndex = rowData[i + 1]
                     };
-                    options.Add(dialogOption);
+                    options.Add(dialogOption.OptionId,dialogOption);
                 }
                 else
                 {
@@ -73,7 +75,7 @@ namespace KKG.Dialogue
                 Id = ID,
                 SpeakerName = speakerName,
                 Message = message,
-                jumpIndex = jumpIndex,
+                nextIndex = jumpIndex,
 
                 Options = options
             };
@@ -84,7 +86,7 @@ namespace KKG.Dialogue
 
         public void SetJumpTo(string jumpTo)
         {
-            data.jumpIndex = jumpTo;   
+            data.nextIndex = jumpTo;   
         }
     }
 }

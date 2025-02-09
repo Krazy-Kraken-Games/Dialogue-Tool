@@ -25,7 +25,7 @@ namespace KKG.Dialogue
         public Action<DialogueNode> OnMessageUpdatedEvent;
         public Action OnDialogueEndReachedEvent;
 
-        private bool isLastMessage => string.IsNullOrEmpty(activeMessage.Message.jumpIndex);
+        private bool isLastMessage => string.IsNullOrEmpty(activeMessage.Message.nextIndex);
 
         public bool LastMessage => isLastMessage;
 
@@ -70,7 +70,7 @@ namespace KKG.Dialogue
             else
             {
                 //There still are more messages to show in the dialogue tree
-                var nextMessageID = activeMessage.Message.jumpIndex;
+                var nextMessageID = activeMessage.Message.nextIndex;
                 var nextMessage = Messages.Single(id => id.Key == nextMessageID).Value;
 
                 return nextMessage;

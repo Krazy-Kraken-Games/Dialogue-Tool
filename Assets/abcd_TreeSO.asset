@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7d046e15c352845b3c7f9793d8a36c, type: 3}
+  m_Name: abcd_TreeSO
+  m_EditorClassIdentifier: 
+  nodes:
+  - Position: {x: 431.90222, y: 656.6826}
+    Size: {x: 322.94565, y: 422.26956}
+    data:
+      Id: 0e72cf38-7b42-418b-9f91-2c2669369d16
+      Type: 0
+      SpeakerName: hkhjk
+      Message: mkml
+      nextIndex: 
+  - Position: {x: 511.4835, y: 193.95262}
+    Size: {x: 260.54108, y: 369.1315}
+    data:
+      Id: 1b9399bf-9cba-4484-9ff4-7e6ca2549129
+      Type: 0
+      SpeakerName: iouiuo
+      Message: mknlkjlkj
+      nextIndex: 
+  - Position: {x: 850.48364, y: 297.22278}
+    Size: {x: 300, y: 175}
+    data:
+      Id: dbdcdd99-4aa3-4b48-9688-1033ab55b76b
+      Type: 0
+      SpeakerName: hffjfjjfj
+      Message: seshdhdhdrh
+      nextIndex: 

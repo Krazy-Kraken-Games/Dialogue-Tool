@@ -10,20 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aec68b2d7c9842a41ae5f6ad03e79582, type: 3}
-  m_Name: Greetings
+  m_Name: abcdSO
   m_EditorClassIdentifier: 
   nodes:
   - data:
-      Id: bd5310fe-4dc1-429c-a807-977f717d8198
+      Id: 0e72cf38-7b42-418b-9f91-2c2669369d16
       Type: 0
-      SpeakerName: Player 1
-      Message: Hello! How are you?
-      Options: []
-      jumpIndex: f3f02e3e-eb85-48d5-b079-95f9c5c1a0fb
+      SpeakerName: hkhjk
+      Message: mkml
+      nextIndex: 
   - data:
-      Id: f3f02e3e-eb85-48d5-b079-95f9c5c1a0fb
+      Id: 1b9399bf-9cba-4484-9ff4-7e6ca2549129
       Type: 0
-      SpeakerName: Player 2
-      Message: I am good, thank you for asking!
-      Options: []
-      jumpIndex: 
+      SpeakerName: iouiuo
+      Message: mknlkjlkj
+      nextIndex: 
+  - data:
+      Id: dbdcdd99-4aa3-4b48-9688-1033ab55b76b
+      Type: 0
+      SpeakerName: hffjfjjfj
+      Message: seshdhdhdrh
+      nextIndex: 
+  Count: 3
