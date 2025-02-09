@@ -40,7 +40,11 @@ namespace KKG.Dialogue
         private Dictionary<ConnectionTuple, Connection> connections;
         private Dictionary<ConnectionOptionTuple, Connection> connectionOptions;
 
-        public void SaveToolData(List<DialogueTreeNode> _nodes)
+        [SerializeField]
+        private NodeData startingNodeData;
+
+        public void SaveToolData(DialogueTreeNode _start,List<DialogueTreeNode> _nodes,
+            Dictionary<ConnectionTuple, Connection> _connections)
         {
             nodes = new List<NodeData>();
 
@@ -50,7 +54,11 @@ namespace KKG.Dialogue
                 NodeData node = new NodeData(_node);
                 nodes.Add(node);
             }
-           
+
+            //Add reference to the starting node
+            startingNodeData = new NodeData(_start);
+
+            //Save the connections and connections Options
         }
 
         public List<NodeData> Nodes => nodes;   

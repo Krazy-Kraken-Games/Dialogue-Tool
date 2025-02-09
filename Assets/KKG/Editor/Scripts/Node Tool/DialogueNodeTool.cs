@@ -826,7 +826,7 @@ namespace KKG.Tool.Dialogue
             if (existingAsset != null)
             {
                 // Asset exists, update its data
-                existingAsset.SaveToolData(nodes);
+                existingAsset.SaveToolData(startingNode,nodes,connections);
                 EditorUtility.SetDirty(existingAsset); // Mark the asset as dirty for saving
                 Debug.Log($"Existing DialogueToolTreeSO updated at: {path}");
             }
@@ -834,7 +834,7 @@ namespace KKG.Tool.Dialogue
             {
                 // Asset doesn't exist, create a new one
                 DialogueToolTreeSO dialogueDataSO = CreateInstance<DialogueToolTreeSO>();
-                dialogueDataSO.SaveToolData(nodes);
+                dialogueDataSO.SaveToolData(startingNode,nodes, connections);
                 AssetDatabase.CreateAsset(dialogueDataSO, path);
                 Debug.Log($"New DialogueToolTreeSO created at: {path}");
             }
@@ -900,6 +900,10 @@ namespace KKG.Tool.Dialogue
                         existingNode.AllowDrawingNode();
                     }
                 }
+
+                //Load the connections and connection Options
+
+                //Set the starting
 
                 Debug.Log("Dialogue tree loaded successfully!");
             }
