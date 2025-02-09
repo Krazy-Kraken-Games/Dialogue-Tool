@@ -43,6 +43,9 @@ namespace KKG.Tool.Dialogue
         //Option Dragging
         public Dictionary<DialogueOption,Rect> dialogueOutputCollection;
 
+        //Local Cache for options
+        public Dictionary<string, DialogueOption> LocalOptions;
+
         public DialogueTreeNode(Vector2 pos, float width = 300, float height = 175, bool isNew = true,bool _readyToDraw = true)
         {
             rect = new Rect(pos.x,pos.y, width, height);
@@ -84,6 +87,9 @@ namespace KKG.Tool.Dialogue
 
             //Output collection
             dialogueOutputCollection = new Dictionary<DialogueOption, Rect>();
+
+            //Initialize local options cache
+            LocalOptions = new Dictionary<string, DialogueOption>();
 
             readyToDraw = _readyToDraw;
         }
@@ -159,7 +165,7 @@ namespace KKG.Tool.Dialogue
                         if (!string.Equals(updatedMessage, option.OptionMessage))
                         {
                             option.OptionMessage = updatedMessage;
-                            data.Options[optionId] = option;
+                            LocalOptions[optionId] = option;
                         }
 
                         GUILayout.EndHorizontal();
@@ -173,7 +179,7 @@ namespace KKG.Tool.Dialogue
                         if (!string.Equals(updatedSpeakerName, option.SpeakerName))
                         {
                             option.SpeakerName = updatedSpeakerName;
-                            data.Options[optionId] = option;
+                            LocalOptions[optionId] = option;
                         }
 
                         GUILayout.EndHorizontal();
@@ -215,6 +221,12 @@ namespace KKG.Tool.Dialogue
                         }
 
                         GUILayout.EndVertical(); // End of option box
+                    }
+
+                    // Apply updates after the loop
+                    foreach (var updatedOption in LocalOptions)
+                    {
+                        data.Options[updatedOption.Key] = updatedOption.Value;
                     }
                 }
 
@@ -272,7 +284,8 @@ namespace KKG.Tool.Dialogue
 
         public void CreateOptionWithData(DialogueOption _Option)
         {
-            data.Options.Add(_Option.OptionId,_Option);
+            //data.Options.Add(_Option.OptionId,_Option);
+            LocalOptions.Add(_Option.OptionId, _Option);
             optionsCount++;
         }
 

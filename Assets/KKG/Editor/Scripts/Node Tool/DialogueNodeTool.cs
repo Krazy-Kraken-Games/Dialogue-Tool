@@ -888,9 +888,13 @@ namespace KKG.Tool.Dialogue
                     {
                         existingNode.data = data;
 
-                        foreach(var option in existingNode.data.Options)
+                        if (existingNode.data.Options != null && existingNode.data.Options.Count > 0)
                         {
-                            existingNode.CreateOptionWithData(option.Value);
+
+                            foreach (var option in existingNode.data.Options)
+                            {
+                                existingNode.CreateOptionWithData(option.Value);
+                            }
                         }
 
                         existingNode.AllowDrawingNode();

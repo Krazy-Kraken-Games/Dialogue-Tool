@@ -10,6 +10,8 @@ namespace KKG.Dialogue
 
         public List<DialogueNode> Nodes { get { return nodes; } }
 
+        public int Count;
+
         public void AddNode(DialogueNode node)
         {
             if (nodes.Contains(node)) return;
@@ -20,6 +22,8 @@ namespace KKG.Dialogue
         public void SetNodes(List<DialogueNode> nodes)
         {
             this.nodes = nodes;  
+
+            Count = nodes.Count;
         }
 
     }
