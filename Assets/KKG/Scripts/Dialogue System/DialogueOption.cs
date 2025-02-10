@@ -12,5 +12,8 @@ namespace KKG.Dialogue
         public string SpeakerName;
         public string OptionMessage;
 
+        [ReadOnly]
+        public string parentNodeRef;
+
     }
 }

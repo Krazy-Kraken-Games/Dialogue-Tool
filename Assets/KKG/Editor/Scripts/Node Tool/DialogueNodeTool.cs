@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
 
 namespace KKG.Tool.Dialogue
@@ -261,6 +262,17 @@ namespace KKG.Tool.Dialogue
                 if(GUILayout.Button("Load from Record"))
                 {
                     LoadDialogueTreeSO(fileName);
+                }
+            }
+
+            //Clear everything button
+            if (nodes.Count > 0)
+            {
+                if(GUILayout.Button("Clear Graph"))
+                {
+                    nodes.Clear();
+                    connectionOptions.Clear();
+                    connections.Clear();
                 }
             }
 
@@ -561,7 +573,7 @@ namespace KKG.Tool.Dialogue
                         {
                             Connection newConnection = new Connection(draggingOutputNode, targetNode,true);
 
-                            ConnectionTuple ct = new ConnectionTuple(draggingOutputNode, targetNode);
+                            //ConnectionTuple ct = new ConnectionTuple(draggingOutputNode, targetNode);
 
                             ConnectionOptionTuple cot = new ConnectionOptionTuple(currentDialogueOption, targetNode);
 
@@ -826,7 +838,7 @@ namespace KKG.Tool.Dialogue
             if (existingAsset != null)
             {
                 // Asset exists, update its data
-                existingAsset.SaveToolData(startingNode,nodes,connections);
+                existingAsset.SaveToolData(path,startingNode, nodes,connections, connectionOptions);
                 EditorUtility.SetDirty(existingAsset); // Mark the asset as dirty for saving
                 Debug.Log($"Existing DialogueToolTreeSO updated at: {path}");
             }
@@ -834,24 +846,36 @@ namespace KKG.Tool.Dialogue
             {
                 // Asset doesn't exist, create a new one
                 DialogueToolTreeSO dialogueDataSO = CreateInstance<DialogueToolTreeSO>();
-                dialogueDataSO.SaveToolData(startingNode,nodes, connections);
+                dialogueDataSO.SaveToolData(path,startingNode, nodes, connections, connectionOptions);
                 AssetDatabase.CreateAsset(dialogueDataSO, path);
                 Debug.Log($"New DialogueToolTreeSO created at: {path}");
             }
             AssetDatabase.SaveAssets();
         }
 
+
+
+        private DialogueJSONGetter dialogueGetter = null;
+
         private void LoadDialogueTreeSO(string _fileName)
         {
+
+            if(dialogueGetter == null)
+            {
+                dialogueGetter = new DialogueJSONGetter();
+            }
+
             string fullFileName = $"{_fileName}_TreeSO";
 
             // Construct the asset path
             string path = $"Assets/{fullFileName}.asset";
 
             // Load the asset
-            DialogueToolTreeSO dialogueToolTreeSO = AssetDatabase.LoadAssetAtPath<DialogueToolTreeSO>(path);
+            //DialogueToolTreeSO dialogueToolTreeSO = AssetDatabase.LoadAssetAtPath<DialogueToolTreeSO>(path);
 
-            if (dialogueToolTreeSO == null)
+            var jsonData = dialogueGetter.LoadDataFromPath(path);
+
+            if (jsonData == null)
             {
                 Debug.LogError($"DialogueTreeSO not found at path: {path}");
                 return;
@@ -859,11 +883,15 @@ namespace KKG.Tool.Dialogue
 
             // Clear existing nodes (if necessary)
             nodes.Clear();
+            connections.Clear();
+            connectionOptions.Clear();
 
-            if (dialogueToolTreeSO.Nodes.Count > 0)
+            List<DialogueOption> allOptions = new List<DialogueOption>();
+
+            if (jsonData.nodes.Count > 0)
             {
                 // Load data from the asset and recreate nodes
-                foreach (var nodeData in dialogueToolTreeSO.Nodes)
+                foreach (var nodeData in jsonData.nodes)
                 {
                     Vector2 Position = nodeData.Position;
                     Vector2 Size = nodeData.Size;
@@ -878,7 +906,7 @@ namespace KKG.Tool.Dialogue
                     nodes.Add(newNode);
                 }
 
-                foreach(var node in dialogueToolTreeSO.Nodes)
+                foreach(var node in jsonData.nodes)
                 {
                     var data = node.data;
 
@@ -893,7 +921,8 @@ namespace KKG.Tool.Dialogue
 
                             foreach (var option in existingNode.data.Options)
                             {
-                                existingNode.CreateOptionWithData(option.Value);
+                               var createdOption =  existingNode.CreateOptionWithData(option.Value);
+                               allOptions.Add(createdOption);
                             }
                         }
 
@@ -902,6 +931,49 @@ namespace KKG.Tool.Dialogue
                 }
 
                 //Load the connections and connection Options
+
+                //Handle first the node to node connections
+                if(jsonData.connections.Count > 0 && jsonData.connections != null)
+                {
+                    foreach(var connection in jsonData.connections)
+                    {
+                        //Break the connection and its tuple to get info about start and end node
+
+                        var InputKey = connection.Key.InputNode;
+                        var OutputKey = connection.Key.OutputNode;
+
+                        //Find the input & output nodes in the existing/newly created dialogue nodes
+                        var InputNode = nodes.First(node => node.data.Id.Equals(InputKey.data.Id));
+                        var OutputNode = nodes.First(node => node.data.Id.Equals(OutputKey.data.Id));
+
+                        ConnectionTuple ct = new ConnectionTuple(InputNode,OutputNode);
+                        Connection conn = new Connection(InputNode, OutputNode);
+
+                        connections.Add(ct, conn);
+                    }
+                }
+
+                //Handle the connection options
+                if(jsonData.connectionOptions != null && jsonData.connectionOptions.Count > 0)
+                {
+                    foreach(var connectionOpt in jsonData.connectionOptions)
+                    {
+                        var InputKey = connectionOpt.Key.InputOption;
+                        var OutputKey = connectionOpt.Key.OutputNode;
+
+                        //Find the input & output nodes in the existing/newly created dialogue nodes
+                        var InputNode = nodes.First(node => node.data.Id.Equals(InputKey.parentNodeRef));
+                        var InputOption = allOptions.First(node => node.OptionId.Equals(InputKey.OptionId));
+                        var OutputNode = nodes.First(node => node.data.Id.Equals(OutputKey.data.Id));
+
+                        Connection newConnection = new Connection(InputNode, OutputNode, true);
+                        ConnectionOptionTuple cot = new ConnectionOptionTuple(InputOption, OutputNode);
+
+                        connectionOptions.Add(cot, newConnection);
+
+                        newConnection.SetFromOutputNode(InputNode.rect);
+                    }
+                }
 
                 //Set the starting
 

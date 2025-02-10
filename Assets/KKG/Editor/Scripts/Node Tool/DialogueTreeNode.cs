@@ -7,7 +7,7 @@ using MessageType = KKG.Dialogue.MessageType;
 
 namespace KKG.Tool.Dialogue
 {
-
+    [Serializable]
     public class DialogueTreeNode
     {
         public string title;
@@ -267,7 +267,9 @@ namespace KKG.Tool.Dialogue
                 OptionId = Guid.NewGuid().ToString(),
                 NextIndex = string.Empty, // Default to empty string to indicate no next index yet
                 SpeakerName = $"Speaker {optionsCount + 1}", // Default speaker name
-                OptionMessage = $"Option Message {optionsCount + 1}" // Default message
+                OptionMessage = $"Option Message {optionsCount + 1}", // Default message
+
+                parentNodeRef = data.Id
             };
 
             data.Options.Add(newOption.OptionId, newOption); // Add to the options list
@@ -282,11 +284,13 @@ namespace KKG.Tool.Dialogue
             SetNextIndex(null);
         }
 
-        public void CreateOptionWithData(DialogueOption _Option)
+        public DialogueOption CreateOptionWithData(DialogueOption _Option)
         {
             //data.Options.Add(_Option.OptionId,_Option);
             LocalOptions.Add(_Option.OptionId, _Option);
             optionsCount++;
+
+            return _Option;
         }
 
         public void AddNextIndexOnTool(string _optionId, string nextIndex)

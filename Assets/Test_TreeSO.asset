@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Test_TreeSO
   m_EditorClassIdentifier: 
   nodes:
-  - Position: {x: 820.9093, y: 757.24194}
+  - Position: {x: 1435.5614, y: 1078.0999}
     Size: {x: 300, y: 175}
     data:
       Id: bff19e46-0917-4302-8f6a-3a929e6c4896
@@ -21,11 +21,36 @@ MonoBehaviour:
       SpeakerName: Node-Test-1
       Message: Message 1
       nextIndex: 9276eb8a-d0ab-4830-aae6-b32d425b8102
-  - Position: {x: 1316.7426, y: 751.6864}
-    Size: {x: 300, y: 175}
+  - Position: {x: 1810.0701, y: 1243.2356}
+    Size: {x: 290.54944, y: 427.87915}
     data:
       Id: 9276eb8a-d0ab-4830-aae6-b32d425b8102
       Type: 0
       SpeakerName: Node-Test-2
       Message: Message 2
+      nextIndex: 
+  - Position: {x: 2249.8633, y: 1027.1768}
+    Size: {x: 300, y: 175}
+    data:
+      Id: 7bba40f0-8e89-43ca-b57e-931bb8c25df8
+      Type: 0
+      SpeakerName: Hello
+      Message: World
+      nextIndex: 
+  - Position: {x: 2251.419, y: 1315.0415}
+    Size: {x: 300, y: 175}
+    data:
+      Id: 4d4cecae-35c4-46a9-b683-1900caa14f6d
+      Type: 0
+      SpeakerName: Fruit Seller
+      Message: No apples for you
+      nextIndex: 
+  startingNodeData:
+    Position: {x: 0, y: 0}
+    Size: {x: 0, y: 0}
+    data:
+      Id: 
+      Type: 0
+      SpeakerName: 
+      Message: 
       nextIndex: 

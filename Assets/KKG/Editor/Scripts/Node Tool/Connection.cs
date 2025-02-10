@@ -1,8 +1,10 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
 namespace KKG.Tool.Dialogue
 {
+    [Serializable]
     public class Connection
     {
         public DialogueTreeNode input;

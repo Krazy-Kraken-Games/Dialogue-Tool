@@ -25,4 +25,16 @@ MonoBehaviour:
       SpeakerName: Node-Test-2
       Message: Message 2
       nextIndex: 
-  Count: 2
+  - data:
+      Id: 7bba40f0-8e89-43ca-b57e-931bb8c25df8
+      Type: 0
+      SpeakerName: Hello
+      Message: World
+      nextIndex: 
+  - data:
+      Id: 4d4cecae-35c4-46a9-b683-1900caa14f6d
+      Type: 0
+      SpeakerName: Fruit Seller
+      Message: No apples for you
+      nextIndex: 
+  Count: 4
