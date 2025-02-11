@@ -95,6 +95,10 @@ namespace KKG.Dialogue
                 connectionOptions.Add(connectionOption.Key, connectionOption.Value);
             }
 
+            //Create JSON File
+            DialogueJSONGetter fileGetter = new DialogueJSONGetter(nodes, connections, connectionOptions);
+
+
             
         }
 
@@ -104,13 +108,5 @@ namespace KKG.Dialogue
 
         public Dictionary<ConnectionOptionTuple, Connection> ConnectionOptions => treeData.connectionOptions;
 
-        public void LoadDataFromPath(string path)
-        {
-            if (File.Exists(path))
-            {
-                string json = File.ReadAllText(path);
-                treeData = JsonUtility.FromJson<DialogueToolTreeData>(json);
-            }
-        }
     }
 }

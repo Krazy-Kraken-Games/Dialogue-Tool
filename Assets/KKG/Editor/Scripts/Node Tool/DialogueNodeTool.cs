@@ -851,6 +851,36 @@ namespace KKG.Tool.Dialogue
                 Debug.Log($"New DialogueToolTreeSO created at: {path}");
             }
             AssetDatabase.SaveAssets();
+
+            if (dialogueGetter == null)
+            {
+                var nodeDataList = new List<NodeData>();
+
+                foreach (var node in nodes)
+                {
+                    nodeDataList.Add(new NodeData(node));
+                }
+
+                dialogueGetter = new DialogueJSONGetter(nodeDataList, connections, connectionOptions);
+            }
+            else
+            {
+
+                var nodeDataList = new List<NodeData>();
+
+                foreach (var node in nodes)
+                {
+                    nodeDataList.Add(new NodeData(node));
+                }
+
+                dialogueGetter.UpdateData(nodeDataList, connections, connectionOptions);
+            }
+
+
+            string JsonPath = $"Assets/{fullFileName}.json";
+            dialogueGetter.SaveData(JsonPath);
+
+            Debug.Log("JSON File created successfully");
         }
 
 

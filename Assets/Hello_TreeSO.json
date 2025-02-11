@@ -1,0 +1,2364 @@
+{
+  "nodes": [
+    {
+      "Position": {
+        "x": 280.09375,
+        "y": 511.5045,
+        "normalized": {
+          "x": 0.4802937,
+          "y": 0.8771077,
+          "normalized": {
+            "x": 0.480293721,
+            "y": 0.877107739,
+            "magnitude": 1.0,
+            "sqrMagnitude": 1.0
+          },
+          "magnitude": 0.99999994,
+          "sqrMagnitude": 0.99999994
+        },
+        "magnitude": 583.1718,
+        "sqrMagnitude": 340089.344
+      },
+      "Size": {
+        "x": 300.0,
+        "y": 175.0,
+        "normalized": {
+          "x": 0.8637789,
+          "y": 0.503871,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1.0
+        },
+        "magnitude": 347.3111,
+        "sqrMagnitude": 120625.0
+      },
+      "data": {
+        "Id": "201b83bd-64bc-4655-844b-b12acc8f38b5",
+        "Type": 0,
+        "SpeakerName": "Abcd",
+        "Message": "Hello Pratik",
+        "Options": {},
+        "nextIndex": "17ffcf2f-9f37-46a9-abf8-dc558ae30e03"
+      }
+    },
+    {
+      "Position": {
+        "x": 690.0936,
+        "y": 514.004456,
+        "normalized": {
+          "x": 0.801984668,
+          "y": 0.5973446,
+          "magnitude": 1.0,
+          "sqrMagnitude": 0.99999994
+        },
+        "magnitude": 860.4823,
+        "sqrMagnitude": 740429.8
+      },
+      "Size": {
+        "x": 300.0,
+        "y": 175.0,
+        "normalized": {
+          "x": 0.8637789,
+          "y": 0.503871,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1.0
+        },
+        "magnitude": 347.3111,
+        "sqrMagnitude": 120625.0
+      },
+      "data": {
+        "Id": "17ffcf2f-9f37-46a9-abf8-dc558ae30e03",
+        "Type": 0,
+        "SpeakerName": "Pratik",
+        "Message": "Hello World abcd!",
+        "Options": {},
+        "nextIndex": null
+      }
+    }
+  ],
+  "startingNodeData": null,
+  "connections": {
+    "KKG.Tool.Dialogue.ConnectionTuple": {
+      "input": {
+        "title": "",
+        "rect": {
+          "x": 130.093735,
+          "y": 424.0045,
+          "position": {
+            "x": 130.093735,
+            "y": 424.0045,
+            "normalized": {
+              "x": 0.293325335,
+              "y": 0.956012666,
+              "magnitude": 1.0,
+              "sqrMagnitude": 0.99999994
+            },
+            "magnitude": 443.513458,
+            "sqrMagnitude": 196704.188
+          },
+          "center": {
+            "x": 280.09375,
+            "y": 511.5045,
+            "normalized": {
+              "x": 0.4802937,
+              "y": 0.8771077,
+              "normalized": {
+                "x": 0.480293721,
+                "y": 0.877107739,
+                "magnitude": 1.0,
+                "sqrMagnitude": 1.0
+              },
+              "magnitude": 0.99999994,
+              "sqrMagnitude": 0.99999994
+            },
+            "magnitude": 583.1718,
+            "sqrMagnitude": 340089.344
+          },
+          "min": {
+            "x": 130.093735,
+            "y": 424.0045,
+            "normalized": {
+              "x": 0.293325335,
+              "y": 0.956012666,
+              "magnitude": 1.0,
+              "sqrMagnitude": 0.99999994
+            },
+            "magnitude": 443.513458,
+            "sqrMagnitude": 196704.188
+          },
+          "max": {
+            "x": 430.09375,
+            "y": 599.0045,
+            "normalized": {
+              "x": 0.5832419,
+              "y": 0.812298536,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 737.4192,
+            "sqrMagnitude": 543787.063
+          },
+          "width": 300.0,
+          "height": 175.0,
+          "size": {
+            "x": 300.0,
+            "y": 175.0,
+            "normalized": {
+              "x": 0.8637789,
+              "y": 0.503871,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 347.3111,
+            "sqrMagnitude": 120625.0
+          },
+          "xMin": 130.093735,
+          "yMin": 424.0045,
+          "xMax": 430.09375,
+          "yMax": 599.0045,
+          "left": 130.093735,
+          "right": 430.09375,
+          "top": 424.0045,
+          "bottom": 599.0045
+        },
+        "isDragged": false,
+        "isSelected": false,
+        "isResizing": false,
+        "style": {
+          "font": null,
+          "imagePosition": 0,
+          "alignment": 0,
+          "wordWrap": false,
+          "clipping": 0,
+          "contentOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "fixedWidth": 0.0,
+          "fixedHeight": 0.0,
+          "stretchWidth": true,
+          "stretchHeight": false,
+          "fontSize": 0,
+          "fontStyle": 0,
+          "richText": true,
+          "clipOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "name": "",
+          "normal": {
+            "background": {
+              "format": 5,
+              "mipmapLimitGroup": "",
+              "activeMipmapLimit": 0,
+              "isReadable": true,
+              "vtOnly": false,
+              "streamingMipmaps": false,
+              "streamingMipmapsPriority": 0,
+              "requestedMipmapLevel": -1,
+              "minimumMipmapLevel": -1,
+              "calculatedMipmapLevel": -1,
+              "desiredMipmapLevel": -1,
+              "loadingMipmapLevel": 0,
+              "loadedMipmapLevel": 0,
+              "alphaIsTransparency": false,
+              "ignoreMipmapLimit": true,
+              "mipmapCount": 1,
+              "graphicsFormat": 87,
+              "width": 1,
+              "height": 1,
+              "dimension": 2,
+              "wrapMode": 0,
+              "wrapModeU": 0,
+              "wrapModeV": 0,
+              "wrapModeW": 0,
+              "filterMode": 1,
+              "anisoLevel": 1,
+              "mipMapBias": 0.0,
+              "texelSize": {
+                "x": 1.0,
+                "y": 1.0,
+                "normalized": {
+                  "x": 0.707106769,
+                  "y": 0.707106769,
+                  "magnitude": 1.0,
+                  "sqrMagnitude": 0.99999994
+                },
+                "magnitude": 1.41421354,
+                "sqrMagnitude": 2.0
+              },
+              "updateCount": 2,
+              "isDataSRGB": true,
+              "imageContentsHash": {
+                "isValid": true
+              },
+              "graphicsTexture": {
+                "descriptor": {
+                  "width": 1,
+                  "height": 1,
+                  "depth": 1,
+                  "arrayLength": 0,
+                  "format": 87,
+                  "dimension": 2,
+                  "mipCount": 1,
+                  "numSamples": 1,
+                  "flags": 0
+                },
+                "state": 2
+              },
+              "name": "",
+              "hideFlags": 0
+            },
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "hover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "active": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onNormal": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onHover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onActive": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "focused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onFocused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "border": {
+            "left": 20,
+            "right": 20,
+            "top": 20,
+            "bottom": 20,
+            "horizontal": 40,
+            "vertical": 40
+          },
+          "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "padding": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "overflow": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "lineHeight": 15.0,
+          "isHeightDependantOnWidth": false
+        },
+        "defaultNodeStyle": {
+          "font": null,
+          "imagePosition": 0,
+          "alignment": 0,
+          "wordWrap": false,
+          "clipping": 0,
+          "contentOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "fixedWidth": 0.0,
+          "fixedHeight": 0.0,
+          "stretchWidth": true,
+          "stretchHeight": false,
+          "fontSize": 0,
+          "fontStyle": 0,
+          "richText": true,
+          "clipOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "name": "",
+          "normal": {
+            "background": {
+              "format": 4,
+              "mipmapLimitGroup": "",
+              "activeMipmapLimit": 0,
+              "isReadable": false,
+              "vtOnly": false,
+              "streamingMipmaps": false,
+              "streamingMipmapsPriority": 0,
+              "requestedMipmapLevel": -1,
+              "minimumMipmapLevel": -1,
+              "calculatedMipmapLevel": -1,
+              "desiredMipmapLevel": -1,
+              "loadingMipmapLevel": 0,
+              "loadedMipmapLevel": 0,
+              "alphaIsTransparency": true,
+              "ignoreMipmapLimit": true,
+              "mipmapCount": 1,
+              "graphicsFormat": 4,
+              "width": 50,
+              "height": 60,
+              "dimension": 2,
+              "wrapMode": 1,
+              "wrapModeU": 1,
+              "wrapModeV": 1,
+              "wrapModeW": 1,
+              "filterMode": 0,
+              "anisoLevel": 1,
+              "mipMapBias": 0.0,
+              "texelSize": {
+                "x": 0.02,
+                "y": 0.0166666675,
+                "normalized": {
+                  "x": 0.768221259,
+                  "y": 0.640184462,
+                  "magnitude": 1.0,
+                  "sqrMagnitude": 1.0
+                },
+                "magnitude": 0.0260341652,
+                "sqrMagnitude": 0.0006777778
+              },
+              "updateCount": 0,
+              "isDataSRGB": true,
+              "imageContentsHash": {
+                "isValid": true
+              },
+              "graphicsTexture": {
+                "descriptor": {
+                  "width": 50,
+                  "height": 60,
+                  "depth": 1,
+                  "arrayLength": 0,
+                  "format": 4,
+                  "dimension": 2,
+                  "mipCount": 1,
+                  "numSamples": 1,
+                  "flags": 0
+                },
+                "state": 2
+              },
+              "name": "node1",
+              "hideFlags": 61
+            },
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "hover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "active": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onNormal": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onHover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onActive": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "focused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onFocused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "border": {
+            "left": 12,
+            "right": 12,
+            "top": 12,
+            "bottom": 12,
+            "horizontal": 24,
+            "vertical": 24
+          },
+          "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "padding": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "overflow": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "lineHeight": 15.0,
+          "isHeightDependantOnWidth": false
+        },
+        "selectedNodeStyle": {
+          "font": null,
+          "imagePosition": 0,
+          "alignment": 0,
+          "wordWrap": false,
+          "clipping": 0,
+          "contentOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "fixedWidth": 0.0,
+          "fixedHeight": 0.0,
+          "stretchWidth": true,
+          "stretchHeight": false,
+          "fontSize": 0,
+          "fontStyle": 0,
+          "richText": true,
+          "clipOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "name": "",
+          "normal": {
+            "background": {
+              "format": 4,
+              "mipmapLimitGroup": "",
+              "activeMipmapLimit": 0,
+              "isReadable": false,
+              "vtOnly": false,
+              "streamingMipmaps": false,
+              "streamingMipmapsPriority": 0,
+              "requestedMipmapLevel": -1,
+              "minimumMipmapLevel": -1,
+              "calculatedMipmapLevel": -1,
+              "desiredMipmapLevel": -1,
+              "loadingMipmapLevel": 0,
+              "loadedMipmapLevel": 0,
+              "alphaIsTransparency": true,
+              "ignoreMipmapLimit": true,
+              "mipmapCount": 1,
+              "graphicsFormat": 4,
+              "width": 50,
+              "height": 60,
+              "dimension": 2,
+              "wrapMode": 1,
+              "wrapModeU": 1,
+              "wrapModeV": 1,
+              "wrapModeW": 1,
+              "filterMode": 0,
+              "anisoLevel": 1,
+              "mipMapBias": 0.0,
+              "texelSize": {
+                "x": 0.02,
+                "y": 0.0166666675,
+                "normalized": {
+                  "x": 0.768221259,
+                  "y": 0.640184462,
+                  "magnitude": 1.0,
+                  "sqrMagnitude": 1.0
+                },
+                "magnitude": 0.0260341652,
+                "sqrMagnitude": 0.0006777778
+              },
+              "updateCount": 0,
+              "isDataSRGB": true,
+              "imageContentsHash": {
+                "isValid": true
+              },
+              "graphicsTexture": {
+                "descriptor": {
+                  "width": 50,
+                  "height": 60,
+                  "depth": 1,
+                  "arrayLength": 0,
+                  "format": 4,
+                  "dimension": 2,
+                  "mipCount": 1,
+                  "numSamples": 1,
+                  "flags": 0
+                },
+                "state": 2
+              },
+              "name": "node1 on",
+              "hideFlags": 61
+            },
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "hover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "active": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onNormal": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onHover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onActive": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "focused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onFocused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "border": {
+            "left": 12,
+            "right": 12,
+            "top": 12,
+            "bottom": 12,
+            "horizontal": 24,
+            "vertical": 24
+          },
+          "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "padding": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "overflow": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "lineHeight": 15.0,
+          "isHeightDependantOnWidth": false
+        },
+        "startingNodeStyle": {
+          "font": null,
+          "imagePosition": 0,
+          "alignment": 0,
+          "wordWrap": false,
+          "clipping": 0,
+          "contentOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "fixedWidth": 0.0,
+          "fixedHeight": 0.0,
+          "stretchWidth": true,
+          "stretchHeight": false,
+          "fontSize": 0,
+          "fontStyle": 0,
+          "richText": true,
+          "clipOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "name": "",
+          "normal": {
+            "background": {
+              "format": 5,
+              "mipmapLimitGroup": "",
+              "activeMipmapLimit": 0,
+              "isReadable": true,
+              "vtOnly": false,
+              "streamingMipmaps": false,
+              "streamingMipmapsPriority": 0,
+              "requestedMipmapLevel": -1,
+              "minimumMipmapLevel": -1,
+              "calculatedMipmapLevel": -1,
+              "desiredMipmapLevel": -1,
+              "loadingMipmapLevel": 0,
+              "loadedMipmapLevel": 0,
+              "alphaIsTransparency": false,
+              "ignoreMipmapLimit": true,
+              "mipmapCount": 1,
+              "graphicsFormat": 87,
+              "width": 1,
+              "height": 1,
+              "dimension": 2,
+              "wrapMode": 0,
+              "wrapModeU": 0,
+              "wrapModeV": 0,
+              "wrapModeW": 0,
+              "filterMode": 1,
+              "anisoLevel": 1,
+              "mipMapBias": 0.0,
+              "texelSize": {
+                "x": 1.0,
+                "y": 1.0,
+                "normalized": {
+                  "x": 0.707106769,
+                  "y": 0.707106769,
+                  "magnitude": 1.0,
+                  "sqrMagnitude": 0.99999994
+                },
+                "magnitude": 1.41421354,
+                "sqrMagnitude": 2.0
+              },
+              "updateCount": 2,
+              "isDataSRGB": true,
+              "imageContentsHash": {
+                "isValid": true
+              },
+              "graphicsTexture": {
+                "descriptor": {
+                  "width": 1,
+                  "height": 1,
+                  "depth": 1,
+                  "arrayLength": 0,
+                  "format": 87,
+                  "dimension": 2,
+                  "mipCount": 1,
+                  "numSamples": 1,
+                  "flags": 0
+                },
+                "state": 2
+              },
+              "name": "",
+              "hideFlags": 0
+            },
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "hover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "active": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onNormal": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onHover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onActive": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "focused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onFocused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "border": {
+            "left": 20,
+            "right": 20,
+            "top": 20,
+            "bottom": 20,
+            "horizontal": 40,
+            "vertical": 40
+          },
+          "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "padding": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "overflow": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "lineHeight": 15.0,
+          "isHeightDependantOnWidth": false
+        },
+        "data": {
+          "Id": "201b83bd-64bc-4655-844b-b12acc8f38b5",
+          "Type": 0,
+          "SpeakerName": "Abcd",
+          "Message": "Hello Pratik",
+          "Options": {},
+          "nextIndex": "17ffcf2f-9f37-46a9-abf8-dc558ae30e03"
+        },
+        "SpeakerName": null,
+        "NodeName": null,
+        "outputNode": null,
+        "outputNodeRect": {
+          "x": 430.09375,
+          "y": 444.0045,
+          "position": {
+            "x": 430.09375,
+            "y": 444.0045,
+            "normalized": {
+              "x": 0.6957655,
+              "y": 0.718269,
+              "magnitude": 1.0,
+              "sqrMagnitude": 0.99999994
+            },
+            "magnitude": 618.159058,
+            "sqrMagnitude": 382120.625
+          },
+          "center": {
+            "x": 435.09375,
+            "y": 449.0045,
+            "normalized": {
+              "x": 0.6958948,
+              "y": 0.718143761,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 625.229248,
+            "sqrMagnitude": 390911.6
+          },
+          "min": {
+            "x": 430.09375,
+            "y": 444.0045,
+            "normalized": {
+              "x": 0.6957655,
+              "y": 0.718269,
+              "magnitude": 1.0,
+              "sqrMagnitude": 0.99999994
+            },
+            "magnitude": 618.159058,
+            "sqrMagnitude": 382120.625
+          },
+          "max": {
+            "x": 440.09375,
+            "y": 454.0045,
+            "normalized": {
+              "x": 0.6960211,
+              "y": 0.718021333,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 632.299438,
+            "sqrMagnitude": 399802.6
+          },
+          "width": 10.0,
+          "height": 10.0,
+          "size": {
+            "x": 10.0,
+            "y": 10.0,
+            "normalized": {
+              "x": 0.707106769,
+              "y": 0.707106769,
+              "magnitude": 1.0,
+              "sqrMagnitude": 0.99999994
+            },
+            "magnitude": 14.1421356,
+            "sqrMagnitude": 200.0
+          },
+          "xMin": 430.09375,
+          "yMin": 444.0045,
+          "xMax": 440.09375,
+          "yMax": 454.0045,
+          "left": 430.09375,
+          "right": 440.09375,
+          "top": 444.0045,
+          "bottom": 454.0045
+        },
+        "inputNodeRect": {
+          "x": 130.093735,
+          "y": 444.0045,
+          "position": {
+            "x": 130.093735,
+            "y": 444.0045,
+            "normalized": {
+              "x": 0.281179845,
+              "y": 0.9596551,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 462.6709,
+            "sqrMagnitude": 214064.359
+          },
+          "center": {
+            "x": 135.093735,
+            "y": 449.0045,
+            "normalized": {
+              "x": 0.288115531,
+              "y": 0.957595646,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 468.88736,
+            "sqrMagnitude": 219855.344
+          },
+          "min": {
+            "x": 130.093735,
+            "y": 444.0045,
+            "normalized": {
+              "x": 0.281179845,
+              "y": 0.9596551,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 462.6709,
+            "sqrMagnitude": 214064.359
+          },
+          "max": {
+            "x": 140.093735,
+            "y": 454.0045,
+            "normalized": {
+              "x": 0.2948549,
+              "y": 0.955542,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 475.1277,
+            "sqrMagnitude": 225746.328
+          },
+          "width": 10.0,
+          "height": 10.0,
+          "size": {
+            "x": 10.0,
+            "y": 10.0,
+            "normalized": {
+              "x": 0.707106769,
+              "y": 0.707106769,
+              "magnitude": 1.0,
+              "sqrMagnitude": 0.99999994
+            },
+            "magnitude": 14.1421356,
+            "sqrMagnitude": 200.0
+          },
+          "xMin": 130.093735,
+          "yMin": 444.0045,
+          "xMax": 140.093735,
+          "yMax": 454.0045,
+          "left": 130.093735,
+          "right": 140.093735,
+          "top": 444.0045,
+          "bottom": 454.0045
+        },
+        "dialogueOutputCollection": {},
+        "LocalOptions": {},
+        "OptionCount": 0
+      },
+      "output": {
+        "title": "",
+        "rect": {
+          "x": 540.0936,
+          "y": 426.504456,
+          "position": {
+            "x": 540.0936,
+            "y": 426.504456,
+            "normalized": {
+              "x": 0.784801662,
+              "y": 0.619747043,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 688.1912,
+            "sqrMagnitude": 473607.2
+          },
+          "center": {
+            "x": 690.0936,
+            "y": 514.004456,
+            "normalized": {
+              "x": 0.801984668,
+              "y": 0.5973446,
+              "magnitude": 1.0,
+              "sqrMagnitude": 0.99999994
+            },
+            "magnitude": 860.4823,
+            "sqrMagnitude": 740429.8
+          },
+          "min": {
+            "x": 540.0936,
+            "y": 426.504456,
+            "normalized": {
+              "x": 0.784801662,
+              "y": 0.619747043,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 688.1912,
+            "sqrMagnitude": 473607.2
+          },
+          "max": {
+            "x": 840.0936,
+            "y": 601.504456,
+            "normalized": {
+              "x": 0.8130749,
+              "y": 0.5821591,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 1033.23035,
+            "sqrMagnitude": 1067564.88
+          },
+          "width": 300.0,
+          "height": 175.0,
+          "size": {
+            "x": 300.0,
+            "y": 175.0,
+            "normalized": {
+              "x": 0.8637789,
+              "y": 0.503871,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 347.3111,
+            "sqrMagnitude": 120625.0
+          },
+          "xMin": 540.0936,
+          "yMin": 426.504456,
+          "xMax": 840.0936,
+          "yMax": 601.504456,
+          "left": 540.0936,
+          "right": 840.0936,
+          "top": 426.504456,
+          "bottom": 601.504456
+        },
+        "isDragged": false,
+        "isSelected": true,
+        "isResizing": false,
+        "style": {
+          "font": null,
+          "imagePosition": 0,
+          "alignment": 0,
+          "wordWrap": false,
+          "clipping": 0,
+          "contentOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "fixedWidth": 0.0,
+          "fixedHeight": 0.0,
+          "stretchWidth": true,
+          "stretchHeight": false,
+          "fontSize": 0,
+          "fontStyle": 0,
+          "richText": true,
+          "clipOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "name": "",
+          "normal": {
+            "background": {
+              "format": 4,
+              "mipmapLimitGroup": "",
+              "activeMipmapLimit": 0,
+              "isReadable": false,
+              "vtOnly": false,
+              "streamingMipmaps": false,
+              "streamingMipmapsPriority": 0,
+              "requestedMipmapLevel": -1,
+              "minimumMipmapLevel": -1,
+              "calculatedMipmapLevel": -1,
+              "desiredMipmapLevel": -1,
+              "loadingMipmapLevel": 0,
+              "loadedMipmapLevel": 0,
+              "alphaIsTransparency": true,
+              "ignoreMipmapLimit": true,
+              "mipmapCount": 1,
+              "graphicsFormat": 4,
+              "width": 50,
+              "height": 60,
+              "dimension": 2,
+              "wrapMode": 1,
+              "wrapModeU": 1,
+              "wrapModeV": 1,
+              "wrapModeW": 1,
+              "filterMode": 0,
+              "anisoLevel": 1,
+              "mipMapBias": 0.0,
+              "texelSize": {
+                "x": 0.02,
+                "y": 0.0166666675,
+                "normalized": {
+                  "x": 0.768221259,
+                  "y": 0.640184462,
+                  "magnitude": 1.0,
+                  "sqrMagnitude": 1.0
+                },
+                "magnitude": 0.0260341652,
+                "sqrMagnitude": 0.0006777778
+              },
+              "updateCount": 0,
+              "isDataSRGB": true,
+              "imageContentsHash": {
+                "isValid": true
+              },
+              "graphicsTexture": {
+                "descriptor": {
+                  "width": 50,
+                  "height": 60,
+                  "depth": 1,
+                  "arrayLength": 0,
+                  "format": 4,
+                  "dimension": 2,
+                  "mipCount": 1,
+                  "numSamples": 1,
+                  "flags": 0
+                },
+                "state": 2
+              },
+              "name": "node1 on",
+              "hideFlags": 61
+            },
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "hover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "active": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onNormal": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onHover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onActive": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "focused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onFocused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "border": {
+            "left": 12,
+            "right": 12,
+            "top": 12,
+            "bottom": 12,
+            "horizontal": 24,
+            "vertical": 24
+          },
+          "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "padding": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "overflow": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "lineHeight": 15.0,
+          "isHeightDependantOnWidth": false
+        },
+        "defaultNodeStyle": {
+          "font": null,
+          "imagePosition": 0,
+          "alignment": 0,
+          "wordWrap": false,
+          "clipping": 0,
+          "contentOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "fixedWidth": 0.0,
+          "fixedHeight": 0.0,
+          "stretchWidth": true,
+          "stretchHeight": false,
+          "fontSize": 0,
+          "fontStyle": 0,
+          "richText": true,
+          "clipOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "name": "",
+          "normal": {
+            "background": {
+              "format": 4,
+              "mipmapLimitGroup": "",
+              "activeMipmapLimit": 0,
+              "isReadable": false,
+              "vtOnly": false,
+              "streamingMipmaps": false,
+              "streamingMipmapsPriority": 0,
+              "requestedMipmapLevel": -1,
+              "minimumMipmapLevel": -1,
+              "calculatedMipmapLevel": -1,
+              "desiredMipmapLevel": -1,
+              "loadingMipmapLevel": 0,
+              "loadedMipmapLevel": 0,
+              "alphaIsTransparency": true,
+              "ignoreMipmapLimit": true,
+              "mipmapCount": 1,
+              "graphicsFormat": 4,
+              "width": 50,
+              "height": 60,
+              "dimension": 2,
+              "wrapMode": 1,
+              "wrapModeU": 1,
+              "wrapModeV": 1,
+              "wrapModeW": 1,
+              "filterMode": 0,
+              "anisoLevel": 1,
+              "mipMapBias": 0.0,
+              "texelSize": {
+                "x": 0.02,
+                "y": 0.0166666675,
+                "normalized": {
+                  "x": 0.768221259,
+                  "y": 0.640184462,
+                  "magnitude": 1.0,
+                  "sqrMagnitude": 1.0
+                },
+                "magnitude": 0.0260341652,
+                "sqrMagnitude": 0.0006777778
+              },
+              "updateCount": 0,
+              "isDataSRGB": true,
+              "imageContentsHash": {
+                "isValid": true
+              },
+              "graphicsTexture": {
+                "descriptor": {
+                  "width": 50,
+                  "height": 60,
+                  "depth": 1,
+                  "arrayLength": 0,
+                  "format": 4,
+                  "dimension": 2,
+                  "mipCount": 1,
+                  "numSamples": 1,
+                  "flags": 0
+                },
+                "state": 2
+              },
+              "name": "node1",
+              "hideFlags": 61
+            },
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "hover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "active": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onNormal": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onHover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onActive": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "focused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onFocused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "border": {
+            "left": 12,
+            "right": 12,
+            "top": 12,
+            "bottom": 12,
+            "horizontal": 24,
+            "vertical": 24
+          },
+          "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "padding": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "overflow": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "lineHeight": 15.0,
+          "isHeightDependantOnWidth": false
+        },
+        "selectedNodeStyle": {
+          "font": null,
+          "imagePosition": 0,
+          "alignment": 0,
+          "wordWrap": false,
+          "clipping": 0,
+          "contentOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "fixedWidth": 0.0,
+          "fixedHeight": 0.0,
+          "stretchWidth": true,
+          "stretchHeight": false,
+          "fontSize": 0,
+          "fontStyle": 0,
+          "richText": true,
+          "clipOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "name": "",
+          "normal": {
+            "background": {
+              "format": 4,
+              "mipmapLimitGroup": "",
+              "activeMipmapLimit": 0,
+              "isReadable": false,
+              "vtOnly": false,
+              "streamingMipmaps": false,
+              "streamingMipmapsPriority": 0,
+              "requestedMipmapLevel": -1,
+              "minimumMipmapLevel": -1,
+              "calculatedMipmapLevel": -1,
+              "desiredMipmapLevel": -1,
+              "loadingMipmapLevel": 0,
+              "loadedMipmapLevel": 0,
+              "alphaIsTransparency": true,
+              "ignoreMipmapLimit": true,
+              "mipmapCount": 1,
+              "graphicsFormat": 4,
+              "width": 50,
+              "height": 60,
+              "dimension": 2,
+              "wrapMode": 1,
+              "wrapModeU": 1,
+              "wrapModeV": 1,
+              "wrapModeW": 1,
+              "filterMode": 0,
+              "anisoLevel": 1,
+              "mipMapBias": 0.0,
+              "texelSize": {
+                "x": 0.02,
+                "y": 0.0166666675,
+                "normalized": {
+                  "x": 0.768221259,
+                  "y": 0.640184462,
+                  "magnitude": 1.0,
+                  "sqrMagnitude": 1.0
+                },
+                "magnitude": 0.0260341652,
+                "sqrMagnitude": 0.0006777778
+              },
+              "updateCount": 0,
+              "isDataSRGB": true,
+              "imageContentsHash": {
+                "isValid": true
+              },
+              "graphicsTexture": {
+                "descriptor": {
+                  "width": 50,
+                  "height": 60,
+                  "depth": 1,
+                  "arrayLength": 0,
+                  "format": 4,
+                  "dimension": 2,
+                  "mipCount": 1,
+                  "numSamples": 1,
+                  "flags": 0
+                },
+                "state": 2
+              },
+              "name": "node1 on",
+              "hideFlags": 61
+            },
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "hover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "active": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onNormal": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onHover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onActive": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "focused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onFocused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "border": {
+            "left": 12,
+            "right": 12,
+            "top": 12,
+            "bottom": 12,
+            "horizontal": 24,
+            "vertical": 24
+          },
+          "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "padding": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "overflow": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "lineHeight": 15.0,
+          "isHeightDependantOnWidth": false
+        },
+        "startingNodeStyle": {
+          "font": null,
+          "imagePosition": 0,
+          "alignment": 0,
+          "wordWrap": false,
+          "clipping": 0,
+          "contentOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "fixedWidth": 0.0,
+          "fixedHeight": 0.0,
+          "stretchWidth": true,
+          "stretchHeight": false,
+          "fontSize": 0,
+          "fontStyle": 0,
+          "richText": true,
+          "clipOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "magnitude": 0.0,
+            "sqrMagnitude": 0.0
+          },
+          "name": "",
+          "normal": {
+            "background": {
+              "format": 5,
+              "mipmapLimitGroup": "",
+              "activeMipmapLimit": 0,
+              "isReadable": true,
+              "vtOnly": false,
+              "streamingMipmaps": false,
+              "streamingMipmapsPriority": 0,
+              "requestedMipmapLevel": -1,
+              "minimumMipmapLevel": -1,
+              "calculatedMipmapLevel": -1,
+              "desiredMipmapLevel": -1,
+              "loadingMipmapLevel": 0,
+              "loadedMipmapLevel": 0,
+              "alphaIsTransparency": false,
+              "ignoreMipmapLimit": true,
+              "mipmapCount": 1,
+              "graphicsFormat": 87,
+              "width": 1,
+              "height": 1,
+              "dimension": 2,
+              "wrapMode": 0,
+              "wrapModeU": 0,
+              "wrapModeV": 0,
+              "wrapModeW": 0,
+              "filterMode": 1,
+              "anisoLevel": 1,
+              "mipMapBias": 0.0,
+              "texelSize": {
+                "x": 1.0,
+                "y": 1.0,
+                "normalized": {
+                  "x": 0.707106769,
+                  "y": 0.707106769,
+                  "magnitude": 1.0,
+                  "sqrMagnitude": 0.99999994
+                },
+                "magnitude": 1.41421354,
+                "sqrMagnitude": 2.0
+              },
+              "updateCount": 2,
+              "isDataSRGB": true,
+              "imageContentsHash": {
+                "isValid": true
+              },
+              "graphicsTexture": {
+                "descriptor": {
+                  "width": 1,
+                  "height": 1,
+                  "depth": 1,
+                  "arrayLength": 0,
+                  "format": 87,
+                  "dimension": 2,
+                  "mipCount": 1,
+                  "numSamples": 1,
+                  "flags": 0
+                },
+                "state": 2
+              },
+              "name": "",
+              "hideFlags": 0
+            },
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "hover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "active": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onNormal": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onHover": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onActive": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "focused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "onFocused": {
+            "background": null,
+            "textColor": {
+              "r": 0.0,
+              "g": 0.0,
+              "b": 0.0,
+              "a": 1.0,
+              "grayscale": 0.0,
+              "maxColorComponent": 0.0
+            },
+            "scaledBackgrounds": []
+          },
+          "border": {
+            "left": 20,
+            "right": 20,
+            "top": 20,
+            "bottom": 20,
+            "horizontal": 40,
+            "vertical": 40
+          },
+          "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "padding": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "overflow": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0,
+            "horizontal": 0,
+            "vertical": 0
+          },
+          "lineHeight": 15.0,
+          "isHeightDependantOnWidth": false
+        },
+        "data": {
+          "Id": "17ffcf2f-9f37-46a9-abf8-dc558ae30e03",
+          "Type": 0,
+          "SpeakerName": "Pratik",
+          "Message": "Hello World abcd!",
+          "Options": {},
+          "nextIndex": null
+        },
+        "SpeakerName": null,
+        "NodeName": null,
+        "outputNode": null,
+        "outputNodeRect": {
+          "x": 840.0936,
+          "y": 446.504456,
+          "position": {
+            "x": 840.0936,
+            "y": 446.504456,
+            "normalized": {
+              "x": 0.88302654,
+              "y": 0.469323039,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 951.3798,
+            "sqrMagnitude": 905123.563
+          },
+          "center": {
+            "x": 845.0936,
+            "y": 451.504456,
+            "normalized": {
+              "x": 0.8820113,
+              "y": 0.471228272,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 958.1438,
+            "sqrMagnitude": 918039.5
+          },
+          "min": {
+            "x": 840.0936,
+            "y": 446.504456,
+            "normalized": {
+              "x": 0.88302654,
+              "y": 0.469323039,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 951.3798,
+            "sqrMagnitude": 905123.563
+          },
+          "max": {
+            "x": 850.0936,
+            "y": 456.504456,
+            "normalized": {
+              "x": 0.881006241,
+              "y": 0.4731047,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 964.9122,
+            "sqrMagnitude": 931055.5
+          },
+          "width": 10.0,
+          "height": 10.0,
+          "size": {
+            "x": 10.0,
+            "y": 10.0,
+            "normalized": {
+              "x": 0.707106769,
+              "y": 0.707106769,
+              "magnitude": 1.0,
+              "sqrMagnitude": 0.99999994
+            },
+            "magnitude": 14.1421356,
+            "sqrMagnitude": 200.0
+          },
+          "xMin": 840.0936,
+          "yMin": 446.504456,
+          "xMax": 850.0936,
+          "yMax": 456.504456,
+          "left": 840.0936,
+          "right": 850.0936,
+          "top": 446.504456,
+          "bottom": 456.504456
+        },
+        "inputNodeRect": {
+          "x": 540.0936,
+          "y": 446.504456,
+          "position": {
+            "x": 540.0936,
+            "y": 446.504456,
+            "normalized": {
+              "x": 0.7707234,
+              "y": 0.637169957,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.00000012
+            },
+            "magnitude": 700.761963,
+            "sqrMagnitude": 491067.344
+          },
+          "center": {
+            "x": 545.0936,
+            "y": 451.504456,
+            "normalized": {
+              "x": 0.7701219,
+              "y": 0.6378968,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 707.801758,
+            "sqrMagnitude": 500983.344
+          },
+          "min": {
+            "x": 540.0936,
+            "y": 446.504456,
+            "normalized": {
+              "x": 0.7707234,
+              "y": 0.637169957,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.00000012
+            },
+            "magnitude": 700.761963,
+            "sqrMagnitude": 491067.344
+          },
+          "max": {
+            "x": 550.0936,
+            "y": 456.504456,
+            "normalized": {
+              "x": 0.7695316,
+              "y": 0.638608754,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 714.842163,
+            "sqrMagnitude": 510999.3
+          },
+          "width": 10.0,
+          "height": 10.0,
+          "size": {
+            "x": 10.0,
+            "y": 10.0,
+            "normalized": {
+              "x": 0.707106769,
+              "y": 0.707106769,
+              "magnitude": 1.0,
+              "sqrMagnitude": 0.99999994
+            },
+            "magnitude": 14.1421356,
+            "sqrMagnitude": 200.0
+          },
+          "xMin": 540.0936,
+          "yMin": 446.504456,
+          "xMax": 550.0936,
+          "yMax": 456.504456,
+          "left": 540.0936,
+          "right": 550.0936,
+          "top": 446.504456,
+          "bottom": 456.504456
+        },
+        "dialogueOutputCollection": {},
+        "LocalOptions": {},
+        "OptionCount": 0
+      },
+      "inputPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "magnitude": 0.0,
+          "sqrMagnitude": 0.0
+        },
+        "center": {
+          "x": 0.0,
+          "y": 0.0,
+          "magnitude": 0.0,
+          "sqrMagnitude": 0.0
+        },
+        "min": {
+          "x": 0.0,
+          "y": 0.0,
+          "magnitude": 0.0,
+          "sqrMagnitude": 0.0
+        },
+        "max": {
+          "x": 0.0,
+          "y": 0.0,
+          "magnitude": 0.0,
+          "sqrMagnitude": 0.0
+        },
+        "width": 0.0,
+        "height": 0.0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0,
+          "magnitude": 0.0,
+          "sqrMagnitude": 0.0
+        },
+        "xMin": 0.0,
+        "yMin": 0.0,
+        "xMax": 0.0,
+        "yMax": 0.0,
+        "left": 0.0,
+        "right": 0.0,
+        "top": 0.0,
+        "bottom": 0.0
+      }
+    }
+  },
+  "connectionOptions": {},
+  "storedConnections": null,
+  "storedConnectionOptions": null
+}
