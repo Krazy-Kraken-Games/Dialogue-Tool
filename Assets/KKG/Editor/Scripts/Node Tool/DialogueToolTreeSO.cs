@@ -1,55 +1,9 @@
 using KKG.Tool.Dialogue;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace KKG.Dialogue
 {
-
-    /// <summary>
-    /// This class will represent how a node data is stored in backend
-    /// </summary>
-    [Serializable]
-    public class NodeData
-    {
-        public Vector2 Position;
-        public Vector2 Size;
-
-        public DialogueNodeData data;
-
-        public NodeData()
-        {
-        }
-
-        public NodeData(DialogueTreeNode _node)
-        {
-            Rect rect = _node.rect;
-
-            Position = new Vector2(_node.PositionX, _node.PositionX);
-            Size = new Vector2(_node.Width, _node.Height);
-
-            data = _node.data;
-        }
-    }
-
-
-
-    [Serializable]
-    public class ConnectionData
-    {
-        public string fromNodeID;
-        public string toNodeID;
-    }
-
-    [Serializable]
-    public class ConnectionOptionData
-    {
-        public string fromNodeID;
-        public string toNodeID;
-        public string optionText;
-    }
-
-
     /// <summary>
     /// The scriptable object structure to hold the information of nodes, connections and options
     /// in the data field

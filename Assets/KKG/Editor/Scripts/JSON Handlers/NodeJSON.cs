@@ -1,3 +1,4 @@
+using KKG.Dialogue;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,9 @@ namespace KKG.Tool
         public Vector2 Position;
 
         public Dictionary<int, int> kvp = new Dictionary<int, int>();
+
+        public List<NodeData> Nodes;
+
 
         public NodePacket(int _x, int _y)
         {
