@@ -1,36 +1,11 @@
 using KKG.Dialogue;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.MemoryProfiler;
 using UnityEngine;
 
 namespace KKG.Tool.Dialogue
 {
-    public struct ConnectionTuple
-    {
-        public DialogueTreeNode InputNode;
-        public DialogueTreeNode OutputNode;
-
-        public ConnectionTuple(DialogueTreeNode inputNode, DialogueTreeNode outputNode)
-        {
-            InputNode = inputNode;
-            OutputNode = outputNode;
-        }
-    }
-
-    public struct ConnectionOptionTuple
-    {
-        public DialogueOption InputOption;
-        public DialogueTreeNode OutputNode;
-
-        public ConnectionOptionTuple(DialogueOption inputOption, DialogueTreeNode outputNode)
-        {
-            InputOption = inputOption;
-            OutputNode = outputNode;
-        }
-    }
 
     public class DialogueNodeTool : EditorWindow
     {
@@ -169,7 +144,7 @@ namespace KKG.Tool.Dialogue
             GUILayout.EndArea();
         }
 
-        private void DrawInspectorPanel(Rect rect)
+        private async void DrawInspectorPanel(Rect rect)
         {
             GUI.Box(rect, "Inspector", GUI.skin.window);
 
@@ -180,6 +155,26 @@ namespace KKG.Tool.Dialogue
             GUILayout.Label("File Name:");
 
             fileName = EditorGUILayout.TextField(fileName);
+
+
+            //Dummy test area for JSON Serializations
+            if (!string.IsNullOrEmpty(fileName))
+            {
+                if (GUILayout.Button("Create JSON file"))
+                {
+                    //Fire the dummy function to send JSON file data
+                    CreateJSONFile(fileName);
+                }
+
+                if (GUILayout.Button("Load JSON file"))
+                {
+                    //Load the contents of the JSON file 
+
+                    LoadJSONFile(fileName);
+                }
+            }
+
+
 
             if (selectedNode != null)
             {
@@ -242,6 +237,8 @@ namespace KKG.Tool.Dialogue
 
                             CreateDialogueTreeSO(fileName);
 
+                            CreateDialogueJSON(fileName);
+
                             EditorUtility.DisplayDialog("SUCCESS", "Dialogue Asset created successfully in Assets folder", "OK");
 
                             fileName = string.Empty;
@@ -275,7 +272,6 @@ namespace KKG.Tool.Dialogue
                     connections.Clear();
                 }
             }
-
             GUILayout.EndArea();
         }
 
@@ -798,6 +794,44 @@ namespace KKG.Tool.Dialogue
         }
         #endregion
 
+        #region CREATE JSON FILE SECTION
+        public void CreateDialogueJSON(string _fileName)
+        {
+            string fullFileName = $"{_fileName}.json";
+
+
+            if (dialogueGetter == null)
+            {
+                var nodeDataList = new List<NodeData>();
+
+                foreach (var node in nodes)
+                {
+                    nodeDataList.Add(new NodeData(node));
+                }
+
+                dialogueGetter = new DialogueJSONGetter(nodeDataList, connections, connectionOptions);
+            }
+            else
+            {
+
+                var nodeDataList = new List<NodeData>();
+
+                foreach (var node in nodes)
+                {
+                    nodeDataList.Add(new NodeData(node));
+                }
+
+                dialogueGetter.UpdateData(nodeDataList, connections, connectionOptions);
+            }
+
+
+            string JsonPath = $"Assets/Resources/Content/{fullFileName}.json";
+            dialogueGetter.SaveData(JsonPath);
+
+            Debug.Log("JSON File created successfully");
+        }
+        #endregion
+
 
         #region SCRIPTABLE OBJECT SECTION
         public void CreateDialogueSO(string _fileName,List<DialogueNode> nodes)
@@ -852,35 +886,6 @@ namespace KKG.Tool.Dialogue
             }
             AssetDatabase.SaveAssets();
 
-            if (dialogueGetter == null)
-            {
-                var nodeDataList = new List<NodeData>();
-
-                foreach (var node in nodes)
-                {
-                    nodeDataList.Add(new NodeData(node));
-                }
-
-                dialogueGetter = new DialogueJSONGetter(nodeDataList, connections, connectionOptions);
-            }
-            else
-            {
-
-                var nodeDataList = new List<NodeData>();
-
-                foreach (var node in nodes)
-                {
-                    nodeDataList.Add(new NodeData(node));
-                }
-
-                dialogueGetter.UpdateData(nodeDataList, connections, connectionOptions);
-            }
-
-
-            string JsonPath = $"Assets/{fullFileName}.json";
-            dialogueGetter.SaveData(JsonPath);
-
-            Debug.Log("JSON File created successfully");
         }
 
 
@@ -903,11 +908,13 @@ namespace KKG.Tool.Dialogue
             // Load the asset
             //DialogueToolTreeSO dialogueToolTreeSO = AssetDatabase.LoadAssetAtPath<DialogueToolTreeSO>(path);
 
-            var jsonData = dialogueGetter.LoadDataFromPath(path);
+
+            string JsonPath = $"Content/{_fileName}.json";
+            var jsonData = dialogueGetter.LoadDataFromPath(JsonPath);
 
             if (jsonData == null)
             {
-                Debug.LogError($"DialogueTreeSO not found at path: {path}");
+                Debug.LogError($"DialogueTreeSO not found at path: {JsonPath}");
                 return;
             }
 
@@ -1045,5 +1052,41 @@ namespace KKG.Tool.Dialogue
             startingNode = _node;
             startingNode.SetStartingNode();
         }
+
+
+        #region JSON SECTION
+
+        private async void CreateJSONFile(string _fileName)
+        {
+            string JsonPath = $"Assets/Resources/Content/{_fileName}.json";
+
+            bool res = await NodeJSON.SaveDataToJSON(JsonPath,30,40);
+
+            if (res)
+            {
+                Debug.Log("JSON file send successful");
+            }
+            else
+            {
+                Debug.LogError("Failed to send JSON data to backend");
+            }
+
+        }
+
+        private void LoadJSONFile(string _fileName)
+        {
+            string path = $"Assets/Resources/Content/{_fileName}.json";
+
+            var data = NodeJSON.LoadData(path);
+
+            Debug.Log(data.Position);
+
+            foreach(var node in data.kvp)
+            {
+                Debug.Log($"{node.Key} & {node.Value}");
+            }
+        }
+
+        #endregion
     }
 }

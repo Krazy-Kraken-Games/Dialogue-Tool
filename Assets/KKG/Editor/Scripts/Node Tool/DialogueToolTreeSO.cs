@@ -1,8 +1,6 @@
+using KKG.Tool.Dialogue;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using KKG.Tool.Dialogue;
-using TreeEditor;
 using UnityEngine;
 
 namespace KKG.Dialogue
@@ -19,12 +17,16 @@ namespace KKG.Dialogue
 
         public DialogueNodeData data;
 
+        public NodeData()
+        {
+        }
+
         public NodeData(DialogueTreeNode _node)
         {
             Rect rect = _node.rect;
 
-            Position = rect.center;
-            Size = rect.size;
+            Position = new Vector2(_node.PositionX, _node.PositionX);
+            Size = new Vector2(_node.Width, _node.Height);
 
             data = _node.data;
         }

@@ -40,6 +40,12 @@ namespace KKG.Tool.Dialogue
 
         private bool readyToDraw = false;
 
+        public float PositionX => rect.position.x;
+        public float PositionY => rect.position.y;
+        public float Width => rect.size.x;
+        public float Height => rect.size.y;
+
+
         //Option Dragging
         public Dictionary<DialogueOption,Rect> dialogueOutputCollection;
 

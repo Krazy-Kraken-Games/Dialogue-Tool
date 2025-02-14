@@ -79,14 +79,20 @@ public class DialogueJSONGetter
 
     public DialogueToolTreeData LoadDataFromPath(string path)
     {
-        if (File.Exists(path))
+        TextAsset jsonFile = Resources.Load<TextAsset>(path);
+        if (jsonFile != null)
         {
-            string json = File.ReadAllText(path);
-            json = json.Trim(new char[] { '\uFEFF', '\u200B' });
-            treeData = JsonConvert.DeserializeObject<DialogueToolTreeData>(json);
+            string jsonText = jsonFile.text;
+            Debug.Log("Loaded JSON:" + jsonText);
 
-            return treeData;
+            JsonTextReader reader = new JsonTextReader(new StringReader(jsonText));
+            using (reader)
+            {
+                treeData = ParseDialogueTree(reader);
+                return treeData;
+            }
         }
+
 
         return null;
     }
@@ -110,4 +116,58 @@ public class DialogueJSONGetter
         treeData.connections = _connections;
         treeData.connectionOptions = _connectionOptions;
     }
+
+
+
+    #region CUSTOM JSON PARSER
+    private static DialogueToolTreeData ParseDialogueTree(JsonTextReader reader)
+    {
+        DialogueToolTreeData treeData = new DialogueToolTreeData();
+        treeData.nodes = new List<NodeData>();
+
+        NodeData currentNode = null;
+        DialogueNodeData currentData = new DialogueNodeData();
+        string propertyName = null;
+
+        while (reader.Read())
+        {
+            if (reader.TokenType == JsonToken.PropertyName)
+            {
+                propertyName = reader.Value.ToString();
+            }
+            else if (reader.TokenType == JsonToken.StartObject && propertyName == "nodes")
+            {
+                currentNode = new NodeData();
+                currentData = new DialogueNodeData();
+            }
+            else if (reader.TokenType == JsonToken.EndObject && currentNode != null)
+            {
+                currentNode.data = currentData;
+                treeData.nodes.Add(currentNode);
+                currentNode = null;
+            }
+            else if (reader.TokenType == JsonToken.Float || reader.TokenType == JsonToken.Integer)
+            {
+                float value = float.Parse(reader.Value.ToString());
+
+                if (propertyName == "x") currentNode.Position.x = value;
+                if (propertyName == "y") currentNode.Position.y = value;
+                if (propertyName == "Size_x") currentNode.Size.x = value;
+                if (propertyName == "Size_y") currentNode.Size.y = value;
+            }
+            else if (reader.TokenType == JsonToken.String)
+            {
+                string value = reader.Value.ToString();
+
+                if (propertyName == "Id") currentData.Id = value;
+                if (propertyName == "SpeakerName") currentData.SpeakerName = value;
+                if (propertyName == "Message") currentData.Message = value;
+                if (propertyName == "nextIndex") currentData.nextIndex = value;
+            }
+        }
+
+        return treeData;
+    }
+
+    #endregion
 }
