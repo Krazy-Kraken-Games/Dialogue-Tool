@@ -156,25 +156,7 @@ namespace KKG.Tool.Dialogue
 
             fileName = EditorGUILayout.TextField(fileName);
 
-
-            //Dummy test area for JSON Serializations
-            if (!string.IsNullOrEmpty(fileName))
-            {
-                if (GUILayout.Button("Create JSON file"))
-                {
-                    //Fire the dummy function to send JSON file data
-                    CreateJSONFile(fileName);
-                }
-
-                if (GUILayout.Button("Load JSON file"))
-                {
-                    //Load the contents of the JSON file 
-
-                    LoadJSONFile(fileName);
-                }
-            }
-
-
+           
 
             if (selectedNode != null)
             {
@@ -505,7 +487,7 @@ namespace KKG.Tool.Dialogue
 
                     if(e.keyCode == KeyCode.LeftAlt)
                     {
-                        Debug.Log("Left alt is pressed");
+                        //Debug.Log("Left alt is pressed");
                     }
 
                     break;
@@ -797,38 +779,38 @@ namespace KKG.Tool.Dialogue
         #region CREATE JSON FILE SECTION
         public void CreateDialogueJSON(string _fileName)
         {
-            string fullFileName = $"{_fileName}.json";
+            //string fullFileName = $"{_fileName}.json";
 
 
-            if (dialogueGetter == null)
-            {
-                var nodeDataList = new List<NodeData>();
+            //if (dialogueGetter == null)
+            //{
+            //    var nodeDataList = new List<NodeData>();
 
-                foreach (var node in nodes)
-                {
-                    nodeDataList.Add(new NodeData(node));
-                }
+            //    foreach (var node in nodes)
+            //    {
+            //        nodeDataList.Add(new NodeData(node));
+            //    }
 
-                dialogueGetter = new DialogueJSONGetter(nodeDataList, connections, connectionOptions);
-            }
-            else
-            {
+            //    dialogueGetter = new DialogueJSONGetter(nodeDataList, connections, connectionOptions);
+            //}
+            //else
+            //{
 
-                var nodeDataList = new List<NodeData>();
+            //    var nodeDataList = new List<NodeData>();
 
-                foreach (var node in nodes)
-                {
-                    nodeDataList.Add(new NodeData(node));
-                }
+            //    foreach (var node in nodes)
+            //    {
+            //        nodeDataList.Add(new NodeData(node));
+            //    }
 
-                dialogueGetter.UpdateData(nodeDataList, connections, connectionOptions);
-            }
+            //    dialogueGetter.UpdateData(nodeDataList, connections, connectionOptions);
+            //}
 
 
-            string JsonPath = $"Assets/Resources/Content/{fullFileName}.json";
-            dialogueGetter.SaveData(JsonPath);
+            //string JsonPath = $"Assets/Resources/Content/{fullFileName}.json";
+            //dialogueGetter.SaveData(JsonPath);
 
-            Debug.Log("JSON File created successfully");
+            //Debug.Log("JSON File created successfully");
         }
         #endregion
 
@@ -872,7 +854,7 @@ namespace KKG.Tool.Dialogue
             if (existingAsset != null)
             {
                 // Asset exists, update its data
-                existingAsset.SaveToolData(path,startingNode, nodes,connections, connectionOptions);
+                existingAsset.SaveToolData(path, startingNode, nodes, connections, connectionOptions);
                 EditorUtility.SetDirty(existingAsset); // Mark the asset as dirty for saving
                 Debug.Log($"Existing DialogueToolTreeSO updated at: {path}");
             }
@@ -880,7 +862,7 @@ namespace KKG.Tool.Dialogue
             {
                 // Asset doesn't exist, create a new one
                 DialogueToolTreeSO dialogueDataSO = CreateInstance<DialogueToolTreeSO>();
-                dialogueDataSO.SaveToolData(path,startingNode, nodes, connections, connectionOptions);
+                dialogueDataSO.SaveToolData(path, startingNode, nodes, connections, connectionOptions);
                 AssetDatabase.CreateAsset(dialogueDataSO, path);
                 Debug.Log($"New DialogueToolTreeSO created at: {path}");
             }
@@ -906,15 +888,13 @@ namespace KKG.Tool.Dialogue
             string path = $"Assets/{fullFileName}.asset";
 
             // Load the asset
-            //DialogueToolTreeSO dialogueToolTreeSO = AssetDatabase.LoadAssetAtPath<DialogueToolTreeSO>(path);
+            DialogueToolTreeSO dialogueToolTreeSO = AssetDatabase.LoadAssetAtPath<DialogueToolTreeSO>(path);
 
 
-            string JsonPath = $"Content/{_fileName}.json";
-            var jsonData = dialogueGetter.LoadDataFromPath(JsonPath);
 
-            if (jsonData == null)
+            if (dialogueToolTreeSO == null)
             {
-                Debug.LogError($"DialogueTreeSO not found at path: {JsonPath}");
+                Debug.LogError($"DialogueTreeSO not found at path: {dialogueToolTreeSO}");
                 return;
             }
 
@@ -925,13 +905,16 @@ namespace KKG.Tool.Dialogue
 
             List<DialogueOption> allOptions = new List<DialogueOption>();
 
-            if (jsonData.nodes.Count > 0)
+            if (dialogueToolTreeSO.Nodes.Count > 0)
             {
                 // Load data from the asset and recreate nodes
-                foreach (var nodeData in jsonData.nodes)
+                foreach (var nodeData in dialogueToolTreeSO.Nodes)
                 {
-                    Vector2 Position = nodeData.Position;
-                    Vector2 Size = nodeData.Size;
+                    var pos = nodeData.Position;
+                    var size = nodeData.Size;
+
+                    Vector2 Position = new Vector2(pos.x, pos.y);
+                    Vector2 Size = new Vector2(size.x, size.y);
 
                     var data = nodeData.data;
 
@@ -943,7 +926,7 @@ namespace KKG.Tool.Dialogue
                     nodes.Add(newNode);
                 }
 
-                foreach(var node in jsonData.nodes)
+                foreach(var node in dialogueToolTreeSO.Nodes)
                 {
                     var data = node.data;
 
@@ -970,9 +953,9 @@ namespace KKG.Tool.Dialogue
                 //Load the connections and connection Options
 
                 //Handle first the node to node connections
-                if(jsonData.connections.Count > 0 && jsonData.connections != null)
+                if(dialogueToolTreeSO.Connections.Count > 0 && dialogueToolTreeSO.Connections != null)
                 {
-                    foreach(var connection in jsonData.connections)
+                    foreach(var connection in dialogueToolTreeSO.Connections)
                     {
                         //Break the connection and its tuple to get info about start and end node
 
@@ -991,9 +974,9 @@ namespace KKG.Tool.Dialogue
                 }
 
                 //Handle the connection options
-                if(jsonData.connectionOptions != null && jsonData.connectionOptions.Count > 0)
+                if(dialogueToolTreeSO.ConnectionOptions != null && dialogueToolTreeSO.ConnectionOptions.Count > 0)
                 {
-                    foreach(var connectionOpt in jsonData.connectionOptions)
+                    foreach(var connectionOpt in dialogueToolTreeSO.ConnectionOptions)
                     {
                         var InputKey = connectionOpt.Key.InputOption;
                         var OutputKey = connectionOpt.Key.OutputNode;
@@ -1060,7 +1043,7 @@ namespace KKG.Tool.Dialogue
         {
             string JsonPath = $"Assets/Resources/Content/{_fileName}.json";
 
-            bool res = await NodeJSON.SaveDataToJSON(JsonPath,30,40);
+            bool res = await NodeJSON.SaveDataToJSON(JsonPath,30,40,nodes);
 
             if (res)
             {
@@ -1075,16 +1058,28 @@ namespace KKG.Tool.Dialogue
 
         private void LoadJSONFile(string _fileName)
         {
+            nodes.Clear();
+
             string path = $"Assets/Resources/Content/{_fileName}.json";
 
             var data = NodeJSON.LoadData(path);
 
-            Debug.Log(data.Position);
-
-            foreach(var node in data.kvp)
+            if (data.Nodes.Count > 0) 
             {
-                Debug.Log($"{node.Key} & {node.Value}");
+                foreach (var node in data.Nodes)
+                {
+                    //Create the new node
+                    var newNode = new DialogueTreeNode(node);
+
+                    Debug.Log($"Node {node.data.SpeakerName} Options: {node.opts.Count}");
+
+                    nodes.Add(newNode);
+                }
+
+                Debug.Log($"All nodes have been loaded: {nodes.Count}");
             }
+
+
         }
 
         #endregion

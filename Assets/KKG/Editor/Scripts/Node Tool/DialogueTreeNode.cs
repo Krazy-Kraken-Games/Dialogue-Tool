@@ -1,6 +1,7 @@
 using KKG.Dialogue;
 using System;
 using System.Collections.Generic;
+using Unity.Plastic.Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
 using MessageType = KKG.Dialogue.MessageType;
@@ -51,6 +52,62 @@ namespace KKG.Tool.Dialogue
 
         //Local Cache for options
         public Dictionary<string, DialogueOption> LocalOptions;
+
+        //public DialogueTreeNode()
+        //{
+
+        //}
+
+        //Constructor to rebuild node again using Node Data
+
+        [JsonConstructor]
+        public DialogueTreeNode(NodeData _data)
+        {
+            if (_data == null) return;
+
+            rect = new Rect(_data.Position.x,_data.Position.y,_data.Size.x,_data.Size.y);
+
+            data = _data.data;
+
+            title = "";
+
+            //Default Style
+            defaultNodeStyle = new GUIStyle();
+            defaultNodeStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1.png") as Texture2D;
+            defaultNodeStyle.border = new RectOffset(12, 12, 12, 12);
+
+            //SelectedStyle
+            selectedNodeStyle = new GUIStyle();
+            selectedNodeStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1 on.png") as Texture2D;
+            selectedNodeStyle.border = new RectOffset(12, 12, 12, 12);
+
+            //Starting node style
+            startingNodeStyle = new GUIStyle();
+            startingNodeStyle.normal.background = CreateColorTexture(new Color(0.8f, 0.47f, 0f));
+            startingNodeStyle.border = new RectOffset(20, 20, 20, 20);
+
+            style = defaultNodeStyle;
+
+
+            //Output collection
+            dialogueOutputCollection = new Dictionary<DialogueOption, Rect>();
+
+            //Initialize local options cache
+            LocalOptions = new Dictionary<string, DialogueOption>();
+
+            if(data.Options.Count > 0)
+            {
+                showOptions = true;
+
+                foreach(var opt in data.Options)
+                {
+                    LocalOptions.Add(opt.Key, opt.Value);
+                }
+            }
+
+            readyToDraw = true;
+        }
+
 
         public DialogueTreeNode(Vector2 pos, float width = 300, float height = 175, bool isNew = true,bool _readyToDraw = true)
         {

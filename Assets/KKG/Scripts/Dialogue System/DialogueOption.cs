@@ -2,7 +2,7 @@
 namespace KKG.Dialogue
 {
     [System.Serializable]
-    public struct DialogueOption
+    public class DialogueOption
     {
         //Id of the next message to fire from the tree
         [ReadOnly]

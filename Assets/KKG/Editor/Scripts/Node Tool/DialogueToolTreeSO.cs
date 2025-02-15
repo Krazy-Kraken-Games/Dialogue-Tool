@@ -11,15 +11,15 @@ namespace KKG.Dialogue
     public class DialogueToolTreeSO : ScriptableObject
     {
         [SerializeField]
-        private List<NodeData> nodes;
-        private Dictionary<ConnectionTuple, Connection> connections;
-        private Dictionary<ConnectionOptionTuple, Connection> connectionOptions;
+        private List<NodeData> nodes = new List<NodeData>();
+        private Dictionary<ConnectionTuple, Connection> connections = new Dictionary<ConnectionTuple, Connection>();
+        private Dictionary<ConnectionOptionTuple, Connection> connectionOptions = new Dictionary<ConnectionOptionTuple, Connection>();
 
         [SerializeField]
         private NodeData startingNodeData;
 
-        [SerializeField]
-        private DialogueToolTreeData treeData = new DialogueToolTreeData();
+        //[SerializeField]
+        //private DialogueToolTreeData treeData = new DialogueToolTreeData();
 
         public void SaveToolData(string path,DialogueTreeNode _start,List<DialogueTreeNode> _nodes,
             Dictionary<ConnectionTuple, Connection> _connections, Dictionary<ConnectionOptionTuple, Connection> _connectionOptions)
@@ -51,18 +51,15 @@ namespace KKG.Dialogue
                 connectionOptions.Add(connectionOption.Key, connectionOption.Value);
             }
 
-            //Create JSON File
-            DialogueJSONGetter fileGetter = new DialogueJSONGetter(nodes, connections, connectionOptions);
-
 
             
         }
 
-        public List<NodeData> Nodes => treeData.nodes;
+        public List<NodeData> Nodes => nodes;
 
-        public Dictionary<ConnectionTuple, Connection> Connections => treeData.connections;
+        public Dictionary<ConnectionTuple, Connection> Connections => connections;
 
-        public Dictionary<ConnectionOptionTuple, Connection> ConnectionOptions => treeData.connectionOptions;
+        public Dictionary<ConnectionOptionTuple, Connection> ConnectionOptions => connectionOptions;
 
     }
 }

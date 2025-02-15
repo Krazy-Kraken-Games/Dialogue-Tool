@@ -137,7 +137,7 @@ public class DialogueJSONGetter
             }
             else if (reader.TokenType == JsonToken.StartObject && propertyName == "nodes")
             {
-                currentNode = new NodeData();
+                //currentNode = new NodeData();
                 currentData = new DialogueNodeData();
             }
             else if (reader.TokenType == JsonToken.EndObject && currentNode != null)

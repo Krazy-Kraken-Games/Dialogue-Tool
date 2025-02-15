@@ -10,7 +10,7 @@ namespace KKG.Dialogue
     }
 
     [System.Serializable]
-    public struct DialogueNodeData
+    public class DialogueNodeData
     {
         [ReadOnly]
         public string Id;
@@ -18,7 +18,7 @@ namespace KKG.Dialogue
         public string SpeakerName;
         public string Message;
 
-        public Dictionary<string,DialogueOption> Options;
+        public Dictionary<string,DialogueOption> Options = new Dictionary<string, DialogueOption>();
 
         [ReadOnly]
         //ID is generated at runtime automatically, so next jump would be a string

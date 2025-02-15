@@ -1,4 +1,5 @@
 using KKG.Dialogue;
+using KKG.Tool.Dialogue;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,42 +13,35 @@ namespace KKG.Tool
     [Serializable]
     public class NodePacket
     {
-        public int x;
-        public int y;
-
-        public Vector2 Position;
-
-        public Dictionary<int, int> kvp = new Dictionary<int, int>();
-
-        public List<NodeData> Nodes;
+        public List<NodeData> Nodes = new List<NodeData>();
 
 
-        public NodePacket(int _x, int _y)
+        [JsonConstructor]
+        public NodePacket(List<DialogueTreeNode> nodes)
         {
-            x = _x;
-            y = _y;
-
-            Position = new Vector2(x, y);
-
-            kvp.Add(x, y);
+            //Save the nodes
+            foreach (var node in nodes)
+            {
+                NodeData nd = new NodeData(node);
+                Nodes.Add(nd);
+            }
         }
     }
 
     /// <summary>
-    /// The class will be the serializable struct of node data that will be stored in the JSON format on device
+    /// The class will be the serializable format of node data that will be stored in the JSON format on device
     /// </summary>
     /// 
-
 
     public static class NodeJSON
     {
         public static NodePacket packet;
 
-        public static async Task<bool> SaveDataToJSON(string path,int x, int y)
+        public static async Task<bool> SaveDataToJSON(string path,int x, int y, List<DialogueTreeNode> nodes)
         {
             try
             {
-                packet = new NodePacket(x, y);
+                packet = new NodePacket(nodes);
 
                 JsonSerializerSettings settings = new JsonSerializerSettings
                 {
@@ -70,7 +64,8 @@ namespace KKG.Tool
         public static NodePacket LoadData(string path)
         {
             string jsonData = File.ReadAllText(path);
-            NodePacket packet = JsonConvert.DeserializeObject<NodePacket>(jsonData);
+
+            NodePacket packet = JsonUtility.FromJson<NodePacket>(jsonData);
 
             return packet;
         }
