@@ -4,6 +4,19 @@ using UnityEngine;
 
 namespace KKG.Dialogue
 {
+    [System.Serializable]
+    public class ConnectionPacket
+    {
+        public ConnectionTuple ConnectionTuple;
+        public Connection Connection;
+
+        public ConnectionPacket(ConnectionTuple connectionTuple, Connection connection)
+        {
+            ConnectionTuple = connectionTuple;
+            Connection = connection;
+        }
+    }
+
     /// <summary>
     /// The scriptable object structure to hold the information of nodes, connections and options
     /// in the data field

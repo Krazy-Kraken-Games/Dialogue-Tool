@@ -1,5 +1,6 @@
 ﻿namespace KKG.Tool.Dialogue
 {
+    [System.Serializable]
     public class ConnectionTuple
     {
         public DialogueTreeNode InputNode;
