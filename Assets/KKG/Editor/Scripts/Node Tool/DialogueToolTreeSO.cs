@@ -25,11 +25,12 @@ namespace KKG.Dialogue
     {
         [SerializeField]
         private List<NodeData> nodes = new List<NodeData>();
-        private Dictionary<ConnectionTuple, Connection> connections = new Dictionary<ConnectionTuple, Connection>();
+        [SerializeField]
+        private List<ConnectionPacket> connections = new List<ConnectionPacket>();
         private Dictionary<ConnectionOptionTuple, Connection> connectionOptions = new Dictionary<ConnectionOptionTuple, Connection>();
 
         [SerializeField]
-        private NodeData startingNodeData;
+        private string startingNodeId;
 
         //[SerializeField]
         //private DialogueToolTreeData treeData = new DialogueToolTreeData();
@@ -47,14 +48,15 @@ namespace KKG.Dialogue
             }
 
             //Add reference to the starting node
-            //startingNodeData = new NodeData(_start);
+            startingNodeId = _start.data.Id;
 
             //Save the connections and connections Options
-            connections = new Dictionary<ConnectionTuple, Connection>();
+            connections = new List<ConnectionPacket>();
 
             foreach(var connection in _connections)
             {
-                connections.Add(connection.Key, connection.Value);
+                ConnectionPacket cp = new ConnectionPacket(connection.Key, connection.Value);
+                connections.Add(cp);
             }
 
             //Save the connection options
@@ -70,7 +72,7 @@ namespace KKG.Dialogue
 
         public List<NodeData> Nodes => nodes;
 
-        public Dictionary<ConnectionTuple, Connection> Connections => connections;
+        public List<ConnectionPacket> Connections => connections;
 
         public Dictionary<ConnectionOptionTuple, Connection> ConnectionOptions => connectionOptions;
 

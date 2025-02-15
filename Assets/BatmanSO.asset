@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec68b2d7c9842a41ae5f6ad03e79582, type: 3}
+  m_Name: BatmanSO
+  m_EditorClassIdentifier: 
+  nodes:
+  - data:
+      Id: f305c124-5dac-4111-a1c9-7b17513727f9
+      Type: 0
+      SpeakerName: Robin
+      Message: I dont know
+      nextIndex: df90de17-0b79-4d41-a988-a6e92c1ce695
+  - data:
+      Id: df90de17-0b79-4d41-a988-a6e92c1ce695
+      Type: 0
+      SpeakerName: Robin
+      Message: I saw him run away
+      nextIndex: 930ec23a-6636-4043-b1e2-dcf8f98eb0c8
+  - data:
+      Id: 930ec23a-6636-4043-b1e2-dcf8f98eb0c8
+      Type: 0
+      SpeakerName: Batman
+      Message: Which direction?
+      nextIndex: 49b0956e-dbb6-4c98-95e7-f1bf3e17fa1f
+  - data:
+      Id: 49b0956e-dbb6-4c98-95e7-f1bf3e17fa1f
+      Type: 0
+      SpeakerName: New End is here
+      Message: End motion sanctioned
+      nextIndex: 
+  Count: 4

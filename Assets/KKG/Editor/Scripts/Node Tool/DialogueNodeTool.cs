@@ -959,8 +959,8 @@ namespace KKG.Tool.Dialogue
                     {
                         //Break the connection and its tuple to get info about start and end node
 
-                        var InputKey = connection.Key.InputNode;
-                        var OutputKey = connection.Key.OutputNode;
+                        var InputKey = connection.ConnectionTuple.InputNode;
+                        var OutputKey = connection.ConnectionTuple.OutputNode;
 
                         //Find the input & output nodes in the existing/newly created dialogue nodes
                         var InputNode = nodes.First(node => node.data.Id.Equals(InputKey.data.Id));
