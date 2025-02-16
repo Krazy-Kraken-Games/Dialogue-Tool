@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - Position:
-      x: 653.56244
-      y: 1190.3801
+      x: 983.29205
+      y: 1670.1096
     Size:
       x: 329.7296
       y: 479.7296
@@ -24,10 +24,18 @@ MonoBehaviour:
       Type: 0
       SpeakerName: Batman
       Message: First Node
+      Options:
+      - OptionID: 9cb8307e-0288-4338-a073-1cf5e3fa270d
+        Option:
+          OptionId: 9cb8307e-0288-4338-a073-1cf5e3fa270d
+          NextIndex: 7e2ed4c3-a178-45fc-ba11-4996a76819f1
+          SpeakerName: Batman
+          OptionMessage: First Option Message
+          parentNodeRef: 4ef1000e-1f86-4734-9400-ebd2e7bc64c7
       nextIndex: 
   - Position:
-      x: 1192.7515
-      y: 1033.9612
+      x: 1492.7515
+      y: 1208.9612
     Size:
       x: 300
       y: 175
@@ -36,10 +44,11 @@ MonoBehaviour:
       Type: 0
       SpeakerName: Robin
       Message: No
+      Options: []
       nextIndex: b7c8b497-b852-4a1d-aa67-9f216d543ac7
   - Position:
-      x: 1190.0487
-      y: 1331.2583
+      x: 1490.0487
+      y: 1506.2583
     Size:
       x: 300
       y: 175
@@ -48,10 +57,11 @@ MonoBehaviour:
       Type: 0
       SpeakerName: Robin
       Message: Yes
+      Options: []
       nextIndex: 60d2cdf9-982b-4b02-a63a-769c4ebeebec
   - Position:
-      x: 1651.2378
-      y: 1026.8801
+      x: 1951.2378
+      y: 1201.8801
     Size:
       x: 300
       y: 175
@@ -60,10 +70,11 @@ MonoBehaviour:
       Type: 0
       SpeakerName: Batman
       Message: Go home
+      Options: []
       nextIndex: 
   - Position:
-      x: 1653.9404
-      y: 1332.2855
+      x: 1953.9404
+      y: 1507.2855
     Size:
       x: 300
       y: 175
@@ -72,6 +83,7 @@ MonoBehaviour:
       Type: 0
       SpeakerName: Batman
       Message: Lets go
+      Options: []
       nextIndex: 
   connections:
   - ConnectionTuple:
@@ -79,8 +91,8 @@ MonoBehaviour:
         title: 
         rect:
           serializedVersion: 2
-          x: 1042.7515
-          y: 946.4612
+          x: 1342.7515
+          y: 1121.4612
           width: 300
           height: 175
         isDragged: 0
@@ -359,36 +371,37 @@ MonoBehaviour:
           Type: 0
           SpeakerName: Robin
           Message: No
+          Options: []
           nextIndex: b7c8b497-b852-4a1d-aa67-9f216d543ac7
         SpeakerName: 
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 1342.7515
-          y: 966.4612
+          x: 1642.7515
+          y: 1141.4612
           width: 10
           height: 10
         inputNodeRect:
           serializedVersion: 2
-          x: 1042.7515
-          y: 966.4612
+          x: 1342.7515
+          y: 1141.4612
           width: 10
           height: 10
       OutputNode:
         title: 
         rect:
           serializedVersion: 2
-          x: 1501.2378
-          y: 939.3802
+          x: 1801.2378
+          y: 1114.3801
           width: 300
           height: 175
         isDragged: 0
-        isSelected: 0
+        isSelected: 1
         isResizing: 0
         style:
           m_Name: 
           m_Normal:
-            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
+            m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000, type: 0}
             m_ScaledBackgrounds: []
             m_TextColor: {r: 0, g: 0, b: 0, a: 1}
           m_Hover:
@@ -658,19 +671,20 @@ MonoBehaviour:
           Type: 0
           SpeakerName: Batman
           Message: Go home
+          Options: []
           nextIndex: 
         SpeakerName: 
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 1801.2378
-          y: 959.3802
+          x: 2101.2378
+          y: 1134.3801
           width: 10
           height: 10
         inputNodeRect:
           serializedVersion: 2
-          x: 1501.2378
-          y: 959.3802
+          x: 1801.2378
+          y: 1134.3801
           width: 10
           height: 10
     Connection:
@@ -678,8 +692,8 @@ MonoBehaviour:
         title: 
         rect:
           serializedVersion: 2
-          x: 1042.7515
-          y: 946.4612
+          x: 1342.7515
+          y: 1121.4612
           width: 300
           height: 175
         isDragged: 0
@@ -958,36 +972,37 @@ MonoBehaviour:
           Type: 0
           SpeakerName: Robin
           Message: No
+          Options: []
           nextIndex: b7c8b497-b852-4a1d-aa67-9f216d543ac7
         SpeakerName: 
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 1342.7515
-          y: 966.4612
+          x: 1642.7515
+          y: 1141.4612
           width: 10
           height: 10
         inputNodeRect:
           serializedVersion: 2
-          x: 1042.7515
-          y: 966.4612
+          x: 1342.7515
+          y: 1141.4612
           width: 10
           height: 10
       output:
         title: 
         rect:
           serializedVersion: 2
-          x: 1501.2378
-          y: 939.3802
+          x: 1801.2378
+          y: 1114.3801
           width: 300
           height: 175
         isDragged: 0
-        isSelected: 0
+        isSelected: 1
         isResizing: 0
         style:
           m_Name: 
           m_Normal:
-            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
+            m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000, type: 0}
             m_ScaledBackgrounds: []
             m_TextColor: {r: 0, g: 0, b: 0, a: 1}
           m_Hover:
@@ -1257,19 +1272,20 @@ MonoBehaviour:
           Type: 0
           SpeakerName: Batman
           Message: Go home
+          Options: []
           nextIndex: 
         SpeakerName: 
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 1801.2378
-          y: 959.3802
+          x: 2101.2378
+          y: 1134.3801
           width: 10
           height: 10
         inputNodeRect:
           serializedVersion: 2
-          x: 1501.2378
-          y: 959.3802
+          x: 1801.2378
+          y: 1134.3801
           width: 10
           height: 10
       inputPosition:
@@ -1283,8 +1299,8 @@ MonoBehaviour:
         title: 
         rect:
           serializedVersion: 2
-          x: 1040.0487
-          y: 1243.7583
+          x: 1340.0487
+          y: 1418.7583
           width: 300
           height: 175
         isDragged: 0
@@ -1563,27 +1579,28 @@ MonoBehaviour:
           Type: 0
           SpeakerName: Robin
           Message: Yes
+          Options: []
           nextIndex: 60d2cdf9-982b-4b02-a63a-769c4ebeebec
         SpeakerName: 
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 1340.0487
-          y: 1263.7583
+          x: 1640.0487
+          y: 1438.7583
           width: 10
           height: 10
         inputNodeRect:
           serializedVersion: 2
-          x: 1040.0487
-          y: 1263.7583
+          x: 1340.0487
+          y: 1438.7583
           width: 10
           height: 10
       OutputNode:
         title: 
         rect:
           serializedVersion: 2
-          x: 1503.9404
-          y: 1244.7855
+          x: 1803.9404
+          y: 1419.7855
           width: 300
           height: 175
         isDragged: 0
@@ -1862,19 +1879,20 @@ MonoBehaviour:
           Type: 0
           SpeakerName: Batman
           Message: Lets go
+          Options: []
           nextIndex: 
         SpeakerName: 
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 1803.9404
-          y: 1264.7855
+          x: 2103.9404
+          y: 1439.7855
           width: 10
           height: 10
         inputNodeRect:
           serializedVersion: 2
-          x: 1503.9404
-          y: 1264.7855
+          x: 1803.9404
+          y: 1439.7855
           width: 10
           height: 10
     Connection:
@@ -1882,8 +1900,8 @@ MonoBehaviour:
         title: 
         rect:
           serializedVersion: 2
-          x: 1040.0487
-          y: 1243.7583
+          x: 1340.0487
+          y: 1418.7583
           width: 300
           height: 175
         isDragged: 0
@@ -2162,27 +2180,28 @@ MonoBehaviour:
           Type: 0
           SpeakerName: Robin
           Message: Yes
+          Options: []
           nextIndex: 60d2cdf9-982b-4b02-a63a-769c4ebeebec
         SpeakerName: 
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 1340.0487
-          y: 1263.7583
+          x: 1640.0487
+          y: 1438.7583
           width: 10
           height: 10
         inputNodeRect:
           serializedVersion: 2
-          x: 1040.0487
-          y: 1263.7583
+          x: 1340.0487
+          y: 1438.7583
           width: 10
           height: 10
       output:
         title: 
         rect:
           serializedVersion: 2
-          x: 1503.9404
-          y: 1244.7855
+          x: 1803.9404
+          y: 1419.7855
           width: 300
           height: 175
         isDragged: 0
@@ -2461,19 +2480,20 @@ MonoBehaviour:
           Type: 0
           SpeakerName: Batman
           Message: Lets go
+          Options: []
           nextIndex: 
         SpeakerName: 
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 1803.9404
-          y: 1264.7855
+          x: 2103.9404
+          y: 1439.7855
           width: 10
           height: 10
         inputNodeRect:
           serializedVersion: 2
-          x: 1503.9404
-          y: 1264.7855
+          x: 1803.9404
+          y: 1439.7855
           width: 10
           height: 10
       inputPosition:
@@ -2482,4 +2502,926 @@ MonoBehaviour:
         y: 0
         width: 0
         height: 0
-  startingNodeId: 4ef1000e-1f86-4734-9400-ebd2e7bc64c7
+  connectionOptions:
+  - ConnectionOptionTuple:
+      InputOption:
+        OptionId: 9cb8307e-0288-4338-a073-1cf5e3fa270d
+        NextIndex: 7e2ed4c3-a178-45fc-ba11-4996a76819f1
+        SpeakerName: Batman
+        OptionMessage: First Option Message
+        parentNodeRef: 4ef1000e-1f86-4734-9400-ebd2e7bc64c7
+      OutputNode:
+        title: 
+        rect:
+          serializedVersion: 2
+          x: 1340.0487
+          y: 1418.7583
+          width: 300
+          height: 175
+        isDragged: 0
+        isSelected: 0
+        isResizing: 0
+        style:
+          m_Name: 
+          m_Normal:
+            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Hover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Active:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Focused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnNormal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnHover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnActive:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnFocused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Border:
+            m_Left: 12
+            m_Right: 12
+            m_Top: 12
+            m_Bottom: 12
+          m_Margin:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Padding:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Overflow:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Font: {fileID: 0}
+          m_FontSize: 0
+          m_FontStyle: 0
+          m_Alignment: 0
+          m_WordWrap: 0
+          m_RichText: 1
+          m_TextClipping: 0
+          m_ImagePosition: 0
+          m_ContentOffset: {x: 0, y: 0}
+          m_FixedWidth: 0
+          m_FixedHeight: 0
+          m_StretchWidth: 1
+          m_StretchHeight: 0
+        defaultNodeStyle:
+          m_Name: 
+          m_Normal:
+            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Hover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Active:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Focused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnNormal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnHover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnActive:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnFocused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Border:
+            m_Left: 12
+            m_Right: 12
+            m_Top: 12
+            m_Bottom: 12
+          m_Margin:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Padding:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Overflow:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Font: {fileID: 0}
+          m_FontSize: 0
+          m_FontStyle: 0
+          m_Alignment: 0
+          m_WordWrap: 0
+          m_RichText: 1
+          m_TextClipping: 0
+          m_ImagePosition: 0
+          m_ContentOffset: {x: 0, y: 0}
+          m_FixedWidth: 0
+          m_FixedHeight: 0
+          m_StretchWidth: 1
+          m_StretchHeight: 0
+        selectedNodeStyle:
+          m_Name: 
+          m_Normal:
+            m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000, type: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Hover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Active:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Focused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnNormal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnHover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnActive:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnFocused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Border:
+            m_Left: 12
+            m_Right: 12
+            m_Top: 12
+            m_Bottom: 12
+          m_Margin:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Padding:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Overflow:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Font: {fileID: 0}
+          m_FontSize: 0
+          m_FontStyle: 0
+          m_Alignment: 0
+          m_WordWrap: 0
+          m_RichText: 1
+          m_TextClipping: 0
+          m_ImagePosition: 0
+          m_ContentOffset: {x: 0, y: 0}
+          m_FixedWidth: 0
+          m_FixedHeight: 0
+          m_StretchWidth: 1
+          m_StretchHeight: 0
+        startingNodeStyle:
+          m_Name: 
+          m_Normal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Hover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Active:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Focused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnNormal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnHover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnActive:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnFocused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Border:
+            m_Left: 20
+            m_Right: 20
+            m_Top: 20
+            m_Bottom: 20
+          m_Margin:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Padding:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Overflow:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Font: {fileID: 0}
+          m_FontSize: 0
+          m_FontStyle: 0
+          m_Alignment: 0
+          m_WordWrap: 0
+          m_RichText: 1
+          m_TextClipping: 0
+          m_ImagePosition: 0
+          m_ContentOffset: {x: 0, y: 0}
+          m_FixedWidth: 0
+          m_FixedHeight: 0
+          m_StretchWidth: 1
+          m_StretchHeight: 0
+        data:
+          Id: 7e2ed4c3-a178-45fc-ba11-4996a76819f1
+          Type: 0
+          SpeakerName: Robin
+          Message: Yes
+          Options: []
+          nextIndex: 60d2cdf9-982b-4b02-a63a-769c4ebeebec
+        SpeakerName: 
+        NodeName: 
+        outputNodeRect:
+          serializedVersion: 2
+          x: 1640.0487
+          y: 1438.7583
+          width: 10
+          height: 10
+        inputNodeRect:
+          serializedVersion: 2
+          x: 1340.0487
+          y: 1438.7583
+          width: 10
+          height: 10
+    Connection:
+      input:
+        title: 
+        rect:
+          serializedVersion: 2
+          x: 818.42725
+          y: 1430.2449
+          width: 329.7296
+          height: 479.7296
+        isDragged: 0
+        isSelected: 0
+        isResizing: 0
+        style:
+          m_Name: 
+          m_Normal:
+            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Hover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Active:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Focused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnNormal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnHover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnActive:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnFocused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Border:
+            m_Left: 12
+            m_Right: 12
+            m_Top: 12
+            m_Bottom: 12
+          m_Margin:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Padding:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Overflow:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Font: {fileID: 0}
+          m_FontSize: 0
+          m_FontStyle: 0
+          m_Alignment: 0
+          m_WordWrap: 0
+          m_RichText: 1
+          m_TextClipping: 0
+          m_ImagePosition: 0
+          m_ContentOffset: {x: 0, y: 0}
+          m_FixedWidth: 0
+          m_FixedHeight: 0
+          m_StretchWidth: 1
+          m_StretchHeight: 0
+        defaultNodeStyle:
+          m_Name: 
+          m_Normal:
+            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Hover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Active:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Focused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnNormal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnHover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnActive:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnFocused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Border:
+            m_Left: 12
+            m_Right: 12
+            m_Top: 12
+            m_Bottom: 12
+          m_Margin:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Padding:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Overflow:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Font: {fileID: 0}
+          m_FontSize: 0
+          m_FontStyle: 0
+          m_Alignment: 0
+          m_WordWrap: 0
+          m_RichText: 1
+          m_TextClipping: 0
+          m_ImagePosition: 0
+          m_ContentOffset: {x: 0, y: 0}
+          m_FixedWidth: 0
+          m_FixedHeight: 0
+          m_StretchWidth: 1
+          m_StretchHeight: 0
+        selectedNodeStyle:
+          m_Name: 
+          m_Normal:
+            m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000, type: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Hover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Active:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Focused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnNormal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnHover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnActive:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnFocused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Border:
+            m_Left: 12
+            m_Right: 12
+            m_Top: 12
+            m_Bottom: 12
+          m_Margin:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Padding:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Overflow:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Font: {fileID: 0}
+          m_FontSize: 0
+          m_FontStyle: 0
+          m_Alignment: 0
+          m_WordWrap: 0
+          m_RichText: 1
+          m_TextClipping: 0
+          m_ImagePosition: 0
+          m_ContentOffset: {x: 0, y: 0}
+          m_FixedWidth: 0
+          m_FixedHeight: 0
+          m_StretchWidth: 1
+          m_StretchHeight: 0
+        startingNodeStyle:
+          m_Name: 
+          m_Normal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Hover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Active:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Focused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnNormal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnHover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnActive:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnFocused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Border:
+            m_Left: 20
+            m_Right: 20
+            m_Top: 20
+            m_Bottom: 20
+          m_Margin:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Padding:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Overflow:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Font: {fileID: 0}
+          m_FontSize: 0
+          m_FontStyle: 0
+          m_Alignment: 0
+          m_WordWrap: 0
+          m_RichText: 1
+          m_TextClipping: 0
+          m_ImagePosition: 0
+          m_ContentOffset: {x: 0, y: 0}
+          m_FixedWidth: 0
+          m_FixedHeight: 0
+          m_StretchWidth: 1
+          m_StretchHeight: 0
+        data:
+          Id: 4ef1000e-1f86-4734-9400-ebd2e7bc64c7
+          Type: 0
+          SpeakerName: Batman
+          Message: First Node
+          Options:
+          - OptionID: 9cb8307e-0288-4338-a073-1cf5e3fa270d
+            Option:
+              OptionId: 9cb8307e-0288-4338-a073-1cf5e3fa270d
+              NextIndex: 7e2ed4c3-a178-45fc-ba11-4996a76819f1
+              SpeakerName: Batman
+              OptionMessage: First Option Message
+              parentNodeRef: 4ef1000e-1f86-4734-9400-ebd2e7bc64c7
+          nextIndex: 
+        SpeakerName: 
+        NodeName: 
+        outputNodeRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        inputNodeRect:
+          serializedVersion: 2
+          x: 818.42725
+          y: 1450.2449
+          width: 10
+          height: 10
+      output:
+        title: 
+        rect:
+          serializedVersion: 2
+          x: 1340.0487
+          y: 1418.7583
+          width: 300
+          height: 175
+        isDragged: 0
+        isSelected: 0
+        isResizing: 0
+        style:
+          m_Name: 
+          m_Normal:
+            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Hover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Active:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Focused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnNormal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnHover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnActive:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnFocused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Border:
+            m_Left: 12
+            m_Right: 12
+            m_Top: 12
+            m_Bottom: 12
+          m_Margin:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Padding:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Overflow:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Font: {fileID: 0}
+          m_FontSize: 0
+          m_FontStyle: 0
+          m_Alignment: 0
+          m_WordWrap: 0
+          m_RichText: 1
+          m_TextClipping: 0
+          m_ImagePosition: 0
+          m_ContentOffset: {x: 0, y: 0}
+          m_FixedWidth: 0
+          m_FixedHeight: 0
+          m_StretchWidth: 1
+          m_StretchHeight: 0
+        defaultNodeStyle:
+          m_Name: 
+          m_Normal:
+            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Hover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Active:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Focused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnNormal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnHover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnActive:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnFocused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Border:
+            m_Left: 12
+            m_Right: 12
+            m_Top: 12
+            m_Bottom: 12
+          m_Margin:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Padding:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Overflow:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Font: {fileID: 0}
+          m_FontSize: 0
+          m_FontStyle: 0
+          m_Alignment: 0
+          m_WordWrap: 0
+          m_RichText: 1
+          m_TextClipping: 0
+          m_ImagePosition: 0
+          m_ContentOffset: {x: 0, y: 0}
+          m_FixedWidth: 0
+          m_FixedHeight: 0
+          m_StretchWidth: 1
+          m_StretchHeight: 0
+        selectedNodeStyle:
+          m_Name: 
+          m_Normal:
+            m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000, type: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Hover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Active:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Focused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnNormal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnHover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnActive:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnFocused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Border:
+            m_Left: 12
+            m_Right: 12
+            m_Top: 12
+            m_Bottom: 12
+          m_Margin:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Padding:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Overflow:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Font: {fileID: 0}
+          m_FontSize: 0
+          m_FontStyle: 0
+          m_Alignment: 0
+          m_WordWrap: 0
+          m_RichText: 1
+          m_TextClipping: 0
+          m_ImagePosition: 0
+          m_ContentOffset: {x: 0, y: 0}
+          m_FixedWidth: 0
+          m_FixedHeight: 0
+          m_StretchWidth: 1
+          m_StretchHeight: 0
+        startingNodeStyle:
+          m_Name: 
+          m_Normal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Hover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Active:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Focused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnNormal:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnHover:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnActive:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_OnFocused:
+            m_Background: {fileID: 0}
+            m_ScaledBackgrounds: []
+            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+          m_Border:
+            m_Left: 20
+            m_Right: 20
+            m_Top: 20
+            m_Bottom: 20
+          m_Margin:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Padding:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Overflow:
+            m_Left: 0
+            m_Right: 0
+            m_Top: 0
+            m_Bottom: 0
+          m_Font: {fileID: 0}
+          m_FontSize: 0
+          m_FontStyle: 0
+          m_Alignment: 0
+          m_WordWrap: 0
+          m_RichText: 1
+          m_TextClipping: 0
+          m_ImagePosition: 0
+          m_ContentOffset: {x: 0, y: 0}
+          m_FixedWidth: 0
+          m_FixedHeight: 0
+          m_StretchWidth: 1
+          m_StretchHeight: 0
+        data:
+          Id: 7e2ed4c3-a178-45fc-ba11-4996a76819f1
+          Type: 0
+          SpeakerName: Robin
+          Message: Yes
+          Options: []
+          nextIndex: 60d2cdf9-982b-4b02-a63a-769c4ebeebec
+        SpeakerName: 
+        NodeName: 
+        outputNodeRect:
+          serializedVersion: 2
+          x: 1640.0487
+          y: 1438.7583
+          width: 10
+          height: 10
+        inputNodeRect:
+          serializedVersion: 2
+          x: 1340.0487
+          y: 1438.7583
+          width: 10
+          height: 10
+      inputPosition:
+        serializedVersion: 2
+        x: 159
+        y: 219
+        width: 127
+        height: 15
+  startingNodeId: 

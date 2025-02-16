@@ -1,6 +1,7 @@
 using KKG.Dialogue;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Plastic.Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
@@ -101,7 +102,7 @@ namespace KKG.Tool.Dialogue
 
                 foreach(var opt in data.Options)
                 {
-                    LocalOptions.Add(opt.Key, opt.Value);
+                    LocalOptions.Add(opt.OptionID, opt.Option);
                 }
             }
 
@@ -144,7 +145,7 @@ namespace KKG.Tool.Dialogue
                 Type = MessageType.DEFAULT,
                 SpeakerName = string.Empty,
                 Message = string.Empty,
-                Options = new Dictionary<string,DialogueOption>(),
+                Options = new List<DialogueOptionPacket>(),
                 nextIndex = null
             };
 
@@ -201,8 +202,8 @@ namespace KKG.Tool.Dialogue
 
                     foreach (var keyValuePair in data.Options)
                     {
-                        string optionId = keyValuePair.Key;
-                        DialogueOption option = keyValuePair.Value;
+                        string optionId = keyValuePair.OptionID;
+                        DialogueOption option = keyValuePair.Option;
 
                         GUILayout.BeginVertical("box"); // Group each option in a box for clarity
 
@@ -212,13 +213,13 @@ namespace KKG.Tool.Dialogue
                         string newOptionId = optionId;
                         GUILayout.EndHorizontal();
 
-                        if (newOptionId != optionId && !data.Options.ContainsKey(newOptionId))
-                        {
-                            // Rename key if it changed and doesn't already exist
-                            data.Options.Remove(optionId);
-                            data.Options[newOptionId] = option;
-                            break; // Exit loop to avoid modifying the dictionary during iteration
-                        }
+                        //if (newOptionId != optionId && !data.Options.ContainsKey(newOptionId))
+                        //{
+                        //    // Rename key if it changed and doesn't already exist
+                        //    data.Options.Remove(optionId);
+                        //    data.Options[newOptionId] = option;
+                        //    break; // Exit loop to avoid modifying the dictionary during iteration
+                        //}
 
                         // Option Message
                         GUILayout.BeginHorizontal();
@@ -289,7 +290,8 @@ namespace KKG.Tool.Dialogue
                     // Apply updates after the loop
                     foreach (var updatedOption in LocalOptions)
                     {
-                        data.Options[updatedOption.Key] = updatedOption.Value;
+                        var optionPacket = data.Options.Single(opt => opt.OptionID == updatedOption.Key);
+                        optionPacket.Option = updatedOption.Value;
                     }
                 }
 
@@ -298,7 +300,8 @@ namespace KKG.Tool.Dialogue
                 // Remove options marked for deletion
                 foreach (string key in keysToRemove)
                 {
-                    data.Options.Remove(key);
+                    var optionPacket = data.Options.Single(opt => opt.OptionID == key);
+                    data.Options.Remove(optionPacket);
                 }
                 // Add new option
                 GUILayout.Space(10);
@@ -335,7 +338,9 @@ namespace KKG.Tool.Dialogue
                 parentNodeRef = data.Id
             };
 
-            data.Options.Add(newOption.OptionId, newOption); // Add to the options list
+            //Adds Option ID as Key and Dialogue Option as Value 
+            DialogueOptionPacket optionPacket = new DialogueOptionPacket(newOption.OptionId, newOption);
+            data.Options.Add(optionPacket); // Add to the options list
             optionsCount++; // Increment the options count
             createOption = false; // Reset the flag
 
@@ -347,26 +352,20 @@ namespace KKG.Tool.Dialogue
             SetNextIndex(null);
         }
 
-        public DialogueOption CreateOptionWithData(DialogueOption _Option)
+        public DialogueOptionPacket CreateOptionWithData(DialogueOptionPacket _OptionPacket)
         {
             //data.Options.Add(_Option.OptionId,_Option);
-            LocalOptions.Add(_Option.OptionId, _Option);
+            LocalOptions.Add(_OptionPacket.OptionID, _OptionPacket.Option);
             optionsCount++;
 
-            return _Option;
+            return _OptionPacket;
         }
 
         public void AddNextIndexOnTool(string _optionId, string nextIndex)
         {
-            var option = data.Options[_optionId];
+            var option = data.Options.Single(opt => opt.OptionID == _optionId);
 
-            option.NextIndex = nextIndex;
-            data.Options[_optionId] = option;
-
-            //if (data.Options.TryGetValue(_optionId, out var option))
-            //{
-            //    option.NextIndex = nextIndex; // Update the existing object
-            //}
+            option.Option.NextIndex = nextIndex;
         }
 
         public void AllowDrawingNode()
@@ -387,7 +386,7 @@ namespace KKG.Tool.Dialogue
         {
             if (data.Options == null)
             {
-                data.Options = new Dictionary<string, DialogueOption>();
+                data.Options = new List<DialogueOptionPacket>();
             }
 
             if(data.Options.Count > 0) return;

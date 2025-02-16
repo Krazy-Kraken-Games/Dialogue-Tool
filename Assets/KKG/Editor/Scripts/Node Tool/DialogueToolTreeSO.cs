@@ -41,6 +41,7 @@ namespace KKG.Dialogue
         private List<NodeData> nodes = new List<NodeData>();
         [SerializeField]
         private List<ConnectionPacket> connections = new List<ConnectionPacket>();
+        [SerializeField]
         private List<ConnectionOptionPacket> connectionOptions = new List<ConnectionOptionPacket>();
 
         [SerializeField]

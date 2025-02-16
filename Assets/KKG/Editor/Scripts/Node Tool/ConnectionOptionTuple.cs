@@ -2,6 +2,7 @@
 
 namespace KKG.Tool.Dialogue
 {
+    [System.Serializable]
     public class ConnectionOptionTuple
     {
         public DialogueOption InputOption;

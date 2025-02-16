@@ -725,7 +725,7 @@ namespace KKG.Tool.Dialogue
 
                 foreach (var opt in options)
                 {
-                    var optionKeysToRemove = connectionOptions.Keys.Where(ct => ct.InputOption.OptionId == opt.Value.OptionId || ct.OutputNode == selectedNode).ToList();
+                    var optionKeysToRemove = connectionOptions.Keys.Where(ct => ct.InputOption.OptionId == opt.OptionID || ct.OutputNode == selectedNode).ToList();
 
                     foreach (var key in optionKeysToRemove)
                     {
@@ -939,8 +939,8 @@ namespace KKG.Tool.Dialogue
 
                             foreach (var option in existingNode.data.Options)
                             {
-                               var createdOption =  existingNode.CreateOptionWithData(option.Value);
-                               allOptions.Add(createdOption);
+                               var createdOption =  existingNode.CreateOptionWithData(option);
+                               allOptions.Add(createdOption.Option);
                             }
                         }
 

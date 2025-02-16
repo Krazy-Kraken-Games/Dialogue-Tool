@@ -49,10 +49,10 @@ namespace KKG.Dialogue
                 jumpIndex = rowData[3];
             }
 
-            Dictionary<string,DialogueOption> options = new Dictionary<string,DialogueOption>();
-            
+            List<DialogueOptionPacket> options = new List<DialogueOptionPacket>();
+
             //Dialogue Options start from index 4
-            for(int i = 4; i < maxCount; i+=2)
+            for (int i = 4; i < maxCount; i+=2)
             {
                 if(i + 1< maxCount && !string.IsNullOrEmpty(rowData[i]) && !string.IsNullOrEmpty(rowData[i+1]))
                 {
@@ -62,7 +62,9 @@ namespace KKG.Dialogue
                         OptionMessage = rowData[i],
                         NextIndex = rowData[i + 1]
                     };
-                    options.Add(dialogOption.OptionId,dialogOption);
+
+                    DialogueOptionPacket packet = new DialogueOptionPacket(dialogOption.OptionId, dialogOption, new Rect(0,0,0,0));
+                    options.Add(packet);
                 }
                 else
                 {

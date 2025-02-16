@@ -18,29 +18,41 @@ MonoBehaviour:
       Type: 0
       SpeakerName: Batman
       Message: First Node
+      Options:
+      - OptionID: 9cb8307e-0288-4338-a073-1cf5e3fa270d
+        Option:
+          OptionId: 9cb8307e-0288-4338-a073-1cf5e3fa270d
+          NextIndex: 7e2ed4c3-a178-45fc-ba11-4996a76819f1
+          SpeakerName: Batman
+          OptionMessage: First Option Message
+          parentNodeRef: 4ef1000e-1f86-4734-9400-ebd2e7bc64c7
       nextIndex: 
   - data:
       Id: 9fbd396b-40f2-4e0d-b69f-844934ad4c0f
       Type: 0
       SpeakerName: Robin
       Message: No
+      Options: []
       nextIndex: b7c8b497-b852-4a1d-aa67-9f216d543ac7
   - data:
       Id: 7e2ed4c3-a178-45fc-ba11-4996a76819f1
       Type: 0
       SpeakerName: Robin
       Message: Yes
+      Options: []
       nextIndex: 60d2cdf9-982b-4b02-a63a-769c4ebeebec
   - data:
       Id: b7c8b497-b852-4a1d-aa67-9f216d543ac7
       Type: 0
       SpeakerName: Batman
       Message: Go home
+      Options: []
       nextIndex: 
   - data:
       Id: 60d2cdf9-982b-4b02-a63a-769c4ebeebec
       Type: 0
       SpeakerName: Batman
       Message: Lets go
+      Options: []
       nextIndex: 
   Count: 5

@@ -1,5 +1,4 @@
 ﻿using KKG.Tool.Dialogue;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 
