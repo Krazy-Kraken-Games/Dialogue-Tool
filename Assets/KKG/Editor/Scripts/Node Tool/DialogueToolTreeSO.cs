@@ -17,6 +17,20 @@ namespace KKG.Dialogue
         }
     }
 
+    [System.Serializable]
+    public class  ConnectionOptionPacket
+    {
+        public ConnectionOptionTuple ConnectionOptionTuple;
+        public Connection Connection;
+
+        public ConnectionOptionPacket(ConnectionOptionTuple _optionTuple, Connection _connection)
+        {
+            ConnectionOptionTuple = _optionTuple;
+            Connection = _connection;
+        }
+    }
+
+
     /// <summary>
     /// The scriptable object structure to hold the information of nodes, connections and options
     /// in the data field
@@ -27,7 +41,7 @@ namespace KKG.Dialogue
         private List<NodeData> nodes = new List<NodeData>();
         [SerializeField]
         private List<ConnectionPacket> connections = new List<ConnectionPacket>();
-        private Dictionary<ConnectionOptionTuple, Connection> connectionOptions = new Dictionary<ConnectionOptionTuple, Connection>();
+        private List<ConnectionOptionPacket> connectionOptions = new List<ConnectionOptionPacket>();
 
         [SerializeField]
         private string startingNodeId;
@@ -60,10 +74,12 @@ namespace KKG.Dialogue
             }
 
             //Save the connection options
-            connectionOptions = new Dictionary<ConnectionOptionTuple, Connection>();
+            connectionOptions = new List<ConnectionOptionPacket>();
             foreach(var connectionOption in _connectionOptions)
             {
-                connectionOptions.Add(connectionOption.Key, connectionOption.Value);
+                ConnectionOptionPacket cop = new ConnectionOptionPacket(connectionOption.Key, connectionOption.Value);
+
+                connectionOptions.Add(cop);
             }
 
 
@@ -74,7 +90,7 @@ namespace KKG.Dialogue
 
         public List<ConnectionPacket> Connections => connections;
 
-        public Dictionary<ConnectionOptionTuple, Connection> ConnectionOptions => connectionOptions;
+        public List<ConnectionOptionPacket> ConnectionOptions => connectionOptions;
 
     }
 }

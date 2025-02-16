@@ -1,6 +1,7 @@
 
 namespace KKG.Dialogue
 {
+
     [System.Serializable]
     public class DialogueOption
     {

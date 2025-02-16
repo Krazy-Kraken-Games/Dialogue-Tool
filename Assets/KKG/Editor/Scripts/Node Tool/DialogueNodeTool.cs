@@ -712,8 +712,6 @@ namespace KKG.Tool.Dialogue
         {
             if(selectedNode != null)
             {
-               
-
                 var keysToRemove = connections.Keys.Where(ct => ct.InputNode == selectedNode || ct.OutputNode == selectedNode).ToList();
 
                 foreach (var key in keysToRemove)
@@ -978,8 +976,8 @@ namespace KKG.Tool.Dialogue
                 {
                     foreach(var connectionOpt in dialogueToolTreeSO.ConnectionOptions)
                     {
-                        var InputKey = connectionOpt.Key.InputOption;
-                        var OutputKey = connectionOpt.Key.OutputNode;
+                        var InputKey = connectionOpt.ConnectionOptionTuple.InputOption;
+                        var OutputKey = connectionOpt.ConnectionOptionTuple.OutputNode;
 
                         //Find the input & output nodes in the existing/newly created dialogue nodes
                         var InputNode = nodes.First(node => node.data.Id.Equals(InputKey.parentNodeRef));
@@ -1037,51 +1035,5 @@ namespace KKG.Tool.Dialogue
         }
 
 
-        #region JSON SECTION
-
-        private async void CreateJSONFile(string _fileName)
-        {
-            string JsonPath = $"Assets/Resources/Content/{_fileName}.json";
-
-            bool res = await NodeJSON.SaveDataToJSON(JsonPath,30,40,nodes);
-
-            if (res)
-            {
-                Debug.Log("JSON file send successful");
-            }
-            else
-            {
-                Debug.LogError("Failed to send JSON data to backend");
-            }
-
-        }
-
-        private void LoadJSONFile(string _fileName)
-        {
-            nodes.Clear();
-
-            string path = $"Assets/Resources/Content/{_fileName}.json";
-
-            var data = NodeJSON.LoadData(path);
-
-            if (data.Nodes.Count > 0) 
-            {
-                foreach (var node in data.Nodes)
-                {
-                    //Create the new node
-                    var newNode = new DialogueTreeNode(node);
-
-                    Debug.Log($"Node {node.data.SpeakerName} Options: {node.opts.Count}");
-
-                    nodes.Add(newNode);
-                }
-
-                Debug.Log($"All nodes have been loaded: {nodes.Count}");
-            }
-
-
-        }
-
-        #endregion
     }
 }

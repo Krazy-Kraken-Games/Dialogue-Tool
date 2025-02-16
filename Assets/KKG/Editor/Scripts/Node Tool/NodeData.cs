@@ -16,8 +16,6 @@ namespace KKG.Dialogue
 
         public DialogueNodeData data;
 
-        public List<DialogueOption> opts = new List<DialogueOption>();
-
         public NodeData(DialogueTreeNode _node)
         {
             Rect rect = _node.rect;
@@ -26,13 +24,6 @@ namespace KKG.Dialogue
             Size = new NodeVector2(rect.size.x, rect.size.y);
 
             data = _node.data;
-
-            foreach (var opt in _node.data.Options)
-            {
-                data.Options.Add(opt.Key, opt.Value);
-
-                opts.Add(opt.Value);
-            }
         }
     }
 }
