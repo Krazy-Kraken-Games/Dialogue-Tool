@@ -93,5 +93,6 @@ namespace KKG.Dialogue
 
         public List<ConnectionOptionPacket> ConnectionOptions => connectionOptions;
 
+        public string StartNodeId => startingNodeId;
     }
 }

@@ -920,6 +920,12 @@ namespace KKG.Tool.Dialogue
 
                     newNode.data.Id = data.Id;
 
+                    //Manually toggle the button to show options if options exist
+                    if(nodeData.data.Options.Count > 0)
+                    {
+                        newNode.SetShowOptions(true);
+                    }
+
                     // Add the recreated node to the list
                     nodes.Add(newNode);
                 }
@@ -996,7 +1002,13 @@ namespace KKG.Tool.Dialogue
                     }
                 }
 
-                //Set the starting
+                //Set the starting node to proper mode
+                if (!string.IsNullOrEmpty(dialogueToolTreeSO.StartNodeId))
+                {
+                    var startingNode = nodes.Single(node => node.data.Id == dialogueToolTreeSO.StartNodeId);
+
+                    startingNode.SetStartingNode();
+                }
 
                 Debug.Log("Dialogue tree loaded successfully!");
             }

@@ -542,5 +542,10 @@ namespace KKG.Tool.Dialogue
             style = defaultNodeStyle;
         }
 
+        public void SetShowOptions(bool _show)
+        {
+            showOptions = _show;
+        }
+
     }
 }
