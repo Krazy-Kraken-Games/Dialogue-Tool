@@ -989,7 +989,10 @@ namespace KKG.Tool.Dialogue
 
                         connectionOptions.Add(cot, newConnection);
 
-                        newConnection.SetFromOutputNode(InputNode.rect);
+                        //Get Output rect from Dialogue Tree Node
+
+                        var nodePacket = InputNode.data.Options.Single(opt => opt.OptionID == InputKey.OptionId); 
+                        newConnection.SetFromOutputNode(nodePacket.rect);
                     }
                 }
 

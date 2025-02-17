@@ -26,6 +26,25 @@ MonoBehaviour:
           SpeakerName: Batman
           OptionMessage: First Option Message
           parentNodeRef: 4ef1000e-1f86-4734-9400-ebd2e7bc64c7
+        rect:
+          serializedVersion: 2
+          x: 159
+          y: 219
+          width: 127
+          height: 15
+      - OptionID: 6a38d61d-8378-4780-a0bc-64b93b84adec
+        Option:
+          OptionId: 6a38d61d-8378-4780-a0bc-64b93b84adec
+          NextIndex: 9fbd396b-40f2-4e0d-b69f-844934ad4c0f
+          SpeakerName: Speaker 2
+          OptionMessage: Option Message 2
+          parentNodeRef: 4ef1000e-1f86-4734-9400-ebd2e7bc64c7
+        rect:
+          serializedVersion: 2
+          x: 159
+          y: 326
+          width: 127
+          height: 15
       nextIndex: 
   - data:
       Id: 9fbd396b-40f2-4e0d-b69f-844934ad4c0f

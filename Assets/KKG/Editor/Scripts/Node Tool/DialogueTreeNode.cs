@@ -48,16 +48,12 @@ namespace KKG.Tool.Dialogue
         public float Height => rect.size.y;
 
 
-        //Option Dragging
-        public Dictionary<DialogueOption,Rect> dialogueOutputCollection;
+        //Option Dragging, used for determining nodes of each dialog options
+        public Dictionary<DialogueOption,Rect> dialogueOptionRectCollection;
 
         //Local Cache for options
         public Dictionary<string, DialogueOption> LocalOptions;
 
-        //public DialogueTreeNode()
-        //{
-
-        //}
 
         //Constructor to rebuild node again using Node Data
 
@@ -91,7 +87,7 @@ namespace KKG.Tool.Dialogue
 
 
             //Output collection
-            dialogueOutputCollection = new Dictionary<DialogueOption, Rect>();
+            dialogueOptionRectCollection = new Dictionary<DialogueOption, Rect>();
 
             //Initialize local options cache
             LocalOptions = new Dictionary<string, DialogueOption>();
@@ -150,7 +146,7 @@ namespace KKG.Tool.Dialogue
             };
 
             //Output collection
-            dialogueOutputCollection = new Dictionary<DialogueOption, Rect>();
+            dialogueOptionRectCollection = new Dictionary<DialogueOption, Rect>();
 
             //Initialize local options cache
             LocalOptions = new Dictionary<string, DialogueOption>();
@@ -256,11 +252,14 @@ namespace KKG.Tool.Dialogue
                         Rect outputNodeRect = GUILayoutUtility.GetRect(15, 15); // Adjust size as needed
                         EditorGUI.DrawRect(outputNodeRect, Color.green); // Draw the node
 
-                        if (!dialogueOutputCollection.ContainsKey(option))
+                        if (!dialogueOptionRectCollection.ContainsKey(option))
                         {
                             //Add the output rect 
-                            dialogueOutputCollection.Add(option, outputNodeRect);
+                            dialogueOptionRectCollection.Add(option, outputNodeRect);
                         }
+
+                        //Store the rect information in the Option Data packet
+                        keyValuePair.rect = outputNodeRect;
 
                         // Make it interactive (clickable and draggable)
                         if (Event.current.type == EventType.MouseDown && outputNodeRect.Contains(Event.current.mousePosition))
@@ -339,7 +338,7 @@ namespace KKG.Tool.Dialogue
             };
 
             //Adds Option ID as Key and Dialogue Option as Value 
-            DialogueOptionPacket optionPacket = new DialogueOptionPacket(newOption.OptionId, newOption);
+            DialogueOptionPacket optionPacket = new DialogueOptionPacket(newOption.OptionId, newOption, new Rect(0,0,0,0));
             data.Options.Add(optionPacket); // Add to the options list
             optionsCount++; // Increment the options count
             createOption = false; // Reset the flag
