@@ -126,7 +126,18 @@ namespace KKG.Dialogue
         {
             if(dialogueScreen != null)
             {
-                dialogueScreen.PopulateMessage(activeDialogue.GetCurrentMessage().Message); 
+                var message = activeDialogue.GetCurrentMessage().Message;
+                dialogueScreen.PopulateMessage(message);
+
+
+                if (message.Options.Count > 0)
+                {
+                    //Options exists, have dialogue manager populate options
+                }
+                else
+                {
+                    //There are no options present. Have dialogue manager hide options
+                }
             }
         }
 
