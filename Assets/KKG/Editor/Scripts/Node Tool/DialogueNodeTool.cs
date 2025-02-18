@@ -671,12 +671,20 @@ namespace KKG.Tool.Dialogue
 
         private void ShowNodeContextMenu(Vector2 position)
         {
+            Matrix4x4 m4 = GUI.matrix;
+            // scale it by your zoom
+            GUI.matrix = GUI.matrix * Matrix4x4.Scale(new Vector3(1 / zoomScale, 1 / zoomScale, 1 / zoomScale));
+
             GenericMenu menu = new GenericMenu();
 
             menu.AddItem(new GUIContent("Delete Node"), false, () => OnClickDeleteNode(position));
             menu.AddItem(new GUIContent("Make Starting Node"), false, () => OnClickStartNode(position));
 
             menu.ShowAsContext();
+
+
+            // restore matrix
+            GUI.matrix = m4;
         }
 
         private void OnClickResetZoom(Vector2 clickPosition)
