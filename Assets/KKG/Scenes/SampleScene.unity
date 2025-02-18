@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDialoguePlaying: 0
-  activeDialogueSO: {fileID: 11400000, guid: 783e516343c3d4247ac731e753829b9a, type: 2}
+  activeDialogueSO: {fileID: 11400000, guid: 5442881215a60c047a166fe806626c2d, type: 2}
   activeDialogue:
     isRunning: 0
     activeMessage:
@@ -314,6 +314,7 @@ MonoBehaviour:
         Type: 0
         SpeakerName: 
         Message: 
+        Options: []
         nextIndex: 
   dialogueScreen: {fileID: 2002699295}
 --- !u!4 &945283854
