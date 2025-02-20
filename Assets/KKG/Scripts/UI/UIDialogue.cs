@@ -14,5 +14,6 @@ public class UIDialogue : MonoBehaviour
     {
         SpeakerNameText.text = _data.SpeakerName;
         MessageText.text = _data.Message;
+
     }
 }

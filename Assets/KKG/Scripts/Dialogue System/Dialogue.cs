@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace KKG.Dialogue
 {
-    [System.Serializable]
+    [Serializable]
     public class Dialogue
     {
         public Dictionary<string,DialogueNode> Messages;
@@ -75,6 +75,24 @@ namespace KKG.Dialogue
 
                 return nextMessage;
             }
+        }
+
+        public DialogueNode SetNextMessageById(string _id)
+        {
+            activeMessage =  Messages[_id];
+
+            //Check if active Message is valid
+            if (activeMessage == null)
+            {
+                isRunning = false;
+                OnDialogueEndReachedEvent?.Invoke();
+            }
+            else
+            {
+                OnMessageUpdatedEvent?.Invoke(activeMessage);
+            }
+
+            return activeMessage ?? null;
         }
 
         

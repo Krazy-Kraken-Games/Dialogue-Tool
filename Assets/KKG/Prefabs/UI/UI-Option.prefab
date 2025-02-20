@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6615413973783726857}
   - component: {fileID: 102066661790933214}
   - component: {fileID: 1545000116580602796}
+  - component: {fileID: 6581223208775668966}
   m_Layer: 5
   m_Name: UI-Option
   m_TagString: Untagged
@@ -121,7 +122,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6615413973783726857}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6581223208775668966}
+        m_TargetAssemblyTypeName: UIOption, Assembly-CSharp
+        m_MethodName: OnOptionSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1545000116580602796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +155,25 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &6581223208775668966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3956516402630508886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28eb96443dacc84aae7a829458eecdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  option:
+    OptionId: 
+    NextIndex: 
+    SpeakerName: 
+    OptionMessage: 
+    parentNodeRef: 
+  MessageText: {fileID: 1522999395666471791}
 --- !u!1 &4768261419470995189
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +267,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.6
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -18,6 +18,8 @@ public class UIOption : MonoBehaviour
 
     public void OnOptionSelected()
     {
+        string nextIndex = option.NextIndex;
 
+        DialogueManager.Instance.OnOptionSelectedByID(nextIndex);
     }
 }

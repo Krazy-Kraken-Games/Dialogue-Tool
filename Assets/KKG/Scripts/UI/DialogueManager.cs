@@ -128,16 +128,6 @@ namespace KKG.Dialogue
             {
                 var message = activeDialogue.GetCurrentMessage().Message;
                 dialogueScreen.PopulateMessage(message);
-
-
-                if (message.Options.Count > 0)
-                {
-                    //Options exists, have dialogue manager populate options
-                }
-                else
-                {
-                    //There are no options present. Have dialogue manager hide options
-                }
             }
         }
 
@@ -170,6 +160,29 @@ namespace KKG.Dialogue
                 {
                     ShowCurrentMessage();
                 }
+            }
+        }
+
+        #endregion
+
+        #region Option Input Handling Secction
+
+        public void OnOptionSelectedByID(string _nextMessageId)
+        {
+            if (activeDialogue == null) return;
+
+            var nextMessage = activeDialogue.SetNextMessageById(_nextMessageId);
+
+
+            if (nextMessage == null)
+            {
+                Debug.Log("End dialogue reached");
+                isDialoguePlaying = false;
+                dialogueScreen.Toggle();
+            }
+            else
+            {
+                ShowCurrentMessage();
             }
         }
 
