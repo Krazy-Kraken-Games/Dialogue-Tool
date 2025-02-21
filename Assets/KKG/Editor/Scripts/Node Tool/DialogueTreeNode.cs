@@ -391,7 +391,7 @@ namespace KKG.Tool.Dialogue
             if(data.Options.Count > 0) return;
 
 
-            const float nodeSize = 10f;
+            const float nodeSize = 30f;
 
             outputNodeRect = new Rect(rect.xMax, rect.y + 20f, nodeSize, nodeSize);
 
@@ -400,11 +400,22 @@ namespace KKG.Tool.Dialogue
 
         private void DrawResizeHandle()
         {
-            const float handleSize = 10f;
+            const float handleSize = 30f;
 
             resizeHandleRect = new Rect(rect.xMax - handleSize, rect.yMax - handleSize, handleSize, handleSize);
 
-            EditorGUI.DrawRect(resizeHandleRect, Color.yellow);
+            // Load your texture (this assumes you have a texture at the specified path).
+            Texture2D handleTexture = EditorGUIUtility.Load("Assets/KKG/Editor/Textures/ResizeArrows.png") as Texture2D;
+
+            // If the texture is loaded successfully, draw it; otherwise, fallback to a colored rectangle.
+            if (handleTexture != null)
+            {
+                GUI.DrawTexture(resizeHandleRect, handleTexture);
+            }
+            else
+            {
+                EditorGUI.DrawRect(resizeHandleRect, Color.yellow);
+            }
 
             EditorGUIUtility.AddCursorRect(resizeHandleRect, MouseCursor.ResizeUpLeft);
 
@@ -501,7 +512,7 @@ namespace KKG.Tool.Dialogue
 
                 case EventType.MouseDrag:
 
-                    if(e.button == 1 && isDragged)
+                    if(e.button == 2 && isDragged)
                     {
                         Drag(e.delta);
                         e.Use();

@@ -41,6 +41,9 @@ namespace KKG.Tool.Dialogue
         private bool isDraggingOutputConnection;
         private DialogueOption currentDialogueOption;
 
+        //Instructions panel
+        private bool showInstructions = true;
+
 
         [MenuItem("Tools/Krazy Kraken Games/Dialogue Graph")]
         public static void OpenWindow()
@@ -117,7 +120,7 @@ namespace KKG.Tool.Dialogue
             Rect inspectorRect = new Rect(position.width - 200, 0, 200, position.height);
             DrawInspectorPanel(inspectorRect);
 
-            Rect instructionRect = new Rect(position.width - 200, position.height - 200, 200, 200);
+            Rect instructionRect = new Rect(0, position.height - 200, 700, 200);
             DrawInstructionsPanel(instructionRect);
 
         }
@@ -133,15 +136,31 @@ namespace KKG.Tool.Dialogue
 
         private void DrawInstructionsPanel(Rect rect)
         {
-            GUI.Box(rect,"Instructions",GUI.skin.window);
+            if (showInstructions)
+            {
+                GUI.Box(rect, "Instructions", GUI.skin.window);
+                GUILayout.BeginArea(new Rect(rect.x + 30, rect.y + 30, rect.width - 60, rect.height - 60));
 
-            GUILayout.BeginArea(new Rect(rect.x + 30, rect.y + 30, rect.width - 60, rect.height - 60));
+                GUILayout.Label("Click on right mouse button to create dialogue node");
+                GUILayout.Label("Press Left mouse button on nodes to drag and create connections");
+                GUILayout.Label("Press and hold middle mouse button to pan camera around. Scroll mouse to zoom in and out");
 
-            GUILayout.Label("Press Middle Mouse Button to create nodes");
-            GUILayout.Label("Press Left mouse button on nodes to drag and create connections");
-            GUILayout.Label("Press Right mouse button on nodes to drag and move the nodes");
+                if (GUILayout.Button("Hide Instructions"))
+                {
+                    showInstructions = false;
+                }
 
-            GUILayout.EndArea();
+               GUILayout.EndArea();
+            }
+            else
+            {
+                GUILayout.BeginArea(new Rect(0, position.height - 40, 160, 40));
+                if(GUILayout.Button("Show Instructions"))
+                {
+                    showInstructions = true;
+                }
+                GUILayout.EndArea();
+            }
         }
 
         private async void DrawInspectorPanel(Rect rect)
@@ -393,12 +412,12 @@ namespace KKG.Tool.Dialogue
 
         private void HandlePanning(Event e)
         {
-            if (e.type == EventType.MouseDown && e.button == 1) // Middle mouse button
+            if (e.type == EventType.MouseDown && e.button == 2) // Middle mouse button
             {
                 dragStart = e.mousePosition;
             }
 
-            if (e.type == EventType.MouseDrag && e.button == 1)
+            if (e.type == EventType.MouseDrag && e.button == 2)
             {
                 Vector2 delta = e.mousePosition - dragStart;
                 scrollPosition -= delta;
@@ -496,8 +515,8 @@ namespace KKG.Tool.Dialogue
 
                     selectedNode = CheckForHitsOnNode(e.mousePosition);
 
-                    //Handle Middle Mouse Button
-                    ProcessMiddleMouseDown(e);
+                    //Handle Right Mouse Click
+                    ProcessRightMouseDown(e);
 
                     break;
 
@@ -594,10 +613,10 @@ namespace KKG.Tool.Dialogue
             }
         }
 
-        private void ProcessMiddleMouseDown(Event e)
+        private void ProcessRightMouseDown(Event e)
         {
             //For middle mouse button
-            if (e.button == 2)
+            if (e.button == 1)
             {
                 if (selectedNode != null)
                 {
