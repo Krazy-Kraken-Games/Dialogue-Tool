@@ -1015,7 +1015,7 @@ namespace KKG.Tool.Dialogue
                 {
                     var startingNode = nodes.Single(node => node.data.Id == dialogueToolTreeSO.StartNodeId);
 
-                    startingNode.SetStartingNode();
+                    SetStartingNode(startingNode);
                 }
 
                 Debug.Log("Dialogue tree loaded successfully!");

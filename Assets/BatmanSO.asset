@@ -66,7 +66,7 @@ MonoBehaviour:
       SpeakerName: Batman
       Message: Go home
       Options: []
-      nextIndex: 
+      nextIndex: d905f682-3237-4c7f-96fb-eadacd627a74
   - data:
       Id: 60d2cdf9-982b-4b02-a63a-769c4ebeebec
       Type: 0
@@ -74,4 +74,11 @@ MonoBehaviour:
       Message: Lets go
       Options: []
       nextIndex: 
-  Count: 5
+  - data:
+      Id: d905f682-3237-4c7f-96fb-eadacd627a74
+      Type: 0
+      SpeakerName: Alfred
+      Message: Yeto ka jevayla?
+      Options: []
+      nextIndex: 
+  Count: 6
