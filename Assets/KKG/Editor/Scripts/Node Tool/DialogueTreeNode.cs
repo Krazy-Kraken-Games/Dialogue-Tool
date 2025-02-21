@@ -374,11 +374,21 @@ namespace KKG.Tool.Dialogue
 
         private void DrawInputNode()
         {
-            const float nodeSize = 10f;
+            const float nodeSize = 20f;
 
             inputNodeRect = new Rect(rect.x, rect.y + 20f, nodeSize, nodeSize);
 
-            EditorGUI.DrawRect(inputNodeRect, Color.red);
+            // Load your texture (this assumes you have a texture at the specified path).
+            Texture2D inputTexture = EditorGUIUtility.Load("Assets/KKG/Editor/Textures/InputCircle.png") as Texture2D;
+
+            if (inputTexture != null)
+            {
+                GUI.DrawTexture(inputNodeRect, inputTexture);
+            }
+            else
+            {
+                EditorGUI.DrawRect(inputNodeRect, Color.green);
+            }
         }
 
         private void DrawOutputNode()
@@ -388,14 +398,25 @@ namespace KKG.Tool.Dialogue
                 data.Options = new List<DialogueOptionPacket>();
             }
 
-            if(data.Options.Count > 0) return;
+            if (data.Options.Count > 0) return;
 
 
-            const float nodeSize = 30f;
+            const float nodeSize = 20f;
 
             outputNodeRect = new Rect(rect.xMax, rect.y + 20f, nodeSize, nodeSize);
 
-            EditorGUI.DrawRect(outputNodeRect, Color.green);
+
+            // Load your texture (this assumes you have a texture at the specified path).
+            Texture2D outputTexture = EditorGUIUtility.Load("Assets/KKG/Editor/Textures/OutputCircle.png") as Texture2D;
+
+            if (outputTexture != null)
+            {
+                GUI.DrawTexture(outputNodeRect, outputTexture);
+            }
+            else
+            {
+                EditorGUI.DrawRect(outputNodeRect, Color.green);
+            }
         }
 
         private void DrawResizeHandle()
