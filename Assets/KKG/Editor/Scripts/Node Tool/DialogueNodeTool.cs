@@ -390,7 +390,7 @@ namespace KKG.Tool.Dialogue
         private void HandleZoom(Event e)
         {
             const float zoomMin = 0.2f;
-            const float zoomMax = 2.0f;
+            const float zoomMax = 1.1f;
 
             if (e.type == EventType.ScrollWheel)
             {
