@@ -74,11 +74,4 @@ MonoBehaviour:
       Message: Lets go
       Options: []
       nextIndex: 
-  - data:
-      Id: d905f682-3237-4c7f-96fb-eadacd627a74
-      Type: 0
-      SpeakerName: Alfred
-      Message: Yeto ka jevayla?
-      Options: []
-      nextIndex: 
-  Count: 6
+  Count: 5

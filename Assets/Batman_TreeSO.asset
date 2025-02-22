@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - Position:
-      x: 1463.1201
-      y: 1894.0393
+      x: 1738.4014
+      y: 1802.6543
     Size:
       x: 329.7296
       y: 479.7296
@@ -53,8 +53,8 @@ MonoBehaviour:
           height: 15
       nextIndex: 
   - Position:
-      x: 2092.7515
-      y: 1558.9612
+      x: 2242.7515
+      y: 1646.4612
     Size:
       x: 300
       y: 175
@@ -66,8 +66,8 @@ MonoBehaviour:
       Options: []
       nextIndex: b7c8b497-b852-4a1d-aa67-9f216d543ac7
   - Position:
-      x: 2090.0488
-      y: 1856.2583
+      x: 2240.0488
+      y: 1943.7583
     Size:
       x: 300
       y: 175
@@ -79,8 +79,8 @@ MonoBehaviour:
       Options: []
       nextIndex: 60d2cdf9-982b-4b02-a63a-769c4ebeebec
   - Position:
-      x: 2551.2378
-      y: 1551.8801
+      x: 2701.2378
+      y: 1639.3801
     Size:
       x: 300
       y: 175
@@ -92,8 +92,8 @@ MonoBehaviour:
       Options: []
       nextIndex: d905f682-3237-4c7f-96fb-eadacd627a74
   - Position:
-      x: 2553.9404
-      y: 1857.2855
+      x: 2703.9404
+      y: 1944.7855
     Size:
       x: 300
       y: 175
@@ -104,27 +104,14 @@ MonoBehaviour:
       Message: Lets go
       Options: []
       nextIndex: 
-  - Position:
-      x: 2981.8635
-      y: 1555.165
-    Size:
-      x: 300
-      y: 175
-    data:
-      Id: d905f682-3237-4c7f-96fb-eadacd627a74
-      Type: 0
-      SpeakerName: Alfred
-      Message: Yeto ka jevayla?
-      Options: []
-      nextIndex: 
   connections:
   - ConnectionTuple:
       InputNode:
         title: 
         rect:
           serializedVersion: 2
-          x: 1942.7515
-          y: 1471.4612
+          x: 2092.7515
+          y: 1558.9612
           width: 300
           height: 175
         isDragged: 0
@@ -409,22 +396,22 @@ MonoBehaviour:
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 2242.7515
-          y: 1491.4612
-          width: 10
-          height: 10
+          x: 2392.7515
+          y: 1578.9612
+          width: 20
+          height: 20
         inputNodeRect:
           serializedVersion: 2
-          x: 1942.7515
-          y: 1491.4612
-          width: 10
-          height: 10
+          x: 2092.7515
+          y: 1578.9612
+          width: 20
+          height: 20
       OutputNode:
         title: 
         rect:
           serializedVersion: 2
-          x: 2401.2378
-          y: 1464.3801
+          x: 2551.2378
+          y: 1551.8801
           width: 300
           height: 175
         isDragged: 0
@@ -709,23 +696,23 @@ MonoBehaviour:
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 2701.2378
-          y: 1484.3801
-          width: 10
-          height: 10
+          x: 2851.2378
+          y: 1571.8801
+          width: 20
+          height: 20
         inputNodeRect:
           serializedVersion: 2
-          x: 2401.2378
-          y: 1484.3801
-          width: 10
-          height: 10
+          x: 2551.2378
+          y: 1571.8801
+          width: 20
+          height: 20
     Connection:
       input:
         title: 
         rect:
           serializedVersion: 2
-          x: 1942.7515
-          y: 1471.4612
+          x: 2092.7515
+          y: 1558.9612
           width: 300
           height: 175
         isDragged: 0
@@ -1010,22 +997,22 @@ MonoBehaviour:
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 2242.7515
-          y: 1491.4612
-          width: 10
-          height: 10
+          x: 2392.7515
+          y: 1578.9612
+          width: 20
+          height: 20
         inputNodeRect:
           serializedVersion: 2
-          x: 1942.7515
-          y: 1491.4612
-          width: 10
-          height: 10
+          x: 2092.7515
+          y: 1578.9612
+          width: 20
+          height: 20
       output:
         title: 
         rect:
           serializedVersion: 2
-          x: 2401.2378
-          y: 1464.3801
+          x: 2551.2378
+          y: 1551.8801
           width: 300
           height: 175
         isDragged: 0
@@ -1310,16 +1297,16 @@ MonoBehaviour:
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 2701.2378
-          y: 1484.3801
-          width: 10
-          height: 10
+          x: 2851.2378
+          y: 1571.8801
+          width: 20
+          height: 20
         inputNodeRect:
           serializedVersion: 2
-          x: 2401.2378
-          y: 1484.3801
-          width: 10
-          height: 10
+          x: 2551.2378
+          y: 1571.8801
+          width: 20
+          height: 20
       inputPosition:
         serializedVersion: 2
         x: 0
@@ -1331,8 +1318,8 @@ MonoBehaviour:
         title: 
         rect:
           serializedVersion: 2
-          x: 1940.0487
-          y: 1768.7583
+          x: 2090.0488
+          y: 1856.2583
           width: 300
           height: 175
         isDragged: 0
@@ -1617,22 +1604,22 @@ MonoBehaviour:
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 2240.0488
-          y: 1788.7583
-          width: 10
-          height: 10
+          x: 2390.0488
+          y: 1876.2583
+          width: 20
+          height: 20
         inputNodeRect:
           serializedVersion: 2
-          x: 1940.0487
-          y: 1788.7583
-          width: 10
-          height: 10
+          x: 2090.0488
+          y: 1876.2583
+          width: 20
+          height: 20
       OutputNode:
         title: 
         rect:
           serializedVersion: 2
-          x: 2403.9404
-          y: 1769.7855
+          x: 2553.9404
+          y: 1857.2855
           width: 300
           height: 175
         isDragged: 0
@@ -1917,23 +1904,23 @@ MonoBehaviour:
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 2703.9404
-          y: 1789.7855
-          width: 10
-          height: 10
+          x: 2853.9404
+          y: 1877.2855
+          width: 20
+          height: 20
         inputNodeRect:
           serializedVersion: 2
-          x: 2403.9404
-          y: 1789.7855
-          width: 10
-          height: 10
+          x: 2553.9404
+          y: 1877.2855
+          width: 20
+          height: 20
     Connection:
       input:
         title: 
         rect:
           serializedVersion: 2
-          x: 1940.0487
-          y: 1768.7583
+          x: 2090.0488
+          y: 1856.2583
           width: 300
           height: 175
         isDragged: 0
@@ -2218,22 +2205,22 @@ MonoBehaviour:
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 2240.0488
-          y: 1788.7583
-          width: 10
-          height: 10
+          x: 2390.0488
+          y: 1876.2583
+          width: 20
+          height: 20
         inputNodeRect:
           serializedVersion: 2
-          x: 1940.0487
-          y: 1788.7583
-          width: 10
-          height: 10
+          x: 2090.0488
+          y: 1876.2583
+          width: 20
+          height: 20
       output:
         title: 
         rect:
           serializedVersion: 2
-          x: 2403.9404
-          y: 1769.7855
+          x: 2553.9404
+          y: 1857.2855
           width: 300
           height: 175
         isDragged: 0
@@ -2518,1224 +2505,16 @@ MonoBehaviour:
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 2703.9404
-          y: 1789.7855
-          width: 10
-          height: 10
+          x: 2853.9404
+          y: 1877.2855
+          width: 20
+          height: 20
         inputNodeRect:
           serializedVersion: 2
-          x: 2403.9404
-          y: 1789.7855
-          width: 10
-          height: 10
-      inputPosition:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-  - ConnectionTuple:
-      InputNode:
-        title: 
-        rect:
-          serializedVersion: 2
-          x: 2401.2378
-          y: 1464.3801
-          width: 300
-          height: 175
-        isDragged: 0
-        isSelected: 0
-        isResizing: 0
-        style:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 12
-            m_Right: 12
-            m_Top: 12
-            m_Bottom: 12
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        defaultNodeStyle:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 12
-            m_Right: 12
-            m_Top: 12
-            m_Bottom: 12
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        selectedNodeStyle:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000, type: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 12
-            m_Right: 12
-            m_Top: 12
-            m_Bottom: 12
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        startingNodeStyle:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 20
-            m_Right: 20
-            m_Top: 20
-            m_Bottom: 20
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        data:
-          Id: b7c8b497-b852-4a1d-aa67-9f216d543ac7
-          Type: 0
-          SpeakerName: Batman
-          Message: Go home
-          Options: []
-          nextIndex: d905f682-3237-4c7f-96fb-eadacd627a74
-        SpeakerName: 
-        NodeName: 
-        outputNodeRect:
-          serializedVersion: 2
-          x: 2701.2378
-          y: 1484.3801
-          width: 10
-          height: 10
-        inputNodeRect:
-          serializedVersion: 2
-          x: 2401.2378
-          y: 1484.3801
-          width: 10
-          height: 10
-      OutputNode:
-        title: 
-        rect:
-          serializedVersion: 2
-          x: 2831.8635
-          y: 1467.665
-          width: 300
-          height: 175
-        isDragged: 0
-        isSelected: 1
-        isResizing: 0
-        style:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000, type: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 12
-            m_Right: 12
-            m_Top: 12
-            m_Bottom: 12
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        defaultNodeStyle:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 12
-            m_Right: 12
-            m_Top: 12
-            m_Bottom: 12
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        selectedNodeStyle:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000, type: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 12
-            m_Right: 12
-            m_Top: 12
-            m_Bottom: 12
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        startingNodeStyle:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 20
-            m_Right: 20
-            m_Top: 20
-            m_Bottom: 20
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        data:
-          Id: d905f682-3237-4c7f-96fb-eadacd627a74
-          Type: 0
-          SpeakerName: Alfred
-          Message: Yeto ka jevayla?
-          Options: []
-          nextIndex: 
-        SpeakerName: 
-        NodeName: 
-        outputNodeRect:
-          serializedVersion: 2
-          x: 3131.8635
-          y: 1487.665
-          width: 10
-          height: 10
-        inputNodeRect:
-          serializedVersion: 2
-          x: 2831.8635
-          y: 1487.665
-          width: 10
-          height: 10
-    Connection:
-      input:
-        title: 
-        rect:
-          serializedVersion: 2
-          x: 2401.2378
-          y: 1464.3801
-          width: 300
-          height: 175
-        isDragged: 0
-        isSelected: 0
-        isResizing: 0
-        style:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 12
-            m_Right: 12
-            m_Top: 12
-            m_Bottom: 12
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        defaultNodeStyle:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 12
-            m_Right: 12
-            m_Top: 12
-            m_Bottom: 12
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        selectedNodeStyle:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000, type: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 12
-            m_Right: 12
-            m_Top: 12
-            m_Bottom: 12
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        startingNodeStyle:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 20
-            m_Right: 20
-            m_Top: 20
-            m_Bottom: 20
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        data:
-          Id: b7c8b497-b852-4a1d-aa67-9f216d543ac7
-          Type: 0
-          SpeakerName: Batman
-          Message: Go home
-          Options: []
-          nextIndex: d905f682-3237-4c7f-96fb-eadacd627a74
-        SpeakerName: 
-        NodeName: 
-        outputNodeRect:
-          serializedVersion: 2
-          x: 2701.2378
-          y: 1484.3801
-          width: 10
-          height: 10
-        inputNodeRect:
-          serializedVersion: 2
-          x: 2401.2378
-          y: 1484.3801
-          width: 10
-          height: 10
-      output:
-        title: 
-        rect:
-          serializedVersion: 2
-          x: 2831.8635
-          y: 1467.665
-          width: 300
-          height: 175
-        isDragged: 0
-        isSelected: 1
-        isResizing: 0
-        style:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000, type: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 12
-            m_Right: 12
-            m_Top: 12
-            m_Bottom: 12
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        defaultNodeStyle:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000, type: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 12
-            m_Right: 12
-            m_Top: 12
-            m_Bottom: 12
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        selectedNodeStyle:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000, type: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 12
-            m_Right: 12
-            m_Top: 12
-            m_Bottom: 12
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        startingNodeStyle:
-          m_Name: 
-          m_Normal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Hover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Active:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Focused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnNormal:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnHover:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnActive:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_OnFocused:
-            m_Background: {fileID: 0}
-            m_ScaledBackgrounds: []
-            m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-          m_Border:
-            m_Left: 20
-            m_Right: 20
-            m_Top: 20
-            m_Bottom: 20
-          m_Margin:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Padding:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Overflow:
-            m_Left: 0
-            m_Right: 0
-            m_Top: 0
-            m_Bottom: 0
-          m_Font: {fileID: 0}
-          m_FontSize: 0
-          m_FontStyle: 0
-          m_Alignment: 0
-          m_WordWrap: 0
-          m_RichText: 1
-          m_TextClipping: 0
-          m_ImagePosition: 0
-          m_ContentOffset: {x: 0, y: 0}
-          m_FixedWidth: 0
-          m_FixedHeight: 0
-          m_StretchWidth: 1
-          m_StretchHeight: 0
-        data:
-          Id: d905f682-3237-4c7f-96fb-eadacd627a74
-          Type: 0
-          SpeakerName: Alfred
-          Message: Yeto ka jevayla?
-          Options: []
-          nextIndex: 
-        SpeakerName: 
-        NodeName: 
-        outputNodeRect:
-          serializedVersion: 2
-          x: 3131.8635
-          y: 1487.665
-          width: 10
-          height: 10
-        inputNodeRect:
-          serializedVersion: 2
-          x: 2831.8635
-          y: 1487.665
-          width: 10
-          height: 10
+          x: 2553.9404
+          y: 1877.2855
+          width: 20
+          height: 20
       inputPosition:
         serializedVersion: 2
         x: 0
@@ -3754,8 +2533,8 @@ MonoBehaviour:
         title: 
         rect:
           serializedVersion: 2
-          x: 1940.0487
-          y: 1768.7583
+          x: 2090.0488
+          y: 1856.2583
           width: 300
           height: 175
         isDragged: 0
@@ -4040,23 +2819,23 @@ MonoBehaviour:
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 2240.0488
-          y: 1788.7583
-          width: 10
-          height: 10
+          x: 2390.0488
+          y: 1876.2583
+          width: 20
+          height: 20
         inputNodeRect:
           serializedVersion: 2
-          x: 1940.0487
-          y: 1788.7583
-          width: 10
-          height: 10
+          x: 2090.0488
+          y: 1876.2583
+          width: 20
+          height: 20
     Connection:
       input:
         title: 
         rect:
           serializedVersion: 2
-          x: 1298.2552
-          y: 1654.1746
+          x: 1573.5366
+          y: 1562.7896
           width: 329.7296
           height: 479.7296
         isDragged: 0
@@ -4373,16 +3152,16 @@ MonoBehaviour:
           height: 0
         inputNodeRect:
           serializedVersion: 2
-          x: 1298.2552
-          y: 1674.1746
-          width: 10
-          height: 10
+          x: 1573.5366
+          y: 1582.7896
+          width: 20
+          height: 20
       output:
         title: 
         rect:
           serializedVersion: 2
-          x: 1940.0487
-          y: 1768.7583
+          x: 2090.0488
+          y: 1856.2583
           width: 300
           height: 175
         isDragged: 0
@@ -4667,16 +3446,16 @@ MonoBehaviour:
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 2240.0488
-          y: 1788.7583
-          width: 10
-          height: 10
+          x: 2390.0488
+          y: 1876.2583
+          width: 20
+          height: 20
         inputNodeRect:
           serializedVersion: 2
-          x: 1940.0487
-          y: 1788.7583
-          width: 10
-          height: 10
+          x: 2090.0488
+          y: 1876.2583
+          width: 20
+          height: 20
       inputPosition:
         serializedVersion: 2
         x: 159
@@ -4694,8 +3473,8 @@ MonoBehaviour:
         title: 
         rect:
           serializedVersion: 2
-          x: 1942.7515
-          y: 1471.4612
+          x: 2092.7515
+          y: 1558.9612
           width: 300
           height: 175
         isDragged: 0
@@ -4980,23 +3759,23 @@ MonoBehaviour:
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 2242.7515
-          y: 1491.4612
-          width: 10
-          height: 10
+          x: 2392.7515
+          y: 1578.9612
+          width: 20
+          height: 20
         inputNodeRect:
           serializedVersion: 2
-          x: 1942.7515
-          y: 1491.4612
-          width: 10
-          height: 10
+          x: 2092.7515
+          y: 1578.9612
+          width: 20
+          height: 20
     Connection:
       input:
         title: 
         rect:
           serializedVersion: 2
-          x: 1298.2552
-          y: 1654.1746
+          x: 1573.5366
+          y: 1562.7896
           width: 329.7296
           height: 479.7296
         isDragged: 0
@@ -5313,16 +4092,16 @@ MonoBehaviour:
           height: 0
         inputNodeRect:
           serializedVersion: 2
-          x: 1298.2552
-          y: 1674.1746
-          width: 10
-          height: 10
+          x: 1573.5366
+          y: 1582.7896
+          width: 20
+          height: 20
       output:
         title: 
         rect:
           serializedVersion: 2
-          x: 1942.7515
-          y: 1471.4612
+          x: 2092.7515
+          y: 1558.9612
           width: 300
           height: 175
         isDragged: 0
@@ -5607,16 +4386,16 @@ MonoBehaviour:
         NodeName: 
         outputNodeRect:
           serializedVersion: 2
-          x: 2242.7515
-          y: 1491.4612
-          width: 10
-          height: 10
+          x: 2392.7515
+          y: 1578.9612
+          width: 20
+          height: 20
         inputNodeRect:
           serializedVersion: 2
-          x: 1942.7515
-          y: 1491.4612
-          width: 10
-          height: 10
+          x: 2092.7515
+          y: 1578.9612
+          width: 20
+          height: 20
       inputPosition:
         serializedVersion: 2
         x: 159
