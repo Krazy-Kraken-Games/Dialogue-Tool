@@ -20,6 +20,8 @@ namespace KKG.Dialogue
         [SerializeField]
         private string currentMessageId => activeMessage.Message.Id;
 
+        private string startingNodeId = string.Empty;
+
         public string CurrentMessageID => currentMessageId;
 
         public Action<DialogueNode> OnMessageUpdatedEvent;
@@ -31,7 +33,7 @@ namespace KKG.Dialogue
 
 
         #region CONSTRUCTORS
-        public Dialogue(List<DialogueNode> nodes)
+        public Dialogue(List<DialogueNode> nodes, string _startingNodeId)
         {
             Messages = new Dictionary<string, DialogueNode>();
 
@@ -39,6 +41,8 @@ namespace KKG.Dialogue
             {
                 Messages.Add(node.Message.Id, node);
             }
+
+            startingNodeId = _startingNodeId;
         }
 
         #endregion
@@ -48,7 +52,9 @@ namespace KKG.Dialogue
             if (!isRunning)
             {
                 //Get the first message of the list
-                var firstNodeKvp = Messages.First();
+                var firstNodeKvp 
+                    = Messages.Single(node => node.Value.Message.Id == startingNodeId);
+
                 activeMessage = firstNodeKvp.Value;
                 isRunning = true;
 

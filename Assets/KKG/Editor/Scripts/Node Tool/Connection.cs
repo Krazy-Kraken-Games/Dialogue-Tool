@@ -13,6 +13,9 @@ namespace KKG.Tool.Dialogue
         private bool multiOutputConnection = false;
         public Rect inputPosition;
 
+        private Vector2 startPosition;
+        private Vector2 endPosition;
+
         public Connection(DialogueTreeNode input, DialogueTreeNode output, bool isOption = false)
         {
             this.input = input;
@@ -37,8 +40,8 @@ namespace KKG.Tool.Dialogue
         public void Draw()
         {
             Handles.color = Color.yellow;
-            Vector2 startPosition = Vector2.zero;
-            Vector2 endPosition = Vector2.zero;
+            startPosition = Vector2.zero;
+            endPosition = Vector2.zero;
             if (!multiOutputConnection)
             {
                 startPosition = new Vector2(input.outputNodeRect.center.x, input.outputNodeRect.center.y);
@@ -73,5 +76,6 @@ namespace KKG.Tool.Dialogue
             Handles.color = drawColor;
             Handles.DrawAAConvexPolygon(arrowTip, leftBase, rightBase);
         }
+
     }
 }

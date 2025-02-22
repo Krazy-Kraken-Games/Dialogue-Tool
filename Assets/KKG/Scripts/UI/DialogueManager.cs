@@ -97,7 +97,7 @@ namespace KKG.Dialogue
             activeDialogueSO = data;
 
             //Fire the set active dialogue from here
-            Dialogue dialogue = new Dialogue(activeDialogueSO.Nodes);
+            Dialogue dialogue = new Dialogue(activeDialogueSO.Nodes,activeDialogueSO.StartingNodeId);
 
             //Set as active dialogue
             SetActiveDialogue(dialogue);

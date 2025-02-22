@@ -179,7 +179,7 @@ namespace KKG.Tool.Dialogue
 
             if (selectedNode != null)
             {
-                GUILayout.Label("Node selected");
+                GUILayout.Label($"Selected Node :{selectedNode.data.Id}");
             }
             else
             {
@@ -657,6 +657,7 @@ namespace KKG.Tool.Dialogue
             return null;
         }
 
+
         private void ResetDrag()
         {
             selectedNode = null;
@@ -854,6 +855,7 @@ namespace KKG.Tool.Dialogue
             {
                 // Asset exists, update its data
                 existingAsset.SetNodes(nodes);
+                existingAsset.SetStartingNode(startingNode.data.Id);
                 EditorUtility.SetDirty(existingAsset); // Mark the asset as dirty for saving
                 Debug.Log($"Existing DialogueToolTreeSO updated at: {path}");
             }
@@ -862,6 +864,7 @@ namespace KKG.Tool.Dialogue
                 // Asset doesn't exist, create a new one
                 DialogueDataSO dialogueDataSO = CreateInstance<DialogueDataSO>();
                 dialogueDataSO.SetNodes(nodes);
+                dialogueDataSO.SetStartingNode(startingNode.data.Id);
                 AssetDatabase.CreateAsset(dialogueDataSO, path);
                 Debug.Log($"New DialogueToolTreeSO created at: {path}");
             }
