@@ -1,30 +1,32 @@
-using System;
-using System.Collections.Generic;
 using KKG.Tool.Dialogue;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace KKG.Dialogue
 {
-
-    /// <summary>
-    /// This class will represent how a node data is stored in backend
-    /// </summary>
-    [Serializable]
-    public class NodeData
+    [System.Serializable]
+    public class ConnectionPacket
     {
-        public Vector2 Position;
-        public Vector2 Size;
+        public ConnectionTuple ConnectionTuple;
+        public Connection Connection;
 
-        public DialogueNodeData data;
-
-        public NodeData(DialogueTreeNode _node)
+        public ConnectionPacket(ConnectionTuple connectionTuple, Connection connection)
         {
-            Rect rect = _node.rect;
+            ConnectionTuple = connectionTuple;
+            Connection = connection;
+        }
+    }
 
-            Position = rect.center;
-            Size = rect.size;
+    [System.Serializable]
+    public class  ConnectionOptionPacket
+    {
+        public ConnectionOptionTuple ConnectionOptionTuple;
+        public Connection Connection;
 
-            data = _node.data;
+        public ConnectionOptionPacket(ConnectionOptionTuple _optionTuple, Connection _connection)
+        {
+            ConnectionOptionTuple = _optionTuple;
+            Connection = _connection;
         }
     }
 
@@ -36,11 +38,20 @@ namespace KKG.Dialogue
     public class DialogueToolTreeSO : ScriptableObject
     {
         [SerializeField]
-        private List<NodeData> nodes;
-        private Dictionary<ConnectionTuple, Connection> connections;
-        private Dictionary<ConnectionOptionTuple, Connection> connectionOptions;
+        private List<NodeData> nodes = new List<NodeData>();
+        [SerializeField]
+        private List<ConnectionPacket> connections = new List<ConnectionPacket>();
+        [SerializeField]
+        private List<ConnectionOptionPacket> connectionOptions = new List<ConnectionOptionPacket>();
 
-        public void SaveToolData(List<DialogueTreeNode> _nodes)
+        [SerializeField]
+        private string startingNodeId;
+
+        //[SerializeField]
+        //private DialogueToolTreeData treeData = new DialogueToolTreeData();
+
+        public void SaveToolData(string path,DialogueTreeNode _start,List<DialogueTreeNode> _nodes,
+            Dictionary<ConnectionTuple, Connection> _connections, Dictionary<ConnectionOptionTuple, Connection> _connectionOptions)
         {
             nodes = new List<NodeData>();
 
@@ -50,9 +61,38 @@ namespace KKG.Dialogue
                 NodeData node = new NodeData(_node);
                 nodes.Add(node);
             }
-           
+
+            //Add reference to the starting node
+            startingNodeId = _start.data.Id;
+
+            //Save the connections and connections Options
+            connections = new List<ConnectionPacket>();
+
+            foreach(var connection in _connections)
+            {
+                ConnectionPacket cp = new ConnectionPacket(connection.Key, connection.Value);
+                connections.Add(cp);
+            }
+
+            //Save the connection options
+            connectionOptions = new List<ConnectionOptionPacket>();
+            foreach(var connectionOption in _connectionOptions)
+            {
+                ConnectionOptionPacket cop = new ConnectionOptionPacket(connectionOption.Key, connectionOption.Value);
+
+                connectionOptions.Add(cop);
+            }
+
+
+            
         }
 
-        public List<NodeData> Nodes => nodes;   
+        public List<NodeData> Nodes => nodes;
+
+        public List<ConnectionPacket> Connections => connections;
+
+        public List<ConnectionOptionPacket> ConnectionOptions => connectionOptions;
+
+        public string StartNodeId => startingNodeId;
     }
 }

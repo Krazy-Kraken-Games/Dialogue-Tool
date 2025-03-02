@@ -1,0 +1,55 @@
+{
+  "Nodes": [
+    {
+      "Position": {
+        "x": 442.6297,
+        "y": 3250.26074
+      },
+      "Size": {
+        "x": 314.1438,
+        "y": 473.4502
+      },
+      "data": {
+        "Id": "54a89989-5284-43b0-9ce0-66890bac23a9",
+        "Type": 0,
+        "SpeakerName": "God",
+        "Message": "I created the universe",
+        "Options": {
+          "aa6c2526-4a2a-400d-aa6a-353bcc1e3163": {
+            "OptionId": "aa6c2526-4a2a-400d-aa6a-353bcc1e3163",
+            "NextIndex": "",
+            "SpeakerName": "God",
+            "OptionMessage": "Where is water",
+            "parentNodeRef": "54a89989-5284-43b0-9ce0-66890bac23a9"
+          },
+          "4ed94555-50bf-4d34-bbb6-54271ffb8a31": {
+            "OptionId": "4ed94555-50bf-4d34-bbb6-54271ffb8a31",
+            "NextIndex": "",
+            "SpeakerName": "God",
+            "OptionMessage": "I am bored",
+            "parentNodeRef": "54a89989-5284-43b0-9ce0-66890bac23a9"
+          }
+        },
+        "nextIndex": null
+      }
+    },
+    {
+      "Position": {
+        "x": 1174.86755,
+        "y": 3205.86328
+      },
+      "Size": {
+        "x": 300.0,
+        "y": 175.0
+      },
+      "data": {
+        "Id": "b41bdca3-2466-4004-af8c-d88f9f5fc89c",
+        "Type": 0,
+        "SpeakerName": "Human",
+        "Message": "Thank you for creating everything",
+        "Options": {},
+        "nextIndex": ""
+      }
+    }
+  ]
+}

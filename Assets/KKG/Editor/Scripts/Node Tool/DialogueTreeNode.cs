@@ -1,13 +1,15 @@
 using KKG.Dialogue;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Plastic.Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
 using MessageType = KKG.Dialogue.MessageType;
 
 namespace KKG.Tool.Dialogue
 {
-
+    [Serializable]
     public class DialogueTreeNode
     {
         public string title;
@@ -40,11 +42,69 @@ namespace KKG.Tool.Dialogue
 
         private bool readyToDraw = false;
 
-        //Option Dragging
-        public Dictionary<DialogueOption,Rect> dialogueOutputCollection;
+        public float PositionX => rect.position.x;
+        public float PositionY => rect.position.y;
+        public float Width => rect.size.x;
+        public float Height => rect.size.y;
+
+
+        //Option Dragging, used for determining nodes of each dialog options
+        public Dictionary<DialogueOption,Rect> dialogueOptionRectCollection;
 
         //Local Cache for options
         public Dictionary<string, DialogueOption> LocalOptions;
+
+
+        //Constructor to rebuild node again using Node Data
+
+        [JsonConstructor]
+        public DialogueTreeNode(NodeData _data)
+        {
+            if (_data == null) return;
+
+            rect = new Rect(_data.Position.x,_data.Position.y,_data.Size.x,_data.Size.y);
+
+            data = _data.data;
+
+            title = "";
+
+            //Default Style
+            defaultNodeStyle = new GUIStyle();
+            defaultNodeStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1.png") as Texture2D;
+            defaultNodeStyle.border = new RectOffset(12, 12, 12, 12);
+
+            //SelectedStyle
+            selectedNodeStyle = new GUIStyle();
+            selectedNodeStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1 on.png") as Texture2D;
+            selectedNodeStyle.border = new RectOffset(12, 12, 12, 12);
+
+            //Starting node style
+            startingNodeStyle = new GUIStyle();
+            startingNodeStyle.normal.background = CreateColorTexture(new Color(0.8f, 0.47f, 0f));
+            startingNodeStyle.border = new RectOffset(20, 20, 20, 20);
+
+            style = defaultNodeStyle;
+
+
+            //Output collection
+            dialogueOptionRectCollection = new Dictionary<DialogueOption, Rect>();
+
+            //Initialize local options cache
+            LocalOptions = new Dictionary<string, DialogueOption>();
+
+            if(data.Options.Count > 0)
+            {
+                showOptions = true;
+
+                foreach(var opt in data.Options)
+                {
+                    LocalOptions.Add(opt.OptionID, opt.Option);
+                }
+            }
+
+            readyToDraw = true;
+        }
+
 
         public DialogueTreeNode(Vector2 pos, float width = 300, float height = 175, bool isNew = true,bool _readyToDraw = true)
         {
@@ -81,12 +141,12 @@ namespace KKG.Tool.Dialogue
                 Type = MessageType.DEFAULT,
                 SpeakerName = string.Empty,
                 Message = string.Empty,
-                Options = new Dictionary<string,DialogueOption>(),
+                Options = new List<DialogueOptionPacket>(),
                 nextIndex = null
             };
 
             //Output collection
-            dialogueOutputCollection = new Dictionary<DialogueOption, Rect>();
+            dialogueOptionRectCollection = new Dictionary<DialogueOption, Rect>();
 
             //Initialize local options cache
             LocalOptions = new Dictionary<string, DialogueOption>();
@@ -138,8 +198,8 @@ namespace KKG.Tool.Dialogue
 
                     foreach (var keyValuePair in data.Options)
                     {
-                        string optionId = keyValuePair.Key;
-                        DialogueOption option = keyValuePair.Value;
+                        string optionId = keyValuePair.OptionID;
+                        DialogueOption option = keyValuePair.Option;
 
                         GUILayout.BeginVertical("box"); // Group each option in a box for clarity
 
@@ -149,13 +209,13 @@ namespace KKG.Tool.Dialogue
                         string newOptionId = optionId;
                         GUILayout.EndHorizontal();
 
-                        if (newOptionId != optionId && !data.Options.ContainsKey(newOptionId))
-                        {
-                            // Rename key if it changed and doesn't already exist
-                            data.Options.Remove(optionId);
-                            data.Options[newOptionId] = option;
-                            break; // Exit loop to avoid modifying the dictionary during iteration
-                        }
+                        //if (newOptionId != optionId && !data.Options.ContainsKey(newOptionId))
+                        //{
+                        //    // Rename key if it changed and doesn't already exist
+                        //    data.Options.Remove(optionId);
+                        //    data.Options[newOptionId] = option;
+                        //    break; // Exit loop to avoid modifying the dictionary during iteration
+                        //}
 
                         // Option Message
                         GUILayout.BeginHorizontal();
@@ -192,11 +252,14 @@ namespace KKG.Tool.Dialogue
                         Rect outputNodeRect = GUILayoutUtility.GetRect(15, 15); // Adjust size as needed
                         EditorGUI.DrawRect(outputNodeRect, Color.green); // Draw the node
 
-                        if (!dialogueOutputCollection.ContainsKey(option))
+                        if (!dialogueOptionRectCollection.ContainsKey(option))
                         {
                             //Add the output rect 
-                            dialogueOutputCollection.Add(option, outputNodeRect);
+                            dialogueOptionRectCollection.Add(option, outputNodeRect);
                         }
+
+                        //Store the rect information in the Option Data packet
+                        keyValuePair.rect = outputNodeRect;
 
                         // Make it interactive (clickable and draggable)
                         if (Event.current.type == EventType.MouseDown && outputNodeRect.Contains(Event.current.mousePosition))
@@ -226,7 +289,8 @@ namespace KKG.Tool.Dialogue
                     // Apply updates after the loop
                     foreach (var updatedOption in LocalOptions)
                     {
-                        data.Options[updatedOption.Key] = updatedOption.Value;
+                        var optionPacket = data.Options.Single(opt => opt.OptionID == updatedOption.Key);
+                        optionPacket.Option = updatedOption.Value;
                     }
                 }
 
@@ -235,7 +299,8 @@ namespace KKG.Tool.Dialogue
                 // Remove options marked for deletion
                 foreach (string key in keysToRemove)
                 {
-                    data.Options.Remove(key);
+                    var optionPacket = data.Options.Single(opt => opt.OptionID == key);
+                    data.Options.Remove(optionPacket);
                 }
                 // Add new option
                 GUILayout.Space(10);
@@ -267,10 +332,14 @@ namespace KKG.Tool.Dialogue
                 OptionId = Guid.NewGuid().ToString(),
                 NextIndex = string.Empty, // Default to empty string to indicate no next index yet
                 SpeakerName = $"Speaker {optionsCount + 1}", // Default speaker name
-                OptionMessage = $"Option Message {optionsCount + 1}" // Default message
+                OptionMessage = $"Option Message {optionsCount + 1}", // Default message
+
+                parentNodeRef = data.Id
             };
 
-            data.Options.Add(newOption.OptionId, newOption); // Add to the options list
+            //Adds Option ID as Key and Dialogue Option as Value 
+            DialogueOptionPacket optionPacket = new DialogueOptionPacket(newOption.OptionId, newOption, new Rect(0,0,0,0));
+            data.Options.Add(optionPacket); // Add to the options list
             optionsCount++; // Increment the options count
             createOption = false; // Reset the flag
 
@@ -282,24 +351,20 @@ namespace KKG.Tool.Dialogue
             SetNextIndex(null);
         }
 
-        public void CreateOptionWithData(DialogueOption _Option)
+        public DialogueOptionPacket CreateOptionWithData(DialogueOptionPacket _OptionPacket)
         {
             //data.Options.Add(_Option.OptionId,_Option);
-            LocalOptions.Add(_Option.OptionId, _Option);
+            LocalOptions.Add(_OptionPacket.OptionID, _OptionPacket.Option);
             optionsCount++;
+
+            return _OptionPacket;
         }
 
         public void AddNextIndexOnTool(string _optionId, string nextIndex)
         {
-            var option = data.Options[_optionId];
+            var option = data.Options.Single(opt => opt.OptionID == _optionId);
 
-            option.NextIndex = nextIndex;
-            data.Options[_optionId] = option;
-
-            //if (data.Options.TryGetValue(_optionId, out var option))
-            //{
-            //    option.NextIndex = nextIndex; // Update the existing object
-            //}
+            option.Option.NextIndex = nextIndex;
         }
 
         public void AllowDrawingNode()
@@ -309,37 +374,69 @@ namespace KKG.Tool.Dialogue
 
         private void DrawInputNode()
         {
-            const float nodeSize = 10f;
+            const float nodeSize = 20f;
 
             inputNodeRect = new Rect(rect.x, rect.y + 20f, nodeSize, nodeSize);
 
-            EditorGUI.DrawRect(inputNodeRect, Color.red);
+            // Load your texture (this assumes you have a texture at the specified path).
+            Texture2D inputTexture = EditorGUIUtility.Load("Assets/KKG/Editor/Textures/InputCircle.png") as Texture2D;
+
+            if (inputTexture != null)
+            {
+                GUI.DrawTexture(inputNodeRect, inputTexture);
+            }
+            else
+            {
+                EditorGUI.DrawRect(inputNodeRect, Color.green);
+            }
         }
 
         private void DrawOutputNode()
         {
             if (data.Options == null)
             {
-                data.Options = new Dictionary<string, DialogueOption>();
+                data.Options = new List<DialogueOptionPacket>();
             }
 
-            if(data.Options.Count > 0) return;
+            if (data.Options.Count > 0) return;
 
 
-            const float nodeSize = 10f;
+            const float nodeSize = 20f;
 
             outputNodeRect = new Rect(rect.xMax, rect.y + 20f, nodeSize, nodeSize);
 
-            EditorGUI.DrawRect(outputNodeRect, Color.green);
+
+            // Load your texture (this assumes you have a texture at the specified path).
+            Texture2D outputTexture = EditorGUIUtility.Load("Assets/KKG/Editor/Textures/OutputCircle.png") as Texture2D;
+
+            if (outputTexture != null)
+            {
+                GUI.DrawTexture(outputNodeRect, outputTexture);
+            }
+            else
+            {
+                EditorGUI.DrawRect(outputNodeRect, Color.green);
+            }
         }
 
         private void DrawResizeHandle()
         {
-            const float handleSize = 10f;
+            const float handleSize = 30f;
 
             resizeHandleRect = new Rect(rect.xMax - handleSize, rect.yMax - handleSize, handleSize, handleSize);
 
-            EditorGUI.DrawRect(resizeHandleRect, Color.yellow);
+            // Load your texture (this assumes you have a texture at the specified path).
+            Texture2D handleTexture = EditorGUIUtility.Load("Assets/KKG/Editor/Textures/ResizeArrows.png") as Texture2D;
+
+            // If the texture is loaded successfully, draw it; otherwise, fallback to a colored rectangle.
+            if (handleTexture != null)
+            {
+                GUI.DrawTexture(resizeHandleRect, handleTexture);
+            }
+            else
+            {
+                EditorGUI.DrawRect(resizeHandleRect, Color.yellow);
+            }
 
             EditorGUIUtility.AddCursorRect(resizeHandleRect, MouseCursor.ResizeUpLeft);
 
@@ -436,7 +533,7 @@ namespace KKG.Tool.Dialogue
 
                 case EventType.MouseDrag:
 
-                    if(e.button == 1 && isDragged)
+                    if(e.button == 2 && isDragged)
                     {
                         Drag(e.delta);
                         e.Use();
@@ -475,6 +572,11 @@ namespace KKG.Tool.Dialogue
         public void SetNormalNode()
         {
             style = defaultNodeStyle;
+        }
+
+        public void SetShowOptions(bool _show)
+        {
+            showOptions = _show;
         }
 
     }

@@ -97,7 +97,7 @@ namespace KKG.Dialogue
             activeDialogueSO = data;
 
             //Fire the set active dialogue from here
-            Dialogue dialogue = new Dialogue(activeDialogueSO.Nodes);
+            Dialogue dialogue = new Dialogue(activeDialogueSO.Nodes,activeDialogueSO.StartingNodeId);
 
             //Set as active dialogue
             SetActiveDialogue(dialogue);
@@ -126,7 +126,8 @@ namespace KKG.Dialogue
         {
             if(dialogueScreen != null)
             {
-                dialogueScreen.PopulateMessage(activeDialogue.GetCurrentMessage().Message); 
+                var message = activeDialogue.GetCurrentMessage().Message;
+                dialogueScreen.PopulateMessage(message);
             }
         }
 
@@ -159,6 +160,29 @@ namespace KKG.Dialogue
                 {
                     ShowCurrentMessage();
                 }
+            }
+        }
+
+        #endregion
+
+        #region Option Input Handling Secction
+
+        public void OnOptionSelectedByID(string _nextMessageId)
+        {
+            if (activeDialogue == null) return;
+
+            var nextMessage = activeDialogue.SetNextMessageById(_nextMessageId);
+
+
+            if (nextMessage == null)
+            {
+                Debug.Log("End dialogue reached");
+                isDialoguePlaying = false;
+                dialogueScreen.Toggle();
+            }
+            else
+            {
+                ShowCurrentMessage();
             }
         }
 

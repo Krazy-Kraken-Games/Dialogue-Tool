@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec68b2d7c9842a41ae5f6ad03e79582, type: 3}
+  m_Name: TestSO
+  m_EditorClassIdentifier: 
+  nodes:
+  - data:
+      Id: e81b6178-1375-4365-8920-c1372f991d01
+      Type: 0
+      SpeakerName: User1
+      Message: Hello from user 1
+      Options: []
+      nextIndex: 739c83bd-e404-4e99-86cd-d72dd6026ae1
+  - data:
+      Id: 739c83bd-e404-4e99-86cd-d72dd6026ae1
+      Type: 0
+      SpeakerName: User2
+      Message: What should you respond?
+      Options:
+      - OptionID: 63af59f9-2d00-47bb-83a4-f399e46eed26
+        Option:
+          OptionId: 63af59f9-2d00-47bb-83a4-f399e46eed26
+          NextIndex: 03d4baa5-cd78-4b9c-bce7-95f5b583d10a
+          SpeakerName: User 2
+          OptionMessage: Hello! How are you?
+          parentNodeRef: 739c83bd-e404-4e99-86cd-d72dd6026ae1
+        rect:
+          serializedVersion: 2
+          x: 159
+          y: 219
+          width: 118
+          height: 15
+      - OptionID: 37b0f8fe-f020-4411-a4bd-c775831ff322
+        Option:
+          OptionId: 37b0f8fe-f020-4411-a4bd-c775831ff322
+          NextIndex: 7744a312-2707-463d-bce4-8eb44ecbab01
+          SpeakerName: User 2
+          OptionMessage: Hello, I am bored
+          parentNodeRef: 739c83bd-e404-4e99-86cd-d72dd6026ae1
+        rect:
+          serializedVersion: 2
+          x: 159
+          y: 326
+          width: 118
+          height: 15
+      nextIndex: 
+  - data:
+      Id: 03d4baa5-cd78-4b9c-bce7-95f5b583d10a
+      Type: 0
+      SpeakerName: User 1
+      Message: My name is user 1, I am good. See you soon.
+      Options: []
+      nextIndex: 
+  - data:
+      Id: 7744a312-2707-463d-bce4-8eb44ecbab01
+      Type: 0
+      SpeakerName: User 1
+      Message: Same here, I am going to sleep
+      Options: []
+      nextIndex: 
+  Count: 4
+  StartingNodeId: e81b6178-1375-4365-8920-c1372f991d01

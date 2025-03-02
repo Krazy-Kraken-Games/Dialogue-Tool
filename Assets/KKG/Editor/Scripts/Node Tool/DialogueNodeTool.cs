@@ -1,35 +1,11 @@
 using KKG.Dialogue;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
 namespace KKG.Tool.Dialogue
 {
-    public struct ConnectionTuple
-    {
-        public DialogueTreeNode InputNode;
-        public DialogueTreeNode OutputNode;
-
-        public ConnectionTuple(DialogueTreeNode inputNode, DialogueTreeNode outputNode)
-        {
-            InputNode = inputNode;
-            OutputNode = outputNode;
-        }
-    }
-
-    public struct ConnectionOptionTuple
-    {
-        public DialogueOption InputOption;
-        public DialogueTreeNode OutputNode;
-
-        public ConnectionOptionTuple(DialogueOption inputOption, DialogueTreeNode outputNode)
-        {
-            InputOption = inputOption;
-            OutputNode = outputNode;
-        }
-    }
 
     public class DialogueNodeTool : EditorWindow
     {
@@ -64,6 +40,9 @@ namespace KKG.Tool.Dialogue
         private Vector2 draggingCurrentPosition;
         private bool isDraggingOutputConnection;
         private DialogueOption currentDialogueOption;
+
+        //Instructions panel
+        private bool showInstructions = true;
 
 
         [MenuItem("Tools/Krazy Kraken Games/Dialogue Graph")]
@@ -141,7 +120,7 @@ namespace KKG.Tool.Dialogue
             Rect inspectorRect = new Rect(position.width - 200, 0, 200, position.height);
             DrawInspectorPanel(inspectorRect);
 
-            Rect instructionRect = new Rect(position.width - 200, position.height - 200, 200, 200);
+            Rect instructionRect = new Rect(0, position.height - 200, 700, 200);
             DrawInstructionsPanel(instructionRect);
 
         }
@@ -157,18 +136,34 @@ namespace KKG.Tool.Dialogue
 
         private void DrawInstructionsPanel(Rect rect)
         {
-            GUI.Box(rect,"Instructions",GUI.skin.window);
+            if (showInstructions)
+            {
+                GUI.Box(rect, "Instructions", GUI.skin.window);
+                GUILayout.BeginArea(new Rect(rect.x + 30, rect.y + 30, rect.width - 60, rect.height - 60));
 
-            GUILayout.BeginArea(new Rect(rect.x + 30, rect.y + 30, rect.width - 60, rect.height - 60));
+                GUILayout.Label("Click on right mouse button to create dialogue node");
+                GUILayout.Label("Press Left mouse button on nodes to drag and create connections");
+                GUILayout.Label("Press and hold middle mouse button to pan camera around. Scroll mouse to zoom in and out");
 
-            GUILayout.Label("Press Middle Mouse Button to create nodes");
-            GUILayout.Label("Press Left mouse button on nodes to drag and create connections");
-            GUILayout.Label("Press Right mouse button on nodes to drag and move the nodes");
+                if (GUILayout.Button("Hide Instructions"))
+                {
+                    showInstructions = false;
+                }
 
-            GUILayout.EndArea();
+               GUILayout.EndArea();
+            }
+            else
+            {
+                GUILayout.BeginArea(new Rect(0, position.height - 40, 160, 40));
+                if(GUILayout.Button("Show Instructions"))
+                {
+                    showInstructions = true;
+                }
+                GUILayout.EndArea();
+            }
         }
 
-        private void DrawInspectorPanel(Rect rect)
+        private async void DrawInspectorPanel(Rect rect)
         {
             GUI.Box(rect, "Inspector", GUI.skin.window);
 
@@ -180,9 +175,11 @@ namespace KKG.Tool.Dialogue
 
             fileName = EditorGUILayout.TextField(fileName);
 
+           
+
             if (selectedNode != null)
             {
-                GUILayout.Label("Node selected");
+                GUILayout.Label($"Selected Node :{selectedNode.data.Id}");
             }
             else
             {
@@ -241,6 +238,8 @@ namespace KKG.Tool.Dialogue
 
                             CreateDialogueTreeSO(fileName);
 
+                            CreateDialogueJSON(fileName);
+
                             EditorUtility.DisplayDialog("SUCCESS", "Dialogue Asset created successfully in Assets folder", "OK");
 
                             fileName = string.Empty;
@@ -264,6 +263,16 @@ namespace KKG.Tool.Dialogue
                 }
             }
 
+            //Clear everything button
+            if (nodes.Count > 0)
+            {
+                if(GUILayout.Button("Clear Graph"))
+                {
+                    nodes.Clear();
+                    connectionOptions.Clear();
+                    connections.Clear();
+                }
+            }
             GUILayout.EndArea();
         }
 
@@ -381,7 +390,7 @@ namespace KKG.Tool.Dialogue
         private void HandleZoom(Event e)
         {
             const float zoomMin = 0.2f;
-            const float zoomMax = 2.0f;
+            const float zoomMax = 1.1f;
 
             if (e.type == EventType.ScrollWheel)
             {
@@ -403,12 +412,12 @@ namespace KKG.Tool.Dialogue
 
         private void HandlePanning(Event e)
         {
-            if (e.type == EventType.MouseDown && e.button == 1) // Middle mouse button
+            if (e.type == EventType.MouseDown && e.button == 2) // Middle mouse button
             {
                 dragStart = e.mousePosition;
             }
 
-            if (e.type == EventType.MouseDrag && e.button == 1)
+            if (e.type == EventType.MouseDrag && e.button == 2)
             {
                 Vector2 delta = e.mousePosition - dragStart;
                 scrollPosition -= delta;
@@ -497,7 +506,7 @@ namespace KKG.Tool.Dialogue
 
                     if(e.keyCode == KeyCode.LeftAlt)
                     {
-                        Debug.Log("Left alt is pressed");
+                        //Debug.Log("Left alt is pressed");
                     }
 
                     break;
@@ -506,8 +515,8 @@ namespace KKG.Tool.Dialogue
 
                     selectedNode = CheckForHitsOnNode(e.mousePosition);
 
-                    //Handle Middle Mouse Button
-                    ProcessMiddleMouseDown(e);
+                    //Handle Right Mouse Click
+                    ProcessRightMouseDown(e);
 
                     break;
 
@@ -561,7 +570,7 @@ namespace KKG.Tool.Dialogue
                         {
                             Connection newConnection = new Connection(draggingOutputNode, targetNode,true);
 
-                            ConnectionTuple ct = new ConnectionTuple(draggingOutputNode, targetNode);
+                            //ConnectionTuple ct = new ConnectionTuple(draggingOutputNode, targetNode);
 
                             ConnectionOptionTuple cot = new ConnectionOptionTuple(currentDialogueOption, targetNode);
 
@@ -604,10 +613,10 @@ namespace KKG.Tool.Dialogue
             }
         }
 
-        private void ProcessMiddleMouseDown(Event e)
+        private void ProcessRightMouseDown(Event e)
         {
             //For middle mouse button
-            if (e.button == 2)
+            if (e.button == 1)
             {
                 if (selectedNode != null)
                 {
@@ -648,6 +657,7 @@ namespace KKG.Tool.Dialogue
             return null;
         }
 
+
         private void ResetDrag()
         {
             selectedNode = null;
@@ -681,12 +691,20 @@ namespace KKG.Tool.Dialogue
 
         private void ShowNodeContextMenu(Vector2 position)
         {
+            Matrix4x4 m4 = GUI.matrix;
+            // scale it by your zoom
+            GUI.matrix = GUI.matrix * Matrix4x4.Scale(new Vector3(1 / zoomScale, 1 / zoomScale, 1 / zoomScale));
+
             GenericMenu menu = new GenericMenu();
 
             menu.AddItem(new GUIContent("Delete Node"), false, () => OnClickDeleteNode(position));
             menu.AddItem(new GUIContent("Make Starting Node"), false, () => OnClickStartNode(position));
 
             menu.ShowAsContext();
+
+
+            // restore matrix
+            GUI.matrix = m4;
         }
 
         private void OnClickResetZoom(Vector2 clickPosition)
@@ -722,8 +740,6 @@ namespace KKG.Tool.Dialogue
         {
             if(selectedNode != null)
             {
-               
-
                 var keysToRemove = connections.Keys.Where(ct => ct.InputNode == selectedNode || ct.OutputNode == selectedNode).ToList();
 
                 foreach (var key in keysToRemove)
@@ -737,7 +753,7 @@ namespace KKG.Tool.Dialogue
 
                 foreach (var opt in options)
                 {
-                    var optionKeysToRemove = connectionOptions.Keys.Where(ct => ct.InputOption.OptionId == opt.Value.OptionId || ct.OutputNode == selectedNode).ToList();
+                    var optionKeysToRemove = connectionOptions.Keys.Where(ct => ct.InputOption.OptionId == opt.OptionID || ct.OutputNode == selectedNode).ToList();
 
                     foreach (var key in optionKeysToRemove)
                     {
@@ -786,6 +802,44 @@ namespace KKG.Tool.Dialogue
         }
         #endregion
 
+        #region CREATE JSON FILE SECTION
+        public void CreateDialogueJSON(string _fileName)
+        {
+            //string fullFileName = $"{_fileName}.json";
+
+
+            //if (dialogueGetter == null)
+            //{
+            //    var nodeDataList = new List<NodeData>();
+
+            //    foreach (var node in nodes)
+            //    {
+            //        nodeDataList.Add(new NodeData(node));
+            //    }
+
+            //    dialogueGetter = new DialogueJSONGetter(nodeDataList, connections, connectionOptions);
+            //}
+            //else
+            //{
+
+            //    var nodeDataList = new List<NodeData>();
+
+            //    foreach (var node in nodes)
+            //    {
+            //        nodeDataList.Add(new NodeData(node));
+            //    }
+
+            //    dialogueGetter.UpdateData(nodeDataList, connections, connectionOptions);
+            //}
+
+
+            //string JsonPath = $"Assets/Resources/Content/{fullFileName}.json";
+            //dialogueGetter.SaveData(JsonPath);
+
+            //Debug.Log("JSON File created successfully");
+        }
+        #endregion
+
 
         #region SCRIPTABLE OBJECT SECTION
         public void CreateDialogueSO(string _fileName,List<DialogueNode> nodes)
@@ -801,6 +855,7 @@ namespace KKG.Tool.Dialogue
             {
                 // Asset exists, update its data
                 existingAsset.SetNodes(nodes);
+                existingAsset.SetStartingNode(startingNode.data.Id);
                 EditorUtility.SetDirty(existingAsset); // Mark the asset as dirty for saving
                 Debug.Log($"Existing DialogueToolTreeSO updated at: {path}");
             }
@@ -809,6 +864,7 @@ namespace KKG.Tool.Dialogue
                 // Asset doesn't exist, create a new one
                 DialogueDataSO dialogueDataSO = CreateInstance<DialogueDataSO>();
                 dialogueDataSO.SetNodes(nodes);
+                dialogueDataSO.SetStartingNode(startingNode.data.Id);
                 AssetDatabase.CreateAsset(dialogueDataSO, path);
                 Debug.Log($"New DialogueToolTreeSO created at: {path}");
             }
@@ -826,7 +882,7 @@ namespace KKG.Tool.Dialogue
             if (existingAsset != null)
             {
                 // Asset exists, update its data
-                existingAsset.SaveToolData(nodes);
+                existingAsset.SaveToolData(path, startingNode, nodes, connections, connectionOptions);
                 EditorUtility.SetDirty(existingAsset); // Mark the asset as dirty for saving
                 Debug.Log($"Existing DialogueToolTreeSO updated at: {path}");
             }
@@ -834,15 +890,26 @@ namespace KKG.Tool.Dialogue
             {
                 // Asset doesn't exist, create a new one
                 DialogueToolTreeSO dialogueDataSO = CreateInstance<DialogueToolTreeSO>();
-                dialogueDataSO.SaveToolData(nodes);
+                dialogueDataSO.SaveToolData(path, startingNode, nodes, connections, connectionOptions);
                 AssetDatabase.CreateAsset(dialogueDataSO, path);
                 Debug.Log($"New DialogueToolTreeSO created at: {path}");
             }
             AssetDatabase.SaveAssets();
+
         }
+
+
+
+        private DialogueJSONGetter dialogueGetter = null;
 
         private void LoadDialogueTreeSO(string _fileName)
         {
+
+            if(dialogueGetter == null)
+            {
+                dialogueGetter = new DialogueJSONGetter();
+            }
+
             string fullFileName = $"{_fileName}_TreeSO";
 
             // Construct the asset path
@@ -851,28 +918,43 @@ namespace KKG.Tool.Dialogue
             // Load the asset
             DialogueToolTreeSO dialogueToolTreeSO = AssetDatabase.LoadAssetAtPath<DialogueToolTreeSO>(path);
 
+
+
             if (dialogueToolTreeSO == null)
             {
-                Debug.LogError($"DialogueTreeSO not found at path: {path}");
+                Debug.LogError($"DialogueTreeSO not found at path: {dialogueToolTreeSO}");
                 return;
             }
 
             // Clear existing nodes (if necessary)
             nodes.Clear();
+            connections.Clear();
+            connectionOptions.Clear();
+
+            List<DialogueOption> allOptions = new List<DialogueOption>();
 
             if (dialogueToolTreeSO.Nodes.Count > 0)
             {
                 // Load data from the asset and recreate nodes
                 foreach (var nodeData in dialogueToolTreeSO.Nodes)
                 {
-                    Vector2 Position = nodeData.Position;
-                    Vector2 Size = nodeData.Size;
+                    var pos = nodeData.Position;
+                    var size = nodeData.Size;
+
+                    Vector2 Position = new Vector2(pos.x, pos.y);
+                    Vector2 Size = new Vector2(size.x, size.y);
 
                     var data = nodeData.data;
 
                     DialogueTreeNode newNode = new DialogueTreeNode(Position, Size.x, Size.y,false,false);
 
                     newNode.data.Id = data.Id;
+
+                    //Manually toggle the button to show options if options exist
+                    if(nodeData.data.Options.Count > 0)
+                    {
+                        newNode.SetShowOptions(true);
+                    }
 
                     // Add the recreated node to the list
                     nodes.Add(newNode);
@@ -893,12 +975,69 @@ namespace KKG.Tool.Dialogue
 
                             foreach (var option in existingNode.data.Options)
                             {
-                                existingNode.CreateOptionWithData(option.Value);
+                               var createdOption =  existingNode.CreateOptionWithData(option);
+                               allOptions.Add(createdOption.Option);
                             }
                         }
 
                         existingNode.AllowDrawingNode();
                     }
+                }
+
+                //Load the connections and connection Options
+
+                //Handle first the node to node connections
+                if(dialogueToolTreeSO.Connections.Count > 0 && dialogueToolTreeSO.Connections != null)
+                {
+                    foreach(var connection in dialogueToolTreeSO.Connections)
+                    {
+                        //Break the connection and its tuple to get info about start and end node
+
+                        var InputKey = connection.ConnectionTuple.InputNode;
+                        var OutputKey = connection.ConnectionTuple.OutputNode;
+
+                        //Find the input & output nodes in the existing/newly created dialogue nodes
+                        var InputNode = nodes.First(node => node.data.Id.Equals(InputKey.data.Id));
+                        var OutputNode = nodes.First(node => node.data.Id.Equals(OutputKey.data.Id));
+
+                        ConnectionTuple ct = new ConnectionTuple(InputNode,OutputNode);
+                        Connection conn = new Connection(InputNode, OutputNode);
+
+                        connections.Add(ct, conn);
+                    }
+                }
+
+                //Handle the connection options
+                if(dialogueToolTreeSO.ConnectionOptions != null && dialogueToolTreeSO.ConnectionOptions.Count > 0)
+                {
+                    foreach(var connectionOpt in dialogueToolTreeSO.ConnectionOptions)
+                    {
+                        var InputKey = connectionOpt.ConnectionOptionTuple.InputOption;
+                        var OutputKey = connectionOpt.ConnectionOptionTuple.OutputNode;
+
+                        //Find the input & output nodes in the existing/newly created dialogue nodes
+                        var InputNode = nodes.First(node => node.data.Id.Equals(InputKey.parentNodeRef));
+                        var InputOption = allOptions.First(node => node.OptionId.Equals(InputKey.OptionId));
+                        var OutputNode = nodes.First(node => node.data.Id.Equals(OutputKey.data.Id));
+
+                        Connection newConnection = new Connection(InputNode, OutputNode, true);
+                        ConnectionOptionTuple cot = new ConnectionOptionTuple(InputOption, OutputNode);
+
+                        connectionOptions.Add(cot, newConnection);
+
+                        //Get Output rect from Dialogue Tree Node
+
+                        var nodePacket = InputNode.data.Options.Single(opt => opt.OptionID == InputKey.OptionId); 
+                        newConnection.SetFromOutputNode(nodePacket.rect);
+                    }
+                }
+
+                //Set the starting node to proper mode
+                if (!string.IsNullOrEmpty(dialogueToolTreeSO.StartNodeId))
+                {
+                    var startingNode = nodes.Single(node => node.data.Id == dialogueToolTreeSO.StartNodeId);
+
+                    SetStartingNode(startingNode);
                 }
 
                 Debug.Log("Dialogue tree loaded successfully!");
@@ -939,5 +1078,7 @@ namespace KKG.Tool.Dialogue
             startingNode = _node;
             startingNode.SetStartingNode();
         }
+
+
     }
 }

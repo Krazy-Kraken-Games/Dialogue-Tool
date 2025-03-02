@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec68b2d7c9842a41ae5f6ad03e79582, type: 3}
+  m_Name: BatmanSO
+  m_EditorClassIdentifier: 
+  nodes:
+  - data:
+      Id: 4ef1000e-1f86-4734-9400-ebd2e7bc64c7
+      Type: 0
+      SpeakerName: Batman
+      Message: First Node
+      Options:
+      - OptionID: 9cb8307e-0288-4338-a073-1cf5e3fa270d
+        Option:
+          OptionId: 9cb8307e-0288-4338-a073-1cf5e3fa270d
+          NextIndex: 7e2ed4c3-a178-45fc-ba11-4996a76819f1
+          SpeakerName: Batman
+          OptionMessage: First Option Message
+          parentNodeRef: 4ef1000e-1f86-4734-9400-ebd2e7bc64c7
+        rect:
+          serializedVersion: 2
+          x: 159
+          y: 219
+          width: 127
+          height: 15
+      - OptionID: 6a38d61d-8378-4780-a0bc-64b93b84adec
+        Option:
+          OptionId: 6a38d61d-8378-4780-a0bc-64b93b84adec
+          NextIndex: 9fbd396b-40f2-4e0d-b69f-844934ad4c0f
+          SpeakerName: Speaker 2
+          OptionMessage: Option Message 2
+          parentNodeRef: 4ef1000e-1f86-4734-9400-ebd2e7bc64c7
+        rect:
+          serializedVersion: 2
+          x: 159
+          y: 326
+          width: 127
+          height: 15
+      nextIndex: 
+  - data:
+      Id: 9fbd396b-40f2-4e0d-b69f-844934ad4c0f
+      Type: 0
+      SpeakerName: Robin
+      Message: No
+      Options: []
+      nextIndex: b7c8b497-b852-4a1d-aa67-9f216d543ac7
+  - data:
+      Id: 7e2ed4c3-a178-45fc-ba11-4996a76819f1
+      Type: 0
+      SpeakerName: Robin
+      Message: Yes
+      Options: []
+      nextIndex: 60d2cdf9-982b-4b02-a63a-769c4ebeebec
+  - data:
+      Id: b7c8b497-b852-4a1d-aa67-9f216d543ac7
+      Type: 0
+      SpeakerName: Batman
+      Message: Go home
+      Options: []
+      nextIndex: d905f682-3237-4c7f-96fb-eadacd627a74
+  - data:
+      Id: 60d2cdf9-982b-4b02-a63a-769c4ebeebec
+      Type: 0
+      SpeakerName: Batman
+      Message: Lets go
+      Options: []
+      nextIndex: 
+  Count: 5
+  StartingNodeId: 4ef1000e-1f86-4734-9400-ebd2e7bc64c7

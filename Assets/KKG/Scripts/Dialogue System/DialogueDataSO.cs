@@ -12,18 +12,19 @@ namespace KKG.Dialogue
 
         public int Count;
 
-        public void AddNode(DialogueNode node)
-        {
-            if (nodes.Contains(node)) return;
-
-            nodes.Add(node);
-        }
+        [ReadOnly]
+        public string StartingNodeId;
 
         public void SetNodes(List<DialogueNode> nodes)
         {
             this.nodes = nodes;  
 
             Count = nodes.Count;
+        }
+
+        public void SetStartingNode(string _startingNodeId)
+        {
+            StartingNodeId = _startingNodeId;
         }
 
     }

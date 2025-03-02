@@ -1,0 +1,84 @@
+{
+  "Nodes": [
+    {
+      "Position": {
+        "x": 329.1659,
+        "y": 2952.04224,
+        "normalized": {
+          "x": 0.110817686,
+          "y": 0.9938408,
+          "normalized": {
+            "x": 0.110817671,
+            "y": 0.9938407,
+            "normalized": {
+              "x": 0.110817678,
+              "y": 0.993840754,
+              "magnitude": 1.0,
+              "sqrMagnitude": 1.0
+            },
+            "magnitude": 0.99999994,
+            "sqrMagnitude": 0.9999999
+          },
+          "magnitude": 1.00000012,
+          "sqrMagnitude": 1.00000012
+        },
+        "magnitude": 2970.33716,
+        "sqrMagnitude": 8822904.0
+      },
+      "Size": {
+        "x": 300.0,
+        "y": 175.0,
+        "normalized": {
+          "x": 0.8637789,
+          "y": 0.503871,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1.0
+        },
+        "magnitude": 347.3111,
+        "sqrMagnitude": 120625.0
+      },
+      "data": {
+        "Id": "b0cdf146-c7df-4e72-8eff-5975ab6bda49",
+        "Type": 0,
+        "SpeakerName": "Sam",
+        "Message": "dgsdg",
+        "Options": {},
+        "nextIndex": "c58e01e9-dd08-40e3-ada8-f4004b15d597"
+      }
+    },
+    {
+      "Position": {
+        "x": 1087.70239,
+        "y": 3266.67627,
+        "normalized": {
+          "x": 0.315916747,
+          "y": 0.9487869,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1.0
+        },
+        "magnitude": 3443.00317,
+        "sqrMagnitude": 1.185427E+07
+      },
+      "Size": {
+        "x": 300.0,
+        "y": 175.0,
+        "normalized": {
+          "x": 0.8637789,
+          "y": 0.503871,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1.0
+        },
+        "magnitude": 347.3111,
+        "sqrMagnitude": 120625.0
+      },
+      "data": {
+        "Id": "c58e01e9-dd08-40e3-ada8-f4004b15d597",
+        "Type": 0,
+        "SpeakerName": "dsmm",
+        "Message": "rrgere",
+        "Options": {},
+        "nextIndex": null
+      }
+    }
+  ]
+}

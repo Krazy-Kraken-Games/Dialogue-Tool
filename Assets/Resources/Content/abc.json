@@ -1,0 +1,55 @@
+{
+  "Nodes": [
+    {
+      "Position": {
+        "x": 494.70166,
+        "y": 3486.35181
+      },
+      "Size": {
+        "x": 366.829224,
+        "y": 479.0244
+      },
+      "data": {
+        "Id": "5666ad48-1f19-425e-b9fe-df087ce16e0a",
+        "Type": 0,
+        "SpeakerName": "sggergerg",
+        "Message": "wegwegweg",
+        "Options": {
+          "c68b68d4-4f8b-4846-8617-cf3149f61c57": {
+            "OptionId": "c68b68d4-4f8b-4846-8617-cf3149f61c57",
+            "NextIndex": "2234a8da-7979-45af-bf5e-fc184d2a2709",
+            "SpeakerName": "weghjj5",
+            "OptionMessage": "qwwtwtt",
+            "parentNodeRef": "5666ad48-1f19-425e-b9fe-df087ce16e0a"
+          },
+          "2303ee4c-16c3-450f-9295-063842ecc872": {
+            "OptionId": "2303ee4c-16c3-450f-9295-063842ecc872",
+            "NextIndex": "",
+            "SpeakerName": "ffjyj",
+            "OptionMessage": "jjjj",
+            "parentNodeRef": "5666ad48-1f19-425e-b9fe-df087ce16e0a"
+          }
+        },
+        "nextIndex": null
+      }
+    },
+    {
+      "Position": {
+        "x": 1042.75024,
+        "y": 3359.70581
+      },
+      "Size": {
+        "x": 300.0,
+        "y": 175.0
+      },
+      "data": {
+        "Id": "2234a8da-7979-45af-bf5e-fc184d2a2709",
+        "Type": 0,
+        "SpeakerName": "k7krjr",
+        "Message": "rhreher",
+        "Options": {},
+        "nextIndex": null
+      }
+    }
+  ]
+}
